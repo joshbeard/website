@@ -130,36 +130,37 @@ to add descriptions or adjust metadata.
 
   Helper script for preparing and deploying my images.
 
-### CloudFront Cache Invalidation
+### Deploying and CloudFront Cache Invalidation
 
-After deploying changes, you may need to invalidate the CloudFront cache to ensure
-visitors see the updated content. The [`util/invalidate-cache.rb`](util/invalidate-cache.rb)
-script intelligently determines which paths need invalidation based on changes in `src/`:
+CI deploys the validated `_site` artifact with [`util/deploy-site.rb`](util/deploy-site.rb).
+The script stores a content manifest at `.deploy/manifest.json` in the S3 bucket
+and compares each new build against the previous deployed artifact:
 
-- **Global changes** (`_data`, `_includes`, `_layouts`, `_plugins`, `assets`): Invalidates `/*` (everything)
-- **Page changes**: Invalidates only the affected paths (e.g., `/photos/2021*`, `/about*`)
-- **New directories**: Invalidates the parent directory
+- Added or changed files are uploaded to S3 with their cache-control headers.
+- Unchanged files are skipped.
+- Removed files are deleted from S3.
+- CloudFront invalidation is based on changed built files, not source files.
+  For example, a changed `src/photos/2026/album.yml` invalidates the generated
+  `/photos/2026/index.html` when that built file changes.
 
-The script can be used in two ways:
+For local validation, compare a built directory against a local previous manifest:
 
-**Automatic (detects changes from git):**
 ```shell
-# In CI: automatically detects changes and invalidates accordingly
-ruby util/invalidate-cache.rb
+ruby util/deploy-site.rb --site-dir _site --previous-manifest previous.json --dry-run
 ```
 
-**Manual (specify paths directly):**
+To also save the new manifest for inspection:
+
 ```shell
-# Invalidate specific paths
-ruby util/invalidate-cache.rb /photos/2021 /about
+ruby util/deploy-site.rb --site-dir _site --previous-manifest previous.json --write-manifest current.json --dry-run
 ```
 
-**Requirements:**
+**Requirements for real deploys:**
 - AWS auth
-- `CF_DISTRIBUTION` environment variable (CloudFront distribution ID)
-- `AWS_REGION` environment variable (optional, default: us-east-1)
-
-The script is automatically run in CI after deployment if changes are detected in `src/`.
+- `AWS_S3_BUCKET` environment variable
+- `CF_DISTRIBUTION` environment variable for CloudFront invalidation
+- `AWS_REGION` environment variable for S3 (default: `us-west-2`)
+- `CF_REGION` environment variable for CloudFront (default: `us-east-1`)
 
 ## Screenshots
 

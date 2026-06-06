@@ -127,7 +127,7 @@ module Jekyll
       # Use images from album.yml as source of truth if available
       # This allows building without image files present locally
       if @album_metadata['images'] && @album_metadata['images'].is_a?(Hash) && !@album_metadata['images'].empty?
-        files = @album_metadata['images'].keys.sort
+        files = @album_metadata['images'].keys
       end
 
       #Pagination

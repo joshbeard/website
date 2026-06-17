@@ -93,7 +93,7 @@ module Jekyll
 
     DEFAULT_METADATA = {
       'sort' => 'filename asc',
-      'paginate' => 50,
+      'paginate' => 100,
     }
 
     def initialize(site, base, dir, outdir, page=0)

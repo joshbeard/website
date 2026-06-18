@@ -245,8 +245,33 @@ module Jekyll
     end
   end
 
+  class AllPhotosPage < Page
+    # A flat index of all album images
+    def initialize(site, base, outdir, images, all_photos_config)
+      @site = site
+      @base = base
+      @dir = File.join(site.config['gallery']['out_dir'] || 'albums', outdir)
+      @name = 'index.html'
+
+      self.process(@name)
+      self.read_yaml(File.join(@base, '_layouts'), 'all_photos_index.html')
+
+      self.data['title'] = 'All Photos'
+      self.data['images'] = images
+      self.data['group_by_album'] = all_photos_config['group_by_album']
+      self.data['page_type'] = 'all_photos'
+    end
+  end
+
   class GalleryGenerator < Generator
     safe true
+
+    DEFAULT_ALL_PHOTOS_CONFIG = {
+      'enabled' => false,
+      'path' => 'all',
+      'sort' => 'album desc',
+      'group_by_album' => true,
+    }
 
     def generate(site)
       if site.layouts.key? 'album_index'
@@ -257,7 +282,124 @@ module Jekyll
         albums.each do |album|
           site.pages << AlbumPage.new(site, site.source, album, album)
         end
+
+        generate_all_photos(site, base_album_path, albums)
       end
+    end
+
+    def generate_all_photos(site, base_album_path, albums)
+      all_photos_config = all_photos_config(site)
+      return unless all_photos_config['enabled']
+      return unless site.layouts.key? 'all_photos_index'
+
+      all_photos = collect_all_photos(site, base_album_path, albums, all_photos_config)
+      all_path = all_photos_config['path']
+      all_page_url = File.join(site.config['gallery']['out_dir'] || 'albums', all_path, 'index.html').to_s()
+
+      all_photos.each_with_index do |photo, idx|
+        prev_photo = all_photos[idx - 1] unless idx == 0
+        next_photo = all_photos[idx + 1] || nil
+
+        site.pages << ImagePage.new(site, site.source, File.dirname(photo['rel_link']), photo['src'], photo['thumb'],
+                                    'All Photos', photo['rel_link'], prev_photo && prev_photo['rel_link'],
+                                    next_photo && next_photo['rel_link'], all_page_url, photo['description'])
+      end
+
+      site.pages << AllPhotosPage.new(site, site.source, all_path, all_photos, all_photos_config)
+    end
+
+    def collect_all_photos(site, base_album_path, albums, all_photos_config)
+      album_paths = expand_album_paths(base_album_path, albums, site.config['gallery']['thumbs_dir'] || 'thumbs')
+      sort_on, sort_direction = all_photos_config['sort'].to_s.split
+      album_paths.sort!
+      album_paths.reverse! if sort_on == 'album' && sort_direction =~ /^desc/
+
+      album_paths.each_with_object([]) do |album, photos|
+        album_source = File.join(base_album_path, album)
+        metadata = album_metadata(site, album_source)
+        next if metadata['hidden']
+
+        files = album_files(album_source, metadata, site.config['gallery']['thumbs_dir'] || 'thumbs')
+        files.reverse! if sort_on == 'album' && sort_direction =~ /^desc/
+
+        files.each do |filename|
+          photos << all_photo_data(site, album, filename, metadata, all_photos_config['path'])
+        end
+      end
+    end
+
+    def expand_album_paths(base_album_path, albums, thumbs_dir)
+      albums.each_with_object([]) do |album, paths|
+        album_source = File.join(base_album_path, album)
+        paths << album
+
+        subalbums = Dir.entries(album_source)
+        subalbums.reject! { |x| x =~ /^(\.|#{thumbs_dir})/ }
+        subalbums.select! { |x| File.directory? File.join(album_source, x) }
+        paths.concat(expand_album_paths(base_album_path, subalbums.map { |subalbum| File.join(album, subalbum) }, thumbs_dir))
+      end
+    end
+
+    def album_metadata(site, album_source)
+      site_metadata = site.config['album_config'] || {}
+      local_config = {}
+      config_file = File.join(album_source, 'album.yml')
+      if File.exist? config_file
+        local_config = YAML.load_file(config_file)
+      end
+      return AlbumPage::DEFAULT_METADATA.merge(site_metadata).merge(local_config)
+    end
+
+    def album_files(album_source, metadata, thumbs_dir)
+      if metadata['images'] && metadata['images'].is_a?(Hash) && !metadata['images'].empty?
+        return metadata['images'].keys
+      end
+
+      entries = Dir.entries(album_source)
+      entries.reject! { |x| x =~ /^(\.|#{thumbs_dir})/ }
+      files = entries.reject { |x| File.directory? File.join(album_source, x) }
+      files.select! { |x| ['.png', '.jpg', '.jpeg', '.gif'].include? File.extname(File.join(album_source, x)) }
+
+      sort_on, sort_direction = metadata['sort'].split
+      files.sort! { |a, b| send("#{sort_on}_sort", a, b, sort_direction) }
+      files
+    end
+
+    def filename_sort(a, b, reverse)
+      if reverse =~ /^desc/
+        return b <=> a
+      end
+      return a <=> b
+    end
+
+    def all_photo_data(site, album, filename, metadata, all_path)
+      gallery_out_dir = site.config['gallery']['out_dir'] || 'albums'
+      thumbs_dir = site.config['gallery']['thumbs_dir'] || 'thumbs'
+      description = nil
+
+      if metadata['images'].class == Hash && metadata['images'].key?(filename)
+        description = metadata['images'][filename]
+      end
+
+      {
+        'src' => File.join(gallery_out_dir, album, filename).to_s(),
+        'rel_link' => File.join(gallery_out_dir, all_path, album, image_page_url(filename)).to_s(),
+        'thumb' => File.join(gallery_out_dir, album, thumbs_dir, filename).to_s(),
+        'description' => description,
+        'album' => album,
+        'album_title' => metadata['meta_title'] || album,
+        'album_url' => File.join(gallery_out_dir, album, 'index.html').to_s(),
+      }
+    end
+
+    def image_page_url(filename)
+      return nil if filename.nil?
+      ext = File.extname(filename)
+      return "#{File.basename(filename, ext)}_#{File.extname(filename)[1..-1]}.html"
+    end
+
+    def all_photos_config(site)
+      DEFAULT_ALL_PHOTOS_CONFIG.merge((site.config['gallery'] || {})['all_photos'] || {})
     end
   end
 end

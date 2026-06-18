@@ -76,12 +76,23 @@ gallery:
   src_dir: src/photos
   out_dir: /photos
   thumbs_dir: thumbs
+  all_photos:
+    enabled: true
+    path: all
+    sort: album desc
+    group_by_album: true
 
 nav_tree:
   excludes:
     - /sitemap.xml
     - /photos/*/*jpg.html
     - /photos/*/*jpeg.html
+    - /photos/*/*JPG.html
+    - /photos/*/*JPEG.html
+    - /photos/all/*/*jpg.html
+    - /photos/all/*/*JPG.html
+    - /photos/all/*/*jpeg.html
+    - /photos/all/*/*JPEG.html
     - /photos/*/*.yml
     - /assets*
     - /error.html

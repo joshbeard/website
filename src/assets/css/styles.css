@@ -414,6 +414,25 @@ nav {
   justify-content: center;
 }
 
+#page .photos-all-link {
+  margin: 0 0 var(--spacing-sm);
+  text-align: center;
+}
+
+#page .photos-all-link a {
+  display: inline-block;
+  color: var(--text-secondary);
+  font-family: var(--font-display);
+  letter-spacing: 1px;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+  transition: color 0.3s ease;
+}
+
+#page .photos-all-link a:hover {
+  color: var(--accent-green);
+}
+
 .album-in-list {
   margin: 0 var(--spacing-xs) var(--spacing-md);
   position: relative;
@@ -505,6 +524,26 @@ img.responsive {
   display: flex;
   justify-content: center;
   flex-wrap: wrap;
+}
+
+.all-photos-album-heading {
+  width: 100%;
+  margin: var(--spacing-sm) 0 var(--spacing-xs);
+  text-align: center;
+  font-family: var(--font-display);
+  font-size: 1.1em;
+  letter-spacing: 2px;
+  color: var(--text-muted);
+}
+
+#page .all-photos-album-heading a {
+  color: var(--text-secondary);
+  text-decoration: none;
+}
+
+#page .all-photos-album-heading a:hover {
+  color: var(--accent-green);
+  text-decoration: none;
 }
 
 #album-contents {

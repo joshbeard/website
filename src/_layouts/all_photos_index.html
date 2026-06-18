@@ -1,0 +1,27 @@
+---
+layout: page
+page_type: all_photos
+class: album-index
+---
+<h2><a href="/photos">Photos</a>&nbsp;&raquo;&nbsp;{{ page.title }}</h2>
+
+<div id="album-contents">
+	<div id="album-images">
+	{% assign current_album = '' %}
+	{% for image in page.images %}
+		{% if page.group_by_album and image.album != current_album %}
+		<div class="all-photos-album-heading">
+			<a href="{{ image.album_url }}">{{ image.album_title }}</a>
+		</div>
+		{% assign current_album = image.album %}
+		{% endif %}
+		<div class="image-in-album">
+			<a href="{{ image.rel_link }}"><img src="{{ image.thumb }}" class="img_thumb" alt="{{ image.description }}" /></a>
+		</div>
+	{% endfor %}
+	</div>
+
+	<div class="all-photos-link">
+		<a href="/photos">Photos</a>&nbsp;&raquo;&nbsp;{{ page.title }}
+	</div>
+</div>

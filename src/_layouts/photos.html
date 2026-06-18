@@ -2,7 +2,11 @@
 layout: page
 class: album-list
 ---
-<h2>Photos</h2>
+<!-- <h2>Photos</h2> -->
+{% assign all_photos_page = site.pages | where: 'page_type', 'all_photos' | first %}
+{% if all_photos_page %}
+<p class="photos-all-link"><a href="{{ all_photos_page.url }}">View All Photos</a></p>
+{% endif %}
 <div class="album-list">
     {% assign sorted = site.pages | sort: 'title' | reverse %}
     {% for page in sorted %}

@@ -23,7 +23,6 @@ Some software and tools I use regularly:
 * [Homebrew](https://brew.sh/) for macOS packages
 * [Brave](https://brave.com/) for browsing
 * [Proxmox](https://www.proxmox.com/) for my home servers
-* [Rocky Linux](https://rockylinux.org/) for my home servers
 
 See my [Homelab](/homelab) page for details about my home servers.
 

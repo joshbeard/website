@@ -14,8 +14,8 @@ class: ascii-art
 This is my personal website. It is part notebook, part archive, part place to
 put things I like keeping around on the web.
 
-I live in Colorado with my family. I spend a lot of time with computers, music,
-cycling, grilling, and the usual collection of small projects.
+I live in Colorado with my family. I spend a lot of time with my family,
+computers, music, cycling, grilling, and the usual collection of small projects.
 
 Some of the more personal or nostalgic corners are here because I enjoy that
 older style of web publishing:
@@ -37,11 +37,13 @@ If you are looking at this and dig personal websites and that sort of thing, say
 
 ### Work
 
-For work, I focus on infrastructure, developer workflows, release systems, and
-the tools that help software teams build and operate things with less friction.
-My background is in systems administration and engineering, and I have spent a
-lot of time close to Linux, Unix-like systems, automation, CI/CD, cloud
-infrastructure, and the day-to-day realities of keeping services maintainable.
+For work, I focus on many aspects of software delivery: platforms, developer
+workflows, documentation, process, governance, and the tools that help software
+teams build and operate things with less friction. Increasingly, that includes
+AI workflows, integrations, and enablement. My background is in systems
+administration and engineering, and I have spent a lot of time close to Linux,
+Unix-like systems, automation, CI/CD, cloud infrastructure, and the day-to-day
+realities of keeping services maintainable.
 
 Most of my work happens in a code editor and shell, bouncing between systems,
 software, and process. Increasingly, that also means working alongside AI agents

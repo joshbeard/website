@@ -395,6 +395,7 @@ class PhotoDeployer
     cmd = [
       '/usr/bin/env', 'aws', 's3', 'sync', path,
       "s3://#{S3_BUCKET}/#{s3_path}",
+      '--acl', 'public-read',
       '--exclude', '*.html',
       '--exclude', '*.yml',
       '--exclude', '*.txt',

@@ -18,16 +18,7 @@ keywords: ['homelab', 'home lab', 'homelabs', 'proxmox', 'home server']
 * Not currently used: Shuttle DS87 (i3 3.6GHz/16GB) - Not used yet, but plan to
   use [OPNSense](https://opnsense.org/)
 * Other hardware running Linux and BSD.
-* Homelab OS: Linux (Rocky, Ubuntu, Debian, Alpine), OpenBSD, FreeBSD
-
-I'm working on publishing the codebase for my Home Lab to my
-[GitHub profile](https://github.com/joshbeard?tab=repositories&q=homelab&type=&language=&sort=).
-Eventually, I hope to provide some more content and code about my Homelab.
-
-__2024 Update:__ I'm lagging behind on this, but still maintaining my Home Lab
-internally with the same basic tools. It's a fairly well-oiled machine at this
-point. I'm planning a storage upgrade soon.
-
+* Homelab OS: Rocky Linux these days
 
 Some services I run are [Pi-Hole](https://pi-hole.net/), [Plex Media Server](https://www.plex.tv/),
 [Transmission BitTorrent](https://transmissionbt.com/),

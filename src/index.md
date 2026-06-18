@@ -12,5 +12,6 @@ permalink: /
         <li class="home_link"><a href="/photos" title="Photos"><i class="fas fa-fw fa-image"></i>&nbsp;<span>Photos</span></a></li>
         <li class="home_link"><a href="https://github.com/joshbeard" title="github.com/joshbeard"><i class="fab fa-fw fa-github"></i>&nbsp;<span>GitHub</span></a></li>
         <li class="home_link"><a href="mailto:hello@joshbeard.com" title="hello@joshbeard.com"><i class="fas fa-fw fa-envelope"></i>&nbsp;<span>E-Mail</span></a></li>
+        <li class="home_link"><a href="/tree" title="Site Index"><i class="fas fa-fw fa-list-ul"></i>&nbsp;<span>Index</span></a></li>
     </ul>
 </div>

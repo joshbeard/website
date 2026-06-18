@@ -11,8 +11,16 @@ class: ascii-art
 
 {% include submenu.html %}
 
-I had a [uses page](https://uses.tech/) here, but I frankly don't have anything
-interesting to share here right now.
+Some software and tools I use regularly:
+
+* [Obsidian](https://obsidian.md/) for notes
+* [Neovim](https://neovim.io/) and [Cursor](https://cursor.com/) for writing code
+* [Raycast](https://www.raycast.com/) for launching, quick actions, quick AI chat
+* [Ghostty](https://ghostty.org/) for terminal
+* [1Password](https://1password.com/) for passwords
+* [YNAB](https://www.ynab.com/) for budgeting
+* [Homebrew](https://brew.sh/) for macOS packages
+* [Brave](https://brave.com/) for browsing
 
 I've used Linux, FreeBSD, and macOS on my workstations over the years since
 2000, with all sorts of window manager and desktop environment combinations. In

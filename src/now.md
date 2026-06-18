@@ -23,9 +23,9 @@ few months.
 ░░░   ░░  ░░░░░░  ░░░    ░░░
 ```
 
-This is what I'm doing as of January 2025:
+This is what I'm doing as of June, 2026:
 
+* Getting into shape after years of neglect, with a year of cycling every day.
+* Barbecuing and grilling more this summer.
+* Managing a small DevOps team at Live Oak Bank.
 * Raising two daughters with my wife in [Colorado Springs, CO](https://en.wikipedia.org/wiki/Colorado_Springs%2C_Colorado).
-* Working on some home improvement projects.
-* Getting into shape after years of neglect.
-* Programming in Go a lot.

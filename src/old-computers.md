@@ -13,11 +13,15 @@ class: ascii-art
 
 {% include submenu.html %}
 
-I haven't really kept track of the computers I've used over the
-years. A summarized list is below - I may not have the exact model in a couple
-of cases, but what's listed is pretty close. Between 1998 and 2004, my friends
-and I acquired an assortment of parts, traded them, and built our own (obsolete)
-computers from a pile of parts.
+This is a personal archive of computers I've used, rebuilt, borrowed, or kept
+around over the years. It is not meant to be complete, but it captures the
+thread that led me from old family machines and spare parts into Linux, BSD,
+home servers, and eventually a career working with infrastructure and software
+teams.
+
+I may not have the exact model in a couple of cases, but what's listed is pretty
+close. Between 1998 and 2004, my friends and I acquired an assortment of parts,
+traded them, and built our own obsolete computers from a pile of parts.
 
 ```ascii-art-right
                   .----.
@@ -33,10 +37,10 @@ jgs `"""""""""""""`  '-'
 ```
 
 * ~1996: [Commodore PC Compatible](https://en.wikipedia.org/wiki/Commodore_PC_compatible_systems). Ran MS-DOS. Played basic games, joined BBS.
-* 1996-2000: [Packard Bell Pentium II 133MHz](http://pbplanet.info/wiki/index.php/Multimedia_D136). Hung out on a [BBS,](https://en.wikipedia.org/wiki/Bulletin_board_system) Played games like [Duke Nukem 3D](https://en.wikipedia.org/wiki/Duke_Nukem_3D) and [Sim City 2000.](https://en.wikipedia.org/wiki/SimCity_2000) Windows 95, 98, 2000. Later installed [Red Hat Linux 5.2](https://www.redhat.com/en/about/press-releases/press-redhatlinux52), bought off a shelf at  a Wal-Mart, and tested other Linux distributions.
+* 1996-2000: [Packard Bell Pentium II 133MHz](http://pbplanet.info/wiki/index.php/Multimedia_D136). Hung out on a [BBS](https://en.wikipedia.org/wiki/Bulletin_board_system), played games like [Duke Nukem 3D](https://en.wikipedia.org/wiki/Duke_Nukem_3D) and [Sim City 2000](https://en.wikipedia.org/wiki/SimCity_2000), and ran Windows 95, 98, and 2000. Later installed [Red Hat Linux 5.2](https://www.redhat.com/en/about/press-releases/press-redhatlinux52), bought off a shelf at a Wal-Mart, and tested other Linux distributions.
 * 1997-1999: [Zenith SupersPort 286](https://oldcrap.org/2020/10/30/zenith-supersport-286e/). Mostly used MS-DOS and kept a journal on it. Windows 3.0 installed. Learned some BASIC on this.
 * 1997-2006: Several no-name [386](https://en.wikipedia.org/wiki/I386) and [486s](https://en.wikipedia.org/wiki/I486). Ran DOS, Linux, and FreeBSD. Installed Windows 95 from floppy on a 486.
-* 1999-2006: Several no-name [Pentiums](https://en.wikipedia.org/wiki/Pentium_(original)) and [AMD K5/K6/Athalon](https://en.wikipedia.org/wiki/Advanced_Micro_Devices#CPUs_and_APUs). Ran Linux (RedHat, CentOS, Ubuntu, Debian, Gentoo, countless others) and FreeBSD.
+* 1999-2006: Several no-name [Pentiums](https://en.wikipedia.org/wiki/Pentium_(original)) and [AMD K5/K6/Athlon](https://en.wikipedia.org/wiki/Advanced_Micro_Devices#CPUs_and_APUs). Ran Linux (RedHat, CentOS, Ubuntu, Debian, Gentoo, countless others) and FreeBSD.
 
 <a href="/screenshots/old/2005-02-04.png"><img class="responsive" src="/screenshots/old/2005-02-04-th.png" alt="Screenshot from 2005-02-04" /></a>
 
@@ -59,7 +63,7 @@ jgs `"""""""""""""`  '-'
 * 2022-2025: MacBook Air M1 (work)
 * 2021-2025: MacBook Pro Retina (2015) - Arch Linux
 * 2025: MacBook Pro M4 (work)
-* 2025: Macbook Air M4 (personal)
+* 2025: MacBook Air M4 (personal)
 
 Many of these were used as home servers over the years. I ran my own e-mail
 servers at home for several years, along with web servers and an assortment of
@@ -69,5 +73,5 @@ desktop environments.
 
 I started using Linux on my desktop around 2000 and continued to until I started
 exploring FreeBSD, which I ran on most of my workstations from 2004-2007 and most
-of my homelab from 2004-2020. From there, It's been a mix of more Linux and
+of my homelab from 2004-2020. From there, it's been a mix of more Linux and
 macOS on my workstations.

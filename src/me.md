@@ -11,11 +11,14 @@ class: ascii-art
 
 {% include submenu.html %}
 
-See my [now page](/now) for a summary of what I'm up to lately.
+This is my personal website. It is part notebook, part archive, part place to
+put things I like keeping around on the web.
 
-### Personal
+I live in Colorado with my family. I spend a lot of time with computers, music,
+cycling, grilling, and the usual collection of small projects.
 
-I'm from the 80's. My primary hobby interests are computers and music.
+Some of the more personal or nostalgic corners are here because I enjoy that
+older style of web publishing:
 
 ```ascii-art
          ,,,
@@ -23,29 +26,43 @@ I'm from the 80's. My primary hobby interests are computers and music.
 ----oOO--( )--OOo----
 ```
 
-I live in Colorado with my beautiful wife and kids.
-[Rapid City, South Dakota](https://en.wikipedia.org/wiki/Rapid_City,_South_Dakota)
-is our hometown, though I was born in
-[North Eastern Arkansas](https://en.wikipedia.org/wiki/Arkansas_Delta)
-with roots in that area and the
-[Missouri Bootheel](https://en.wikipedia.org/wiki/Missouri_Bootheel),
-growing up there until the age of 6. I lived in
-[Derby, Kansas](https://en.wikipedia.org/wiki/Derby,_Kansas)
-from ages 6-9 before moving to South Dakota. I also lived in [Western Missouri](https://en.wikipedia.org/wiki/Whiteman_Air_Force_Base)
-between 2000 and 2001. I've temporarily lived in a few other places over the
-years. I have a fondness for all of these places.
+* [What I'm Up To Now](/now)
+* [What I Use](/uses)
+* [My Home Lab](/homelab/)
+* [My Old Computers](/old-computers.html)
+* [Photos](/photos)
 
-If I travel for pleasure, I prefer driving over flying.
+If you are looking at this and dig personal websites and that sort of thing, say
+[hello](mailto:hello@joshbeard.com)!
 
-If you are looking at this and dig personal websites and that sort of thing,
-say [hello](mailto:hello@joshbeard.com)!
+### Work
+
+For work, I focus on infrastructure, developer workflows, release systems, and
+the tools that help software teams build and operate things with less friction.
+My background is in systems administration and engineering, and I have spent a
+lot of time close to Linux, Unix-like systems, automation, CI/CD, cloud
+infrastructure, and the day-to-day realities of keeping services maintainable.
+
+Most of my work happens in a code editor and shell, bouncing between systems,
+software, and process. Increasingly, that also means working alongside AI agents
+and LLMs to explore code, automate routine changes, and think through problems.
+The surrounding toolkit still includes a lot of Terraform, AWS, Go, GitLab CI,
+Python, Docker, shell, and whatever glue is needed at the time.
+
+I care about practical engineering: simple systems, boring technology where it
+fits, clear workflows, and tools that make the right thing easier to do. The
+perspectives described in [Radical Simplicity](https://www.radicalsimpli.city/)
+and [Choose Boring Technology](https://boringtechnology.club/) resonate with
+me.
+
+See [my resume](/resume) for more details about my professional experience, or
+my [now page](/now) for a current snapshot of what I'm up to.
 
 ### Computers
 
-I've been a computer hobbyist since I was a kid/teen in the mid-late 90's,
-starting with our [obsolete family computer](https://en.wikipedia.org/wiki/Commodore_PC_compatible_systems)
-bought from a garage sale, the next family computer, and several other outdated
-computers I collected from people and found in the newspaper.
+I've been a computer hobbyist since I was young, starting with obsolete family
+computers, hand-me-down hardware, and parts gathered from wherever I could find
+them.
 
 
 ```ascii-art-left
@@ -59,7 +76,7 @@ computers I collected from people and found in the newspaper.
 ```
 
 I took an interest in Linux and Free and Open Source Software around 1999 and
-became particuarily interested in setting up and administering servers and
+became particularly interested in setting up and administering servers and
 websites. I stayed up until dawn many nights learning and experimenting with
 this stuff and hanging out on IRC.
 
@@ -71,7 +88,7 @@ days, I still love it and have a lot of respect for it and its community.
 I owe my career to Free and Open Source Software and the ecosystem built around
 Linux and UNIX.
 
-See the [My Old Computers page](/old-computers.html)
+See the [My Old Computers page](/old-computers.html) for the longer archive.
 
 ```ascii-art-right
     ______
@@ -88,26 +105,8 @@ See the [My Old Computers page](/old-computers.html)
       \/
 ```
 
-My professional background is in systems administration, but I've always
-been a programmer on the side, though not as proficiently as I'd like.
-
-These days, my title is something about "DevOps" and I work on software
-engineering teams to support and help make software. A big focus of mine is
-the overall process, workflow, and tools for developing, releasing, and
-maintaining software projects. Some previous titles were Systems Administrator,
-Systems Engineer, Help Desk, and computer guy.
-
-I spend most of my day in a code editor and shell, bouncing across several
-projects. The last few years has involved a lot of Terraform, AWS, Go, GitLab
-CI, Python, Docker, shell, and various other tools and languages. At home, I've
-been coding in Go pretty constantly since late 2022 and maintain a homelab
-on Proxmox that's mostly maintained with Terraform and Ansible.
-
-The perspectives described in [Radical Simplicity](https://www.radicalsimpli.city/) and
-[Choose Boring Technology](https://boringtechnology.club/) really resonate with
-me.
-
-See [my resume](/resume) for more details about my professional experience.
+At home, I maintain a homelab on Proxmox that's mostly managed with Terraform
+and Ansible, and I continue to write small tools and experiments in Go.
 
 ### Music
 
@@ -122,12 +121,12 @@ the mood. Some consistent favorites are Pink Floyd, Type O Negative, Tool,
 Puscifer, Nine Inch Nails, Depeche Mode, The Cure, and... I hate to try to
 enumerate them all. For electronic music, my favorite is probably Kruder &
 Dorfmeister. I also like Orbital, Prodigy, Lords Of Acid, LTJ Bukem, and many
-others. When it comes to country, I particularly like Waylon Jennings, Merle
-Haggard, George Jones, and generally classic country. I also like a lot of 80's
-and 90's country. I can't stand pop country or most modern pop music in
-general.
+others. I love atmospheric drum and bass/jungle. When it comes to country, I
+particularly like Waylon Jennings, Merle Haggard, George Jones, and generally
+classic country. I also like a lot of 80's and 90's country. I can't stand pop
+country or most modern pop music in general.
 
-Checkout my [last.fm](https://www.last.fm/user/joshbeard) profile for my music
+Check out my [last.fm](https://www.last.fm/user/joshbeard) profile for my music
 stats (with lots of gaps) dating back to 2005.
 
 ```ascii-art-left

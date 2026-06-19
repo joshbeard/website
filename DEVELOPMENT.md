@@ -8,6 +8,16 @@ make build
 
 Runs `jekyll build` in Docker and produces a `./_site/` directory to publish.
 
+The default color scheme is configured in `_config.yml`. To build with an
+alternate scheme, pass one of the config overlays:
+
+```shell
+make build CONFIG=_config.yml,_config.neon-dusk.yml
+make build CONFIG=_config.yml,_config.amber-terminal.yml
+make build CONFIG=_config.yml,_config.violet-grove.yml
+make build CONFIG=_config.yml,_config.blueprint.yml
+```
+
 ## Running
 
 To serve the site with `jekyll serve` in a container:
@@ -17,6 +27,13 @@ make serve
 ```
 
 This will start a local server available at <http://localhost:4000/>
+The same `CONFIG` override can be used with `make serve`:
+
+```shell
+make serve CONFIG=_config.yml,_config.amber-terminal.yml
+make serve CONFIG=_config.yml,_config.violet-grove.yml
+make serve CONFIG=_config.yml,_config.blueprint.yml
+```
 
 ```shell
 make nginx

@@ -32,6 +32,8 @@
             {% endif %}
         </title>
 
+        {% assign color_scheme = site.color_scheme | default: "retro" %}
+        <link href="{{ '/assets/css/color-schemes/' | append: color_scheme | append: '.css' | relative_url | bust_cache }}" rel="stylesheet" />
         <link href="{{ "/assets/css/styles.css" | relative_url | bust_cache }}" rel="stylesheet" />
         <link href="{{ "/assets/fa/css/all.min.css" | relative_url | bust_cache }}" rel="stylesheet" />
 

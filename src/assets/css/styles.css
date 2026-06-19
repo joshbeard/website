@@ -1,58 +1,3 @@
-:root {
-  /* Backgrounds */
-  --bg-primary: #1f1f1f;           /* Main background */
-  --bg-secondary: #282835;         /* Header/cards */
-  --bg-tertiary: #242831;          /* Menu/navigation */
-  --bg-code: #262E33;              /* Code blocks */
-
-  /* Text Colors */
-  --text-primary: #E1E1E1;         /* Main text */
-  --text-secondary: #CACACA;       /* Secondary text */
-  --text-muted: #AFAFAF;           /* Muted text */
-  --text-accent: #77CBE9;          /* Accent text */
-
-  /* Accent Colors - Original Retro Palette */
-  --accent-blue: #77CBE9;          /* Primary links */
-  --accent-purple: #AE93DD;        /* Home links */
-  --accent-green: #71EDBE;         /* Success/hover */
-  --accent-cyan: #5AF2F0;          /* Special hovers */
-  --accent-pink: #f778ba;          /* Highlights */
-  --accent-orange: #ffab70;        /* Warnings */
-
-  /* Syntax Highlighting Colors */
-  --syntax-keyword: #f6dd62;       /* Keywords */
-  --syntax-string: #fff0a6;        /* Strings */
-  --syntax-function: #b2fd6d;      /* Functions */
-  --syntax-comment: #6c8b9f;       /* Comments */
-  --syntax-number: #f696db;        /* Numbers */
-
-  /* Border & UI Colors */
-  --border-subtle: #393939;        /* Subtle borders */
-  --border-default: #393939;       /* Default borders */
-  --border-accent: #207A4C;        /* Accent borders */
-  --border-success: #238636;       /* Success borders */
-
-  /* Interactive States */
-  --hover-bg: #555D71;             /* Hover backgrounds */
-  --active-bg: #262c36;            /* Active/pressed states */
-  --focus-ring: #207A4C;           /* Focus outlines */
-
-  /* Photo Album Specific */
-  --album-shadow: #484848;         /* Photo shadows */
-  --album-overlay: rgba(0,0,0,0.7); /* Image overlays */
-
-  /* Fonts */
-  --font-primary: "Ubuntu", Verdana, Geneva, Tahoma, sans-serif;
-  --font-mono: 'Ubuntu Mono', 'Courier New', Courier, monospace;
-  --font-display: "Play", sans-serif;
-
-  /* Spacing */
-  --spacing-xs: 6px;
-  --spacing-sm: 10px;
-  --spacing-md: 20px;
-  --spacing-lg: 40px;
-}
-
 /* Font Definitions */
 @font-face {
   font-family: 'Ubuntu';
@@ -465,14 +410,14 @@ nav {
   right: 0;
   text-align: center;
   font-family: var(--font-display);
-  background: rgba(0, 0, 0, 0.6);
+  background: var(--album-title-overlay);
   backdrop-filter: blur(4px);
   padding: 12px 8px;
   transition: background 0.3s ease;
 }
 
 .album-in-list:hover .album-in-list-title {
-  background: rgba(0, 0, 0, 0.75);
+  background: var(--album-title-overlay-hover);
 }
 
 .album-in-list-title a {

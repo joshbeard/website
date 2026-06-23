@@ -7,8 +7,6 @@
 .env
 .bundler/
 
-/src/workouts.md
-
 /**/*.jpg
 /**/*.jpeg
 /src/photos/**/*.jpg

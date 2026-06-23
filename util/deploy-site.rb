@@ -21,6 +21,7 @@ DEFAULT_MANIFEST_KEY = '.deploy/manifest.json'
 DEFAULT_S3_REGION = 'us-west-2'
 DEFAULT_CF_REGION = 'us-east-1'
 INVALIDATION_BATCH_SIZE = 1000
+DEPLOY_EXCLUDED_KEYS = Set['workouts/index.html'].freeze
 
 def run_command(*cmd, allow_failure: false)
   stdout, stderr, status = Open3.capture3(*cmd)
@@ -44,6 +45,7 @@ def relative_site_files(site_dir)
       next if File.directory?(path)
       next if path.start_with?('.git/')
       next if path.start_with?('.deploy/')
+      next if DEPLOY_EXCLUDED_KEYS.include?(path)
 
       path
     end.sort
@@ -104,6 +106,7 @@ end
 
 def normalize_manifest(manifest)
   manifest['files'] ||= {}
+  DEPLOY_EXCLUDED_KEYS.each { |key| manifest['files'].delete(key) }
   manifest
 end
 

@@ -93,6 +93,9 @@ blockquote {
 }
 
 hr {
+  box-sizing: border-box;
+  width: 100%;
+  max-width: 100%;
   margin: var(--spacing-lg) 0 var(--spacing-md);
   border: 1px solid var(--border-default);
   border-radius: 5px;
@@ -252,7 +255,7 @@ li.home_link a.ext:after { content: ""; margin: 0; }
 /* Workouts Page */
 #page.workouts-page {
   box-sizing: border-box;
-  width: 100%;
+  width: auto;
   max-width: 100%;
   min-width: 0;
 }
@@ -928,6 +931,7 @@ img.responsive {
   }
 
   #page.workouts-page tr {
+    box-sizing: border-box;
     display: grid;
     grid-template-columns: minmax(4.8rem, auto) minmax(0, 1fr) auto;
     gap: 3px var(--spacing-sm);

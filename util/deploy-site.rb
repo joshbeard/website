@@ -7,6 +7,7 @@ require 'json'
 require 'open3'
 require 'optparse'
 require 'set'
+require 'thread'
 require 'time'
 require 'tmpdir'
 
@@ -21,17 +22,78 @@ DEFAULT_MANIFEST_KEY = '.deploy/manifest.json'
 DEFAULT_S3_REGION = 'us-west-2'
 DEFAULT_CF_REGION = 'us-east-1'
 INVALIDATION_BATCH_SIZE = 1000
+DEFAULT_UPLOAD_CONCURRENCY = Integer(ENV.fetch('DEPLOY_UPLOAD_CONCURRENCY', '16'))
 DEPLOY_EXCLUDED_KEYS = Set['workouts/index.html'].freeze
 
-def run_command(*cmd, allow_failure: false)
+class CommandFailed < StandardError
+  attr_reader :cmd, :stderr, :exitstatus
+
+  def initialize(cmd, stderr, exitstatus)
+    @cmd = cmd
+    @stderr = stderr
+    @exitstatus = exitstatus
+    super(cmd)
+  end
+end
+
+def run_command(*cmd, allow_failure: false, exit_on_failure: true)
   stdout, stderr, status = Open3.capture3(*cmd)
   if !status.success? && !allow_failure
-    $stderr.puts "#{COLOR_RED}Command failed: #{cmd.join(' ')}#{COLOR_RESET}"
-    $stderr.puts stderr unless stderr.empty?
-    exit status.exitstatus || 1
+    error = CommandFailed.new(cmd.join(' '), stderr, status.exitstatus || 1)
+    if exit_on_failure
+      report_command_failure(error)
+    else
+      raise error
+    end
   end
 
   [stdout, stderr, status]
+end
+
+def report_command_failure(error, exit: true)
+  $stderr.puts "#{COLOR_RED}Command failed: #{error.cmd}#{COLOR_RESET}"
+  $stderr.puts error.stderr unless error.stderr.empty?
+  exit error.exitstatus if exit
+end
+
+def log_line(message, log_mutex: nil)
+  if log_mutex
+    log_mutex.synchronize { puts message }
+  else
+    puts message
+  end
+end
+
+def parallel_each(items, concurrency)
+  return if items.empty?
+
+  worker_count = [concurrency, items.length].min
+  queue = Queue.new
+  items.each { |item| queue << item }
+
+  errors = []
+  error_mutex = Mutex.new
+  log_mutex = Mutex.new
+
+  workers = worker_count.times.map do
+    Thread.new do
+      loop do
+        item = queue.pop(true)
+        yield(item, log_mutex)
+      rescue ThreadError
+        break
+      rescue CommandFailed => e
+        error_mutex.synchronize { errors << e }
+      end
+    end
+  end
+
+  workers.each(&:join)
+
+  return if errors.empty?
+
+  errors.each { |error| report_command_failure(error, exit: false) }
+  exit errors.first.exitstatus
 end
 
 def print_section(title)
@@ -183,22 +245,22 @@ def aws_s3_cp_args(source, destination, region, cache_control: nil)
   args
 end
 
-def upload_file(site_dir, bucket, key, file_manifest, region, dry_run)
+def upload_file(site_dir, bucket, key, file_manifest, region, dry_run, log_mutex: nil)
   source = File.join(site_dir, key)
   destination = "s3://#{bucket}/#{key}"
   cache_control = file_manifest['cache_control']
 
-  puts "  upload #{key}"
+  log_line("  upload #{key}", log_mutex: log_mutex)
   return if dry_run
 
-  run_command(*aws_s3_cp_args(source, destination, region, cache_control: cache_control))
+  run_command(*aws_s3_cp_args(source, destination, region, cache_control: cache_control), exit_on_failure: false)
 end
 
-def delete_file(bucket, key, region, dry_run)
-  puts "  delete #{key}"
+def delete_file(bucket, key, region, dry_run, log_mutex: nil)
+  log_line("  delete #{key}", log_mutex: log_mutex)
   return if dry_run
 
-  run_command('aws', 's3', 'rm', "s3://#{bucket}/#{key}", '--region', region)
+  run_command('aws', 's3', 'rm', "s3://#{bucket}/#{key}", '--region', region, exit_on_failure: false)
 end
 
 def write_manifest(bucket, manifest_key, current_manifest, region, dry_run, write_manifest_path)
@@ -222,17 +284,29 @@ ensure
   FileUtils.rm_f(temp_path) if temp_path
 end
 
-def deploy_changes(site_dir, bucket, current_manifest, diff, region, dry_run)
+def deploy_changes(site_dir, bucket, current_manifest, diff, region, dry_run, upload_concurrency:)
   files = current_manifest.fetch('files')
+  upload_keys = diff[:uploads] + diff[:metadata_updates]
 
   print_section(dry_run ? 'Planned S3 changes' : 'Applying S3 changes')
 
-  (diff[:uploads] + diff[:metadata_updates]).each do |key|
-    upload_file(site_dir, bucket, key, files.fetch(key), region, dry_run)
+  if dry_run
+    upload_keys.each do |key|
+      upload_file(site_dir, bucket, key, files.fetch(key), region, dry_run)
+    end
+
+    diff[:deletes].each do |key|
+      delete_file(bucket, key, region, dry_run)
+    end
+    return
   end
 
-  diff[:deletes].each do |key|
-    delete_file(bucket, key, region, dry_run)
+  parallel_each(upload_keys, upload_concurrency) do |key, log_mutex|
+    upload_file(site_dir, bucket, key, files.fetch(key), region, dry_run, log_mutex: log_mutex)
+  end
+
+  parallel_each(diff[:deletes], upload_concurrency) do |key, log_mutex|
+    delete_file(bucket, key, region, dry_run, log_mutex: log_mutex)
   end
 end
 
@@ -301,7 +375,8 @@ def parse_options
     cf_distribution: ENV['CF_DISTRIBUTION'],
     dry_run: false,
     previous_manifest: nil,
-    write_manifest: nil
+    write_manifest: nil,
+    upload_concurrency: DEFAULT_UPLOAD_CONCURRENCY
   }
 
   OptionParser.new do |opts|
@@ -315,6 +390,9 @@ def parse_options
     opts.on('--cf-distribution ID', 'CloudFront distribution ID') { |value| options[:cf_distribution] = value }
     opts.on('--previous-manifest PATH', 'Use a local previous manifest instead of S3') { |value| options[:previous_manifest] = value }
     opts.on('--write-manifest PATH', 'Write the current manifest to a local path') { |value| options[:write_manifest] = value }
+    opts.on('--upload-concurrency N', Integer, 'Concurrent S3 upload/delete workers (default: 16)') do |value|
+      options[:upload_concurrency] = value
+    end
     opts.on('--dry-run', 'Print planned changes without writing to AWS') { options[:dry_run] = true }
   end.parse!
 
@@ -329,6 +407,11 @@ def validate_options(options)
 
   if options[:bucket].to_s.empty? && (!options[:dry_run] || options[:previous_manifest].nil?)
     $stderr.puts "#{COLOR_RED}Error: AWS_S3_BUCKET or --bucket is required#{COLOR_RESET}"
+    exit 1
+  end
+
+  if options[:upload_concurrency] < 1
+    $stderr.puts "#{COLOR_RED}Error: upload concurrency must be >= 1#{COLOR_RESET}"
     exit 1
   end
 end
@@ -348,7 +431,15 @@ def main
   diff = diff_manifests(previous_manifest, current_manifest)
   print_diff(diff)
 
-  deploy_changes(site_dir, options[:bucket], current_manifest, diff, options[:s3_region], options[:dry_run])
+  deploy_changes(
+    site_dir,
+    options[:bucket],
+    current_manifest,
+    diff,
+    options[:s3_region],
+    options[:dry_run],
+    upload_concurrency: options[:upload_concurrency]
+  )
   write_manifest(
     options[:bucket],
     options[:manifest_key],

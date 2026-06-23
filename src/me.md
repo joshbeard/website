@@ -15,7 +15,7 @@ This is my personal website. It is part notebook, part archive, part place to
 put things I like keeping around on the web.
 
 I live in Colorado with my family. I spend a lot of time with my family,
-computers, music, cycling, grilling, and the usual collection of small projects.
+computers, music, [cycling](/workouts/), grilling, and the usual collection of small projects.
 
 Some of the more personal or nostalgic corners are here because I enjoy that
 older style of web publishing:
@@ -31,6 +31,7 @@ older style of web publishing:
 * [My Home Lab](/homelab/)
 * [My Old Computers](/old-computers.html)
 * [Photos](/photos)
+* [Workouts](/workouts/)
 
 If you are looking at this and dig personal websites and that sort of thing, say
 [hello](mailto:hello@joshbeard.com)!

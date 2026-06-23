@@ -15,3 +15,4 @@ Site](/site).
 
 The rest of this section is more personal-web territory: what I'm doing now,
 what tools I use, and a small archive of old computers and related nostalgia.
+There's also a [Workouts](/workouts/) log generated from Apple Health data.

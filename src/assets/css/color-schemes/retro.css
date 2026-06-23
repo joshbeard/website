@@ -55,4 +55,8 @@
   --spacing-sm: 10px;
   --spacing-md: 20px;
   --spacing-lg: 40px;
+
+  /* Heading Colors */
+  --heading-h2: #5AF2F0;           /* Section titles - bright cyan */
+  --heading-h3: #ffab70;           /* Subsections - warm orange */
 }

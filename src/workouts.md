@@ -7,7 +7,9 @@ layout: "page"
 permalink: "/workouts/"
 class: "ascii-art workouts-page"
 ---
-# Workouts
+## Workouts
+
+{% include submenu.html %}
 
 This page is generated from Apple Health workout data and deployed separately
 from the main site.

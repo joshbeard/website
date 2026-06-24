@@ -267,11 +267,6 @@ li.home_link a.ext:after { content: ""; margin: 0; }
   min-width: 0;
 }
 
-.workouts-page h1 {
-  margin: 0 0 var(--spacing-sm);
-  text-align: center;
-}
-
 #page.workouts-page p {
   text-align: left;
 }
@@ -406,11 +401,6 @@ li.home_link a.ext:after { content: ""; margin: 0; }
   font-family: var(--font-mono);
   text-align: right;
   white-space: nowrap;
-}
-
-.workouts-page h2 {
-  margin-top: var(--spacing-lg);
-  margin-bottom: var(--spacing-sm);
 }
 
 .workouts-page h2 a {

@@ -1,10 +1,14 @@
 - url: /me
-  title: About Me
+  title: Me
 - url: /site
-  title: About This Site
+  title: Site
 - url: /now
-  title: What I'm Up To Now
+  title: Now
 - url: /uses
-  title: What I Use
+  title: Uses
+- url: /workouts
+  title: Workouts
+- url: /homelab
+  title: Homelab
 - url: /old-computers.html
   title: Old Computers

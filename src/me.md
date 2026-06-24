@@ -15,10 +15,11 @@ This is my personal website. It is part notebook, part archive, part place to
 put things I like keeping around on the web.
 
 I live in Colorado with my family. I spend a lot of time with my family,
-computers, music, [cycling](/workouts/), grilling, and the usual collection of small projects.
+[computers](#computers), [music](#music), [cycling](/workouts/), [exploring](/photos/),
+grilling, and the usual collection of small projects.
 
 Some of the more personal or nostalgic corners are here because I enjoy that
-older style of web publishing:
+older style of web publishing.
 
 ```ascii-art
          ,,,
@@ -26,41 +27,10 @@ older style of web publishing:
 ----oOO--( )--OOo----
 ```
 
-* [What I'm Up To Now](/now)
-* [What I Use](/uses)
-* [My Home Lab](/homelab/)
-* [My Old Computers](/old-computers.html)
-* [Photos](/photos)
-* [Workouts](/workouts/)
-
 If you are looking at this and dig personal websites and that sort of thing, say
 [hello](mailto:hello@joshbeard.com)!
 
-### Work
-
-For work, I focus on many aspects of software delivery: platforms, developer
-workflows, documentation, process, governance, and the tools that help software
-teams build and operate things with less friction. Increasingly, that includes
-AI workflows, integrations, and enablement. My background is in systems
-administration and engineering, and I have spent a lot of time close to Linux,
-Unix-like systems, automation, CI/CD, cloud infrastructure, and the day-to-day
-realities of keeping services maintainable.
-
-Most of my work happens in a code editor and shell, bouncing between systems,
-software, and process. Increasingly, that also means working alongside AI agents
-and LLMs to explore code, automate routine changes, and think through problems.
-The surrounding toolkit still includes a lot of Terraform, AWS, Go, GitLab CI,
-Python, Docker, shell, and whatever glue is needed at the time.
-
-I care about practical engineering: simple systems, boring technology where it
-fits, clear workflows, and tools that make the right thing easier to do. The
-perspectives described in [Radical Simplicity](https://www.radicalsimpli.city/)
-and [Choose Boring Technology](https://boringtechnology.club/) resonate with
-me.
-
-See [my resume](/resume) for more details about my professional experience, or
-my [now page](/now) for a current snapshot of what I'm up to.
-
+<a id="computers"></a>
 ### Computers
 
 I've been a computer hobbyist since I was young, starting with obsolete family
@@ -93,6 +63,50 @@ Linux and UNIX.
 
 See the [My Old Computers page](/old-computers.html) for the longer archive.
 
+At home, I maintain a homelab on Proxmox that's mostly managed with Terraform
+and Ansible, and I continue to write small tools and experiments in Go.
+
+<a id="music"></a>
+### Music
+
+Music has been a big part of my life for as long as I can remember. When I was
+younger, I dreamed of being a musician, but pragmatism set in and I ended up
+pursuing IT. I have several guitars, some little electronic gadgets, and an
+electronic drum set that I play with.
+
+```ascii-art-left
+        _,--',   _._.--._____
+ .--.--';_'-.', ";_      _.,-'
+.'--'.  _.'    {`'-;_ .-.>.'
+      '-:_      )  / `' '=.
+        ) >     {_/,     /~)
+snd     |/
+```
+
+I listen to a pretty diverse range of music, but rock and electronic are
+the dominant broad genres. I don't have a single favorite band - it depends on
+the mood. Some consistent favorites are Pink Floyd, Type O Negative, Tool,
+Puscifer, Nine Inch Nails, Depeche Mode, The Cure, and... I hate to try to
+enumerate them all. For electronic music, my favorite is probably Kruder &
+Dorfmeister. I also like Orbital, Prodigy, Lords Of Acid, LTJ Bukem, and many
+others. I love atmospheric drum and bass/jungle. When it comes to country, I
+particularly like Waylon Jennings, Merle Haggard, George Jones, and generally
+classic country. I also like a lot of 80's and 90's country.
+
+Check out my [last.fm](https://www.last.fm/user/joshbeard) profile for my music
+stats (with lots of gaps) dating back to 2005.
+
+<a id="work"></a>
+### Work
+
+For work, I focus on many aspects of software delivery: platforms, developer
+workflows, documentation, process, governance, and the tools that help software
+teams build and operate things with less friction. Increasingly, that includes
+AI workflows, integrations, and enablement. My background is in systems
+administration and engineering, and I have spent a lot of time close to Linux,
+Unix-like systems, automation, CI/CD, cloud infrastructure, and the day-to-day
+realities of keeping services maintainable.
+
 ```ascii-art-right
     ______
    /(    )\
@@ -108,38 +122,20 @@ See the [My Old Computers page](/old-computers.html) for the longer archive.
       \/
 ```
 
-At home, I maintain a homelab on Proxmox that's mostly managed with Terraform
-and Ansible, and I continue to write small tools and experiments in Go.
+Most of my work happens in a code editor and shell, bouncing between systems,
+software, and process. Increasingly, that also means working alongside AI agents
+and LLMs to explore code, automate routine changes, and think through problems.
+The surrounding toolkit still includes a lot of Terraform, AWS, Go, GitLab CI,
+Python, Docker, shell, and whatever glue is needed at the time.
 
-### Music
+I care about practical engineering: simple systems, boring technology where it
+fits, clear workflows, and tools that make the right thing easier to do. The
+perspectives described in [Radical Simplicity](https://www.radicalsimpli.city/)
+and [Choose Boring Technology](https://boringtechnology.club/) resonate with
+me.
 
-Music has been a big part of my life for as long as I can remember. When I was
-younger, I dreamed of being a musician, but pragmatism set in and I ended up
-pursuing IT. I have several guitars, some little electronic gadgets, and an
-electronic drum set that I play with.
-
-I listen to a pretty diverse range of music, but rock and electronic are
-the dominant broad genres. I don't have a single favorite band - it depends on
-the mood. Some consistent favorites are Pink Floyd, Type O Negative, Tool,
-Puscifer, Nine Inch Nails, Depeche Mode, The Cure, and... I hate to try to
-enumerate them all. For electronic music, my favorite is probably Kruder &
-Dorfmeister. I also like Orbital, Prodigy, Lords Of Acid, LTJ Bukem, and many
-others. I love atmospheric drum and bass/jungle. When it comes to country, I
-particularly like Waylon Jennings, Merle Haggard, George Jones, and generally
-classic country. I also like a lot of 80's and 90's country. I can't stand pop
-country or most modern pop music in general.
-
-Check out my [last.fm](https://www.last.fm/user/joshbeard) profile for my music
-stats (with lots of gaps) dating back to 2005.
-
-```ascii-art-left
-        _,--',   _._.--._____
- .--.--';_'-.', ";_      _.,-'
-.'--'.  _.'    {`'-;_ .-.>.'
-      '-:_      )  / `' '=.
-        ) >     {_/,     /~)
-snd     |/
-```
+See [my resume](/resume) for more details about my professional experience, or
+my [now page](/now) for a current snapshot of what I'm up to.
 
 ### In Memory
 

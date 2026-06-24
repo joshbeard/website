@@ -30,7 +30,6 @@ older style of web publishing.
 If you are looking at this and dig personal websites and that sort of thing, say
 [hello](mailto:hello@joshbeard.com)!
 
-<a id="computers"></a>
 ### Computers
 
 I've been a computer hobbyist since I was young, starting with obsolete family
@@ -66,7 +65,6 @@ See the [My Old Computers page](/old-computers.html) for the longer archive.
 At home, I maintain a homelab on Proxmox that's mostly managed with Terraform
 and Ansible, and I continue to write small tools and experiments in Go.
 
-<a id="music"></a>
 ### Music
 
 Music has been a big part of my life for as long as I can remember. When I was
@@ -96,7 +94,6 @@ classic country. I also like a lot of 80's and 90's country.
 Check out my [last.fm](https://www.last.fm/user/joshbeard) profile for my music
 stats (with lots of gaps) dating back to 2005.
 
-<a id="work"></a>
 ### Work
 
 For work, I focus on many aspects of software delivery: platforms, developer

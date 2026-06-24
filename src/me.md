@@ -14,9 +14,9 @@ class: ascii-art
 This is my personal website. It is part notebook, part archive, part place to
 put things I like keeping around on the web.
 
-I live in Colorado with my family. I spend a lot of time with my family,
-[computers](#computers), [music](#music), [cycling](/workouts/), [exploring](/photos/),
-grilling, and the usual collection of small projects.
+I live in Colorado with my family, and spend my time on [computers](#computers),
+[music](#music), [cycling](/workouts/), [exploring](/photos/), grilling, and the
+usual collection of small projects.
 
 Some of the more personal or nostalgic corners are here because I enjoy that
 older style of web publishing.

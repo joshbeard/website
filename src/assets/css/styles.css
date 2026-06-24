@@ -791,14 +791,23 @@ img.responsive {
 }
 
 /* Image Pages */
-.image-page {
+#page.image-page {
+  display: block;
+  text-align: center;
+  margin: 0 auto;
+  width: 100%;
+}
+
+#page.image-page #page_content {
+  max-width: 98%;
+}
+
+.image-wrap .image-page {
   text-align: center;
   margin: 0 auto;
   display: inline-block;
   position: relative;
 }
-
-.image-page #page_content { max-width: 98%; }
 
 .image-wrap {
   display: flex;

@@ -23,7 +23,17 @@ DEFAULT_S3_REGION = 'us-west-2'
 DEFAULT_CF_REGION = 'us-east-1'
 INVALIDATION_BATCH_SIZE = 1000
 DEFAULT_UPLOAD_CONCURRENCY = Integer(ENV.fetch('DEPLOY_UPLOAD_CONCURRENCY', '16'))
-DEPLOY_EXCLUDED_KEYS = Set['workouts/index.html'].freeze
+DEPLOY_EXCLUDED_KEYS = Set[
+  'workouts/index.html'
+].freeze
+DEPLOY_EXCLUDED_PREFIXES = %w[
+  resume/
+].freeze
+
+def deploy_excluded?(path)
+  DEPLOY_EXCLUDED_KEYS.include?(path) ||
+    DEPLOY_EXCLUDED_PREFIXES.any? { |prefix| path.start_with?(prefix) }
+end
 
 class CommandFailed < StandardError
   attr_reader :cmd, :stderr, :exitstatus
@@ -107,7 +117,7 @@ def relative_site_files(site_dir)
       next if File.directory?(path)
       next if path.start_with?('.git/')
       next if path.start_with?('.deploy/')
-      next if DEPLOY_EXCLUDED_KEYS.include?(path)
+      next if deploy_excluded?(path)
 
       path
     end.sort
@@ -168,7 +178,7 @@ end
 
 def normalize_manifest(manifest)
   manifest['files'] ||= {}
-  DEPLOY_EXCLUDED_KEYS.each { |key| manifest['files'].delete(key) }
+  manifest['files'].reject! { |key, _| deploy_excluded?(key) }
   manifest
 end
 

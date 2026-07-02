@@ -40,34 +40,39 @@ The detailed workout log is on [Workouts](/workouts/).
 
 ### What I am doing
 
-**Cycling** is the main thing. I bought a hybrid bike in July 2025 and started
-riding regularly. Mostly lunch rides during the week, with longer rides on
-weekends when the weather cooperates. It is the first exercise routine that has
-really stuck for me.
+**Exercise:**
 
-On top of that:
-
-- **Walking** - usually in the evenings, a couple miles when I can
-- **Dumbbells** - short sessions, upper body and core, nothing heroic
-- **Other exercise here and there** - indoor cycling when it is cold, occasional
+- **Cycling** — the main thing. Bought a hybrid bike in July 2025 and started
+  riding regularly. Mostly lunch rides during the week, longer rides on
+  weekends when weather cooperates. First exercise routine that has really
+  stuck for me.
+- **Walking** — usually evenings, a couple miles when I can
+- **Dumbbells** — short sessions, upper body and core, nothing heroic
+- **Other exercise here and there** — indoor cycling when it is cold, occasional
   HIIT when I need a backup
 
-On the food side, I count calories (LoseIt), pay more attention to portions and
-protein, and try to keep sugar and refined carbs in check. I cut regular soda
-and sugary drinks a couple of years ago. Over the past couple of months I have
-mostly cut diet soda too, and I am working on reducing caffeine.
+**Diet:**
 
-There have been other habits mixed into this too. I have kicked some vices and
-am still working on others. Nicotine is gone. Regular soda is gone. Alcohol has
-been minimized.
+- **Fasting** — 16:8 as the baseline, usually closer to 18:6 in practice.
+  Started mixing in occasional 24-hour fasts and am planning to incorporate
+  36-hour fasts periodically going forward.
+- **Calorie counting** — tracking with LoseIt, paying closer attention to
+  portions and protein, and keeping sugar and refined carbs in check
+- **Supplements** — consistent basic stack for six months or more: vitamins,
+  fiber, and similar things; nothing unusual, but it seems to have helped
 
-I have also been consistent with a basic supplement stack for six months or
-more: vitamins, fiber, and similar things. Nothing unusual. That seems to have
-helped with the things I was targeting.
+**Habits:**
+
+- **Nicotine** — quit
+- **Alcohol** — minimized
+- **Soda** — eliminated regular soda and sugary drinks a couple of years ago; have
+  mostly cut diet soda too over the past few months
+- **Caffeine** — working on reducing (tea in mornings, cut off in afternoon)
 
 ### What has changed so far
 
-It has been about a year. Some things have moved in the right direction:
+It has been about a year. Pretty much everything has significantly moved in the
+right direction:
 
 - **Weight** - down about 40 lbs, roughly two-thirds of the way to my initial
   60 lb goal
@@ -76,7 +81,7 @@ It has been about a year. Some things have moved in the right direction:
 - **Resting heart rate** - down significantly; it averaged in the low 70s when
   I started tracking this more closely, and has recently been around the mid-high
   40s
-- **Fitness** - VO2 max is up, and I ride most days when weather allows
+- **Fitness** - VO2 max is up to 'above average', and I ride most days when weather allows
 - **Strength** - more consistent dumbbell work, and the results are showing
 - **Consistency** - 400+ logged workouts since mid-2025, mostly cycling
 - **Sleep** - better overall, and I am usually awake before the alarm now
@@ -87,7 +92,7 @@ There is still progress to be made. This is meant to be a lifelong, sustainable
 discipline, not a project with a finish line. But the direction is better than
 it was, and I want to keep it that way.
 
-### More than physical fitness
+### Body, Mind, and Soul
 
 This is really a general self-improvement effort. Physical health is a big part
 of it right now, but the mental and spiritual parts are just as important to me.

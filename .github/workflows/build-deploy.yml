@@ -35,7 +35,7 @@ jobs:
           ref: ${{ github.ref }}
 
       - name: Build
-        uses: joshbeard/jekyll-build-action@joshbeard
+        uses: joshbeard/jekyll-build-action@0.1.0
         env:
           GIT_CEILING_DIRECTORIES: $GITHUB_WORKSPACE
 

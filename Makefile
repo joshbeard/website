@@ -8,13 +8,13 @@ help:
 	@grep -E '^[a-zA-Z_-]+:.*?## .*$$' $(MAKEFILE_LIST) | sort | awk 'BEGIN {FS = ":.*?## "}; {printf "\033[36m%-30s\033[0m %s\n", $$1, $$2}'
 
 build: ## Build the site
-	docker run --rm -v $(PWD):/site -w /site jekyll/jekyll:4 jekyll build --config $(CONFIG)
+	docker run --rm -v $(PWD):/site -w /site jekyll/builder:4 bash -lc 'bundle install && bundle exec jekyll build --config $(CONFIG)'
 
 shell: ## Open a shell in the container
 	docker run --rm -it -v $(PWD):/site -w /site -it jekyll/jekyll:4 /bin/bash
 
 serve: ## Serve the site
-	docker run --rm -it -v $(PWD):/site -w /site -p 4000:4000 -it jekyll/jekyll:4 jekyll serve --livereload --config $(CONFIG)
+	docker run --rm -it -v $(PWD):/site -w /site -p 4000:4000 -it jekyll/builder:4 bash -lc 'bundle install && bundle exec jekyll serve --livereload --config $(CONFIG)'
 
 nginx: ## Run nginx to serve the site
 	docker run --rm -it -v $(PWD)/_site:/usr/share/nginx/html:ro -p 8080:80 nginx

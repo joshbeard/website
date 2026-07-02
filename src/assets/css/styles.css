@@ -278,8 +278,7 @@ li.home_link a.ext:after { content: ""; margin: 0; }
 }
 
 .workouts-page #page_content > h2:first-of-type,
-.workouts-page #page_content > nav#submenu,
-.workouts-page #page_content > p:first-of-type {
+.workouts-page #page_content > nav#submenu {
   max-width: 740px;
   margin-inline: auto;
 }

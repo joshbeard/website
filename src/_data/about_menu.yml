@@ -6,6 +6,8 @@
   title: Now
 - url: /uses
   title: Uses
+- url: /health
+  title: Health
 - url: /workouts
   title: Workouts
 - url: /homelab

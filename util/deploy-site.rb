@@ -22,6 +22,10 @@ DEFAULT_MANIFEST_KEY = '.deploy/manifest.json'
 DEFAULT_S3_REGION = 'us-west-2'
 DEFAULT_CF_REGION = 'us-east-1'
 INVALIDATION_BATCH_SIZE = 1000
+INVALIDATION_WILDCARD_PATH = '/*'
+DEFAULT_INVALIDATION_WILDCARD_THRESHOLD = Integer(
+  ENV.fetch('CF_INVALIDATION_WILDCARD_THRESHOLD', '50')
+)
 DEFAULT_UPLOAD_CONCURRENCY = Integer(ENV.fetch('DEPLOY_UPLOAD_CONCURRENCY', '16'))
 DEPLOY_EXCLUDED_KEYS = Set[
   'workouts/index.html'
@@ -338,6 +342,15 @@ def invalidation_paths_for(keys)
   paths.to_a.sort
 end
 
+def cloudfront_invalidation_paths(keys, wildcard_threshold:)
+  paths = invalidation_paths_for(keys)
+  return paths if paths.length <= wildcard_threshold
+
+  puts "#{COLOR_YELLOW}#{paths.length} invalidation paths exceeds threshold " \
+       "(#{wildcard_threshold}); using #{INVALIDATION_WILDCARD_PATH} instead#{COLOR_RESET}"
+  [INVALIDATION_WILDCARD_PATH]
+end
+
 def invalidate_cloudfront(paths, distribution, region, dry_run)
   if paths.empty?
     puts "#{COLOR_YELLOW}No CloudFront paths to invalidate.#{COLOR_RESET}"
@@ -383,6 +396,7 @@ def parse_options
     s3_region: ENV['AWS_REGION'] || ENV['AWS_DEFAULT_REGION'] || DEFAULT_S3_REGION,
     cf_region: ENV['CF_REGION'] || DEFAULT_CF_REGION,
     cf_distribution: ENV['CF_DISTRIBUTION'],
+    invalidation_wildcard_threshold: DEFAULT_INVALIDATION_WILDCARD_THRESHOLD,
     dry_run: false,
     previous_manifest: nil,
     write_manifest: nil,
@@ -398,6 +412,14 @@ def parse_options
     opts.on('--s3-region REGION', 'AWS region for S3 commands') { |value| options[:s3_region] = value }
     opts.on('--cf-region REGION', 'AWS region for CloudFront commands') { |value| options[:cf_region] = value }
     opts.on('--cf-distribution ID', 'CloudFront distribution ID') { |value| options[:cf_distribution] = value }
+    opts.on(
+      '--invalidation-wildcard-threshold N',
+      Integer,
+      "Use #{INVALIDATION_WILDCARD_PATH} when per-file invalidation paths exceed N " \
+      "(default: #{DEFAULT_INVALIDATION_WILDCARD_THRESHOLD}, env: CF_INVALIDATION_WILDCARD_THRESHOLD)"
+    ) do |value|
+      options[:invalidation_wildcard_threshold] = value
+    end
     opts.on('--previous-manifest PATH', 'Use a local previous manifest instead of S3') { |value| options[:previous_manifest] = value }
     opts.on('--write-manifest PATH', 'Write the current manifest to a local path') { |value| options[:write_manifest] = value }
     opts.on('--upload-concurrency N', Integer, 'Concurrent S3 upload/delete workers (default: 16)') do |value|
@@ -422,6 +444,11 @@ def validate_options(options)
 
   if options[:upload_concurrency] < 1
     $stderr.puts "#{COLOR_RED}Error: upload concurrency must be >= 1#{COLOR_RESET}"
+    exit 1
+  end
+
+  if options[:invalidation_wildcard_threshold].negative?
+    $stderr.puts "#{COLOR_RED}Error: invalidation wildcard threshold must be >= 0#{COLOR_RESET}"
     exit 1
   end
 end
@@ -461,7 +488,10 @@ def main
 
   touched_keys = diff[:uploads] + diff[:metadata_updates] + diff[:deletes]
   invalidate_cloudfront(
-    invalidation_paths_for(touched_keys),
+    cloudfront_invalidation_paths(
+      touched_keys,
+      wildcard_threshold: options[:invalidation_wildcard_threshold]
+    ),
     options[:cf_distribution],
     options[:cf_region],
     options[:dry_run]

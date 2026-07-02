@@ -159,6 +159,9 @@ and compares each new build against the previous deployed artifact:
 - CloudFront invalidation is based on changed built files, not source files.
   For example, a changed `src/photos/2026/album.yml` invalidates the generated
   `/photos/2026/index.html` when that built file changes.
+- When per-file invalidation paths exceed the threshold (default: 50), the deploy
+  falls back to a single `/*` invalidation to avoid per-path billing. Override
+  with `CF_INVALIDATION_WILDCARD_THRESHOLD` or `--invalidation-wildcard-threshold`.
 
 For local validation, compare a built directory against a local previous manifest:
 

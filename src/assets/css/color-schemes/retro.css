@@ -48,7 +48,7 @@
   /* Fonts */
   --font-primary: system-ui, -apple-system, Segoe UI, Helvetica, Arial, sans-serif;
   --font-mono: ui-monospace, Menlo, Consolas, 'Liberation Mono', monospace;
-  --font-display: "Play", Futura, "Century Gothic", "Trebuchet MS", sans-serif;
+  --font-display: "Play", Optima, "Hoefler Text", Baskerville, "Book Antiqua", Palatino, serif;
 
   /* Spacing */
   --spacing-xs: 6px;

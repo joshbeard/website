@@ -47,8 +47,8 @@
 
   /* Fonts */
   --font-primary: system-ui, -apple-system, Segoe UI, Helvetica, Arial, sans-serif;
-  --font-mono: 'Ubuntu Mono', 'Courier New', Courier, monospace;
-  --font-display: "Play", sans-serif;
+  --font-mono: ui-monospace, Menlo, Consolas, 'Liberation Mono', monospace;
+  --font-display: "Play", Futura, "Century Gothic", "Trebuchet MS", sans-serif;
 
   /* Spacing */
   --spacing-xs: 6px;

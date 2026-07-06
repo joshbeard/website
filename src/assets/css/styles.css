@@ -1,29 +1,5 @@
 /* Font Definitions */
 @font-face {
-  font-family: 'Ubuntu';
-  font-style: normal;
-  font-weight: 400;
-  src: url('../fonts/ubuntu/ubuntu-v19-latin-regular.woff2') format('woff2'),
-       url('../fonts/ubuntu/ubuntu-v19-latin-regular.woff') format('woff');
-}
-
-@font-face {
-  font-family: 'Ubuntu Mono';
-  font-style: normal;
-  font-weight: 400;
-  src: url('../fonts/ubuntu-mono/ubuntu-mono-v14-latin-regular.woff2') format('woff2'),
-       url('../fonts/ubuntu-mono/ubuntu-mono-v14-latin-regular.woff') format('woff');
-}
-
-@font-face {
-  font-family: 'Ubuntu Mono';
-  font-style: normal;
-  font-weight: 700;
-  src: url('../fonts/ubuntu-mono/ubuntu-mono-v14-latin-700.woff2') format('woff2'),
-       url('../fonts/ubuntu-mono/ubuntu-mono-v14-latin-700.woff') format('woff');
-}
-
-@font-face {
   font-family: 'Play';
   font-style: normal;
   font-weight: 400;

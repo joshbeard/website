@@ -23,9 +23,9 @@ few months.
 ░░░   ░░  ░░░░░░  ░░░    ░░░
 ```
 
-This is what I'm doing as of June, 2026:
+This is what I'm doing as of July, 2026:
 
-* Staying active, with a year of cycling every day.
+* Improving [my health](/health) and [staying active](/workouts), with a year of cycling every day.
 * Barbecuing and grilling more this summer.
 * Managing a small DevOps team at Live Oak Bank.
 * Raising a family in Colorado.

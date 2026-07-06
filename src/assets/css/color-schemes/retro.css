@@ -46,7 +46,7 @@
   --album-title-overlay-hover: rgba(0, 0, 0, 0.75);
 
   /* Fonts */
-  --font-primary: "Ubuntu", Verdana, Geneva, Tahoma, sans-serif;
+  --font-primary: system-ui, -apple-system, Segoe UI, Helvetica, Arial, sans-serif;
   --font-mono: 'Ubuntu Mono', 'Courier New', Courier, monospace;
   --font-display: "Play", sans-serif;
 

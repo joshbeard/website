@@ -42,32 +42,32 @@ The detailed workout log is on [Workouts](/workouts/).
 
 **Exercise:**
 
-- **Cycling** — the main thing. Bought a hybrid bike in July 2025 and started
+- **Cycling** - the main thing. Bought a hybrid bike in July 2025 and started
   riding regularly. Mostly lunch rides during the week, longer rides on
   weekends when weather cooperates. First exercise routine that has really
   stuck for me.
-- **Walking** — usually evenings, a couple miles when I can
-- **Dumbbells** — short sessions, upper body and core, nothing heroic
-- **Other exercise here and there** — indoor cycling when it is cold, occasional
+- **Walking** - usually evenings, a couple miles when I can
+- **Dumbbells** - short sessions, upper body and core, nothing heroic
+- **Other exercise here and there** - indoor cycling when it is cold, occasional
   HIIT when I need a backup
 
 **Diet:**
 
-- **Fasting** — 16:8 as the baseline, usually closer to 18:6 in practice.
+- **Fasting** - 16:8 as the baseline, usually closer to 18:6 in practice.
   Started mixing in occasional 24-hour fasts and am planning to incorporate
   36-hour fasts periodically going forward.
-- **Calorie counting** — tracking with LoseIt, paying closer attention to
+- **Calorie counting** - tracking with LoseIt, paying closer attention to
   portions and protein, and keeping sugar and refined carbs in check
-- **Supplements** — consistent basic stack for six months or more: vitamins,
+- **Supplements** - consistent basic stack for six months or more: vitamins,
   fiber, and similar things; nothing unusual, but it seems to have helped
 
 **Habits:**
 
-- **Nicotine** — quit
-- **Alcohol** — minimized
-- **Soda** — eliminated regular soda and sugary drinks a couple of years ago; have
+- **Nicotine** - quit
+- **Alcohol** - minimized
+- **Soda** - eliminated regular soda and sugary drinks a couple of years ago; have
   mostly cut diet soda too over the past few months
-- **Caffeine** — working on reducing (tea in mornings, cut off in afternoon)
+- **Caffeine** - working on reducing (tea in mornings, cut off in afternoon)
 
 ### What has changed so far
 

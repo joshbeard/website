@@ -205,6 +205,8 @@ li.home_link a.ext:after { content: ""; margin: 0; }
   letter-spacing: 0;
 }
 
+#page strong { font-weight: bold; }
+
 #page h2 {
   text-align: center;
   font-family: var(--font-display);

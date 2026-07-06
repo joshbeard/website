@@ -2,7 +2,7 @@
 title: About
 layout: page
 permalink: /about/
-class: about-page
+class: ascii-art
 description: About Josh Beard and This Site
 ---
 {% include submenu.html %}

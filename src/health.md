@@ -16,9 +16,11 @@ fitness like something I would eventually get to caught up with me. Lab work
 showed things heading the wrong way. Weight was up. General fitness was not
 where I wanted or needed it.
 
-I had been fit as a young adult, and had healthier stretches here and there over
+I've never been very athletic or particularly fit throughout life. I had been
+fit as a young adult, and had healthier stretches here and there over
 the years. I [hiked](/photos) high-altitude a lot for a while, for example. But
-I had not been truly fit in a long time.
+I had not been genuinely fit in a long time. When I was, it was usually because
+work, hiking, or life in general happened to keep me moving.
 
 I had known for a while that I needed to do something, but had not been very
 successful at starting a routine that stuck. In the summer of 2025, my Apple
@@ -51,6 +53,12 @@ The detailed workout log is on [Workouts](/workouts/).
 - **Other exercise here and there** - indoor cycling when it is cold, occasional
   HIIT when I need a backup
 
+I've been using [Strava](https://www.strava.com/) privately to help track my
+workouts - mainly my rides - and to provide motivating analytics.
+
+I like the free [Timer Plus - Workouts Timer](https://apps.apple.com/us/app/timer-plus-workouts-timer/id1279716547)
+app that's perfect for setting custom interval-based workout timers and HIIT sessions.
+
 **Diet:**
 
 - **Fasting** - 16:8 as the baseline, usually closer to 18:6 in practice.
@@ -60,6 +68,27 @@ The detailed workout log is on [Workouts](/workouts/).
   portions and protein, and keeping sugar and refined carbs in check
 - **Supplements** - consistent basic stack for six months or more: vitamins,
   fiber, and similar things; nothing unusual, but it seems to have helped
+
+I've used [Lose It!](https://www.loseit.com/) a few times over the past 10 years
+and resumed using it more intentionally and successfully in 2025. I've stayed
+pretty disciplined with logging all of my food throughout the day. I also use
+the fasting timer. Lose It has smarter way of handling a daily calorie budget
+based on activity that's synchronized from devices. When I am consistent with
+Lose It!, I am making the expected progress.
+
+I've also been using the [Intermittent](https://intermittentfast.ing/) app for
+fasting. It's well designed, free, requires no account, and actually provides
+useful insight into the phases of a fast.
+
+I'm trying [Buoy Hydration Drops](https://justaddbuoy.com/) for day-to-day
+hydration supplements, as well as [SALTT Drops](https://saltt.com/) - especially
+for the longer fasts that are more minimal. Too soon to share results, but I
+figured it was worth a try. I much prefer _drops_ over powders and pre-mixed
+drinks. It's just simpler and easier for me, which ensures I'll actually do it
+regularly. Similarly, I've been taking psyllium husk in capsule form instead of
+powder because I'm certain to actually take it regularly, but a powder is very
+unlikely to stay in my routine. I'm willing to spend extra and have some
+tradeoffs for the convenience.
 
 **Habits:**
 
@@ -113,10 +142,3 @@ sort some of it out.
 I am trying to keep the whole thing practical and sustainable. Ride the bike,
 walk, lift a little, eat a little better, sleep better, and keep working on the
 rest of it too.
-
-### Not advice
-
-This is a personal record and accountability page. I am not a doctor, trainer,
-or nutritionist. What works for me might not work for you.
-
-For the raw workout data, see [Workouts](/workouts/).

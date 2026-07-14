@@ -14,7 +14,7 @@ shell: ## Open a shell in the container
 	docker run --rm -it -v $(PWD):/site -w /site -it jekyll/jekyll:4 /bin/bash
 
 serve: ## Serve the site
-	docker run --rm -it -v $(PWD):/site -w /site -p 4000:4000 -it jekyll/builder:4 bash -lc 'bundle install && bundle exec jekyll serve --livereload --config $(CONFIG)'
+	docker run --rm -it -v $(PWD):/site -w /site -p 4000:4000 -it jekyll/builder:4 bash -lc 'bundle install && bundle exec jekyll serve --host 0.0.0.0 --livereload --config $(CONFIG)'
 
 nginx: ## Run nginx to serve the site
 	docker run --rm -it -v $(PWD)/_site:/usr/share/nginx/html:ro -p 8080:80 nginx

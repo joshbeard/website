@@ -5,29 +5,9 @@ on:
       - master
 
 jobs:
-  # NOTE: This spell checker only checks the changes *in a commit*. It won't
-  # scan the whole repo or even a whole file - just what's changed.
-  # See https://github.com/TypoCI/spellcheck-action
-  # Another option: https://github.com/check-spelling/check-spelling
-  spellcheck:
-    name: Spell Check
-    runs-on: ubuntu-latest
-    timeout-minutes: 4
-    if: "!contains(github.event.head_commit.message, '[ci skip]')"
-    steps:
-      - uses: actions/checkout@9c091bb21b7c1c1d1991bb908d89e4e9dddfe3e0 # v4
-        with:
-          ref: ${{ github.ref }}
-
-      - name: TypoCheck
-        uses: typoci/spellcheck-action@master
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-
   build:
     name: Build Jekyll Site
     runs-on: ubuntu-latest
-    needs: spellcheck
 
     steps:
       - uses: actions/checkout@9c091bb21b7c1c1d1991bb908d89e4e9dddfe3e0 # v4

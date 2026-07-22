@@ -11,30 +11,23 @@ class: ascii-art
 
 {% include submenu.html %}
 
-Years of sedentary work, getting too complacent, and treating health and
-fitness like something I would eventually get to caught up with me. Lab work
-showed things heading the wrong way. Weight was up. General fitness was not
-where I wanted or needed it.
+I spent too long treating my health and fitness as something I would deal with
+eventually. Sedentary work and complacency caught up with me: my lab work was
+trending in the wrong direction, my weight was up, and I was not as fit as I
+wanted to be.
 
-I've never been very athletic or particularly fit throughout life. I had been
-fit as a young adult, and had healthier stretches here and there over
-the years. I [hiked](/photos) high-altitude a lot for a while, for example. But
-I had not been genuinely fit in a long time. When I was, it was usually because
-work, hiking, or life in general happened to keep me moving.
+I have never been especially athletic. I was fitter as a young adult and had
+healthier stretches over the years, when work, hiking, or life happened to keep
+me active, but I had not been consistently fit in a long time.
 
-I had known for a while that I needed to do something, but had not been very
-successful at starting a routine that stuck. In the summer of 2025, my Apple
-Watch helped push me along. Seeing my resting heart rate trend up, including a
-couple of alerts about it, made it harder to ignore. The watch also gave me a
-simple way to keep score once I started moving. I swear by it now, and recommend
-an Apple Watch or some kind of health and fitness watch to almost anyone trying
-to get moving.
+By 2025, I knew I needed a routine I could sustain. My Apple Watch made the
+change harder to put off: my resting heart rate was rising, and I received a
+couple of alerts. Once I started exercising, it also gave me a useful record of
+the progress.
 
-This site is a pretty quiet corner of the web. It is not a big audience or a
-platform. An occasional visitor might stumble onto it. Still, the fact that this
-page is public means something to me. I want to celebrate the progress, maybe
-share something useful, and keep myself accountable by having it written down
-somewhere.
+This page is a personal record of what I am doing, what has changed, and what I
+am learning along the way. Publishing it gives me a little extra accountability,
+and the [Workouts](/workouts) page keeps the underlying log.
 
 ### What I am doing
 
@@ -64,8 +57,8 @@ app that's perfect for setting custom interval-based workout timers and HIIT ses
   36-hour fasts periodically soon.
 - **Calorie counting** - tracking with LoseIt, paying closer attention to
   portions and protein, and keeping sugar and refined carbs minimized
-- **Supplements** - consistent basic stack for six months or more: vitamins,
-  fiber, and similar things; nothing unusual, but it seems to have helped
+- **Supplements** - a consistent, basic routine for general health and
+  nutrition. Nothing performance-enhancing or especially exotic.
 
 I've used [Lose It!](https://www.loseit.com/) a few times over the past 10 years
 and resumed using it more intentionally and successfully in 2025. I've stayed

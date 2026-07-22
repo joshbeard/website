@@ -36,13 +36,11 @@ page is public means something to me. I want to celebrate the progress, maybe
 share something useful, and keep myself accountable by having it written down
 somewhere.
 
-This is not health advice. I am not trying to present myself as a fitness
-person. This is just a note about what I am doing and how it has gone so far.
-The detailed workout log is on [Workouts](/workouts/).
-
 ### What I am doing
 
 **Exercise:**
+
+See my [Workouts](/workouts) page for stats and a log of my workouts over the past year.
 
 - **Cycling** - the main thing. Bought a hybrid bike in July 2025 and started
   riding regularly. Mostly lunch rides during the week, longer rides on
@@ -63,9 +61,9 @@ app that's perfect for setting custom interval-based workout timers and HIIT ses
 
 - **Fasting** - 16:8 as the baseline, usually closer to 18:6 in practice.
   Started mixing in occasional 24-hour fasts and am planning to incorporate
-  36-hour fasts periodically going forward.
+  36-hour fasts periodically soon.
 - **Calorie counting** - tracking with LoseIt, paying closer attention to
-  portions and protein, and keeping sugar and refined carbs in check
+  portions and protein, and keeping sugar and refined carbs minimized
 - **Supplements** - consistent basic stack for six months or more: vitamins,
   fiber, and similar things; nothing unusual, but it seems to have helped
 
@@ -93,7 +91,7 @@ tradeoffs for the convenience.
 **Habits:**
 
 - **Nicotine** - quit
-- **Alcohol** - minimized
+- **Alcohol** - reducing; still in progress
 - **Soda** - eliminated regular soda and sugary drinks a couple of years ago; have
   mostly cut diet soda too over the past few months
 - **Caffeine** - working on reducing (tea in mornings, cut off in afternoon)
@@ -103,8 +101,7 @@ tradeoffs for the convenience.
 It has been about a year. Pretty much everything has significantly moved in the
 right direction:
 
-- **Weight** - down about 40 lbs, roughly two-thirds of the way to my initial
-  60 lb goal
+- **Weight** - down over 40 lbs so far
 - **Cholesterol** - improved; total cholesterol is in normal range for the
   first time in a while
 - **Resting heart rate** - down significantly; it averaged in the low 70s when
@@ -118,27 +115,5 @@ right direction:
   have all improved
 
 There is still progress to be made. This is meant to be a lifelong, sustainable
-discipline, not a project with a finish line. But the direction is better than
+discipline, not a project with an end date. But the direction is better than
 it was, and I want to keep it that way.
-
-### Body, Mind, and Soul
-
-This is really a general self-improvement effort. Physical health is a big part
-of it right now, but the mental and spiritual parts are just as important to me.
-They all seem to feed each other. Exercise helps my mood, focus, and energy, and
-being in a better place mentally and spiritually makes it easier to keep showing
-up physically.
-
-```ascii-art-right
-    o
- ---|---
-    |
-   / \
-```
-
-I meditate and pray about all of this often. The bike has become a good place to
-sort some of it out.
-
-I am trying to keep the whole thing practical and sustainable. Ride the bike,
-walk, lift a little, eat a little better, sleep better, and keep working on the
-rest of it too.

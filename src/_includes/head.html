@@ -1,8 +1,9 @@
 <!DOCTYPE html>
 <html lang="en">
     <head>
+        {% assign meta_description = page.meta_description | default: page.description | markdownify | strip_html | strip_newlines | escape %}
         <meta charset="utf-8">
-        <meta name="description" content="{{ page.meta_description | default: page.description }}">
+        <meta name="description" content="{{ meta_description }}">
         {% assign keywords = page.keywords | concat: site.common_keywords %}
         <meta name="keywords" content="{{ keywords | join: ',' }}">
         <meta name="viewport" content="width=device-width,initial-scale=1" />
@@ -12,7 +13,7 @@
         <meta property="og:locale" content="en_US">
         <meta property="og:type" content="website">
         <meta property="og:title" content="{{ page.meta_title | default: page.title }}">
-        <meta property="og:description" content="{{ page.meta_description | default: page.description }}">
+        <meta property="og:description" content="{{ meta_description }}">
         <meta property="og:url" content="{{ site.url }}{{ page.url }}">
         <meta property="og:site_name" content="{{ site.name }}">
         <meta property="og:image" content="https://joshbeard.com/assets/img/joshbeard-opengraph.png"/>

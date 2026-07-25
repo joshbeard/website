@@ -878,6 +878,10 @@ img.responsive {
   color: var(--text-secondary);
 }
 
+#page .image-description p {
+  text-align: center;
+}
+
 .image-foot {
   text-align: center;
   margin-top: var(--spacing-md);

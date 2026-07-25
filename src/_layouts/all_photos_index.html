@@ -16,7 +16,8 @@ class: album-index
 		{% assign current_album = image.album %}
 		{% endif %}
 		<div class="image-in-album">
-			<a href="{{ image.rel_link }}"><img src="{{ image.thumb }}" class="img_thumb" alt="{{ image.description }}" /></a>
+			{% assign image_alt = image.description | markdownify | strip_html | strip_newlines | escape %}
+			<a href="{{ image.rel_link }}"><img src="{{ image.thumb }}" class="img_thumb" alt="{{ image_alt }}" /></a>
 		</div>
 	{% endfor %}
 	</div>

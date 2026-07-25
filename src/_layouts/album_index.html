@@ -6,7 +6,7 @@ class: album-index
 <h2><a href="/photos">Photos</a>&nbsp;&raquo;&nbsp;{{ page.title }}</h2>
 {% if page.description %}
 <div id="album-description">
-<span class='album-description'>{{ page.description }}</span>
+{{ page.description | markdownify }}
 </div>
 {% endif %}
 
@@ -24,8 +24,9 @@ class: album-index
 
 	<div id="album-images">
 	{% for image in page.images %}
+		{% assign image_alt = image.description | markdownify | strip_html | strip_newlines | escape %}
 		<div class="image-in-album">
-			<a href="{{ image.rel_link }}"><img src="{{image.thumb}}" class="img_thumb" alt="{{ image.description }}" /></a>
+			<a href="{{ image.rel_link }}"><img src="{{image.thumb}}" class="img_thumb" alt="{{ image_alt }}" /></a>
 		</div>
 	{% endfor %}
 	</div>

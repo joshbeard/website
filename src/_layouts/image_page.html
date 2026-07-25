@@ -2,6 +2,7 @@
 layout: page
 class: image-page
 ---
+{% assign image_alt = page.description | markdownify | strip_html | strip_newlines | escape %}
 <div class="image-wrap">
 <div class='image-page'>
 	<div class='image-nav image-nav-prev'>
@@ -10,7 +11,7 @@ class: image-page
 		{% endif %}
 	</div>
 	<div class="image-container">
-		<a href="{{ page.img_src }}"><img src="{{page.img_src}}" class="img_full" alt="{{ page.album_name }} - {{ page.description }}" /></a>
+		<a href="{{ page.img_src }}"><img src="{{page.img_src}}" class="img_full" alt="{{ page.album_name }} - {{ image_alt }}" /></a>
     </div>
 	<div class='image-nav image-nav-next'>
 		{% if page.next_url %}
@@ -20,7 +21,7 @@ class: image-page
 </div>
 </div>
 <div class="image-description">
-	{{ page.description }}
+	{{ page.description | markdownify }}
 </div>
 <div class="image-foot">
 	<a href="/photos">Photos</a>&nbsp;&raquo;&nbsp;<a href="{{ page.album_url }}">{{ page.album_name }}</a>&nbsp;&raquo;&nbsp;<a href="{{ page.img_src }}">{{ page.title }}</a>

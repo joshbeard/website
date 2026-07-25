@@ -27,5 +27,5 @@ This is what I'm doing as of July, 2026:
 
 * Improving [my health](/health) and [staying active](/workouts), with a year of cycling every day.
 * Barbecuing and grilling more this summer.
-* Managing a small DevOps team at Live Oak Bank.
+* Working on a small DevOps team at [Live Oak Bank](https://www.liveoak.bank/).
 * Raising a family in Colorado.

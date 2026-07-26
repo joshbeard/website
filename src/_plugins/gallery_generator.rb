@@ -69,7 +69,7 @@
 module Jekyll
   class ImagePage < Page
     # An image page
-    def initialize(site, base, outdir, img_source, thumb, album_name, name, prev_name, next_name, album_page, description)
+    def initialize(site, base, outdir, img_source, thumb, album_name, name, prev_name, next_name, album_page, description, source_album = nil)
       @site = site
       @base = base
       @dir = outdir
@@ -85,6 +85,10 @@ module Jekyll
       self.data['album_url'] = album_page
       self.data['album_name'] = album_name
       self.data['description'] = description
+      if source_album
+        self.data['source_album_name'] = source_album['name']
+        self.data['source_album_url'] = source_album['url']
+      end
     end
   end
 
@@ -300,9 +304,13 @@ module Jekyll
         prev_photo = all_photos[idx - 1] unless idx == 0
         next_photo = all_photos[idx + 1] || nil
 
+        source_album = {
+          'name' => photo['album_title'],
+          'url' => photo['album_url']
+        }
         site.pages << ImagePage.new(site, site.source, File.dirname(photo['rel_link']), photo['src'], photo['thumb'],
                                     'All Photos', photo['rel_link'], prev_photo && prev_photo['rel_link'],
-                                    next_photo && next_photo['rel_link'], all_page_url, photo['description'])
+                                    next_photo && next_photo['rel_link'], all_page_url, photo['description'], source_album)
       end
 
       site.pages << AllPhotosPage.new(site, site.source, all_path, all_photos, all_photos_config)

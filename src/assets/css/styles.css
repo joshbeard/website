@@ -756,10 +756,15 @@ img.responsive {
 }
 
 #album-description {
+  display: none;
   text-align: center;
   font-size: .8em;
   margin-bottom: 8px;
   color: var(--text-secondary);
+}
+
+#page #album-description p {
+  text-align: center;
 }
 
 #album-images {

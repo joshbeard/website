@@ -9,8 +9,6 @@ keywords: ['homelab', 'home lab', 'homelabs', 'proxmox', 'home server']
 ---
 ## My Home Lab
 
-{% include submenu.html %}
-
 * Dell PowerEdge T410 (Runs [Proxmox](https://www.proxmox.com/en/)) - LXC, VM,
   Docker with a mix of Linux distributions and BSD.
 * Dell Wyse 3040 (Thin client - Atom x5/2GB) - [Pi-Hole](https://pi-hole.net/)

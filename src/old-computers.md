@@ -11,8 +11,6 @@ class: ascii-art
 ---
 ## My old computers
 
-{% include submenu.html %}
-
 This is a personal archive of computers I've used, rebuilt, borrowed, or kept
 around over the years. It is not meant to be complete, but it captures the
 thread that led me from old family machines and spare parts into Linux, BSD,

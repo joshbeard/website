@@ -1,9 +1,28 @@
 ---
-title: Pages
+title: More
 layout: page
-meta_title: Pages
-description: Index of all site pages
-permalink: /pages/
-class: ascii-art
+meta_title: More
+description: A curated index of site pages
+permalink: /more/
+class: ascii-art pages-index
 ---
-{% navigation_tree / %}
+### About
+
+- [Me](/me/)
+- [Now](/now/)
+- [Uses](/uses/)
+
+### Health
+
+- [Health](/health/)
+- [Workouts](/workouts/)
+
+### Interests
+
+- [Homelab](/homelab/)
+- [Old Computers](/old-computers.html)
+
+### Site
+
+- [About This Site](/site/)
+- [Small Internet Stack](/site/small.html)

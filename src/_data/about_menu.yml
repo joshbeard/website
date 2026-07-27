@@ -1,7 +1,5 @@
 - url: /me
   title: Me
-- url: /site
-  title: Site
 - url: /now
   title: Now
 - url: /uses
@@ -10,7 +8,3 @@
   title: Health
 - url: /workouts
   title: Workouts
-- url: /homelab
-  title: Homelab
-- url: /old-computers.html
-  title: Old Computers

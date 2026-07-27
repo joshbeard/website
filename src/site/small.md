@@ -8,8 +8,6 @@ keywords: ['smol web', 'smol internet', 'small internet', 'small web', 'gopher',
 ---
 ## Small Internet Stack
 
-{% include submenu.html %}
-
 I once thought it'd be fun to serve up some content on some esoteric (at least
 these days) protocols, so here they are.
 

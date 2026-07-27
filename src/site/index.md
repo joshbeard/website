@@ -9,8 +9,6 @@ keywords: ['jekyll sites', 'personal sites', 'indie web', 'personal site aws', '
 ---
 ## About This Site
 
-{% include submenu.html %}
-
 ### Framework
 
 This is a [Jekyll](https://jekyllrb.com/) site with a custom theme and layout.

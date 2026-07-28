@@ -11,6 +11,8 @@ class: ascii-art
 
 {% include submenu.html %}
 
+### Software
+
 Some software and tools I use regularly:
 
 * [Obsidian](https://obsidian.md/) for notes
@@ -37,3 +39,8 @@ running Arch for the last several years, but I recently switched to using an M4
 MacBook Air with macOS for personal stuff.
 
 See my [old computers](/old-computers.html) page for some nostalgia.
+
+### Cycling
+
+* [Trek Dual Sport 3 Gen 5](https://www.trekbikes.com/us/en_US/bikes/hybrid-bikes/dual-sport-bikes/dual-sport/dual-sport-3-gen-5/p/5293286/) in Pennyflake
+* [Pirelli Cinturato Gravel H](https://www.pirelli.com/tyres/en-ww/bike/tyres/catalogue/cinturato-gravel-h) tires since June 2026

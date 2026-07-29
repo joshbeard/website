@@ -19,12 +19,12 @@ Some software and tools I use regularly:
 * [Cursor](https://cursor.com/) and [NeoVim](https://neovim.io/) for coding
 * [Raycast](https://www.raycast.com/) for launching, quick actions, quick AI chat
 * [Ghostty](https://ghostty.org/) for terminal
-* [1Password](https://1password.com/) for passwords
-* [YNAB](https://www.ynab.com/) for budgeting
-* [Lose It!](https://www.loseit.com/) for counting calories, meal tracking, and intermittent fasting
+* [1Password](https://1password.com/) for passwords (10+ years)
+* [YNAB](https://www.ynab.com/) for budgeting (10 years)
 * [Homebrew](https://brew.sh/) for macOS packages
 * [Brave](https://brave.com/) for browsing
 * [Proxmox](https://www.proxmox.com/) for my home servers
+* [Lose It!](https://www.loseit.com/) for counting calories, meal tracking, and intermittent fasting
 
 See my [Homelab](/homelab) page for details about my home servers.
 

@@ -1,7 +1,7 @@
 ---
 title: What I'm Up To Now
 meta_title: What I'm Up To Now
-description: My now page is a short summary of what I'm doing
+description: A quick update on what I'm doing now, including health, cycling, family, barbecue, and life in Colorado.
 keywords: ['now page', 'status update']
 layout: page
 permalink: /now/

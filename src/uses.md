@@ -1,7 +1,7 @@
 ---
 title: What I Use
 meta_title: What I Use
-description: My uses page lists hardware, software, and other stuff I use
+description: Software, hardware, apps, services, and everyday tools I use for notes, coding, terminals, budgeting, homelab work, and cycling.
 keywords: ['uses','uses.tech']
 layout: page
 permalink: /uses/

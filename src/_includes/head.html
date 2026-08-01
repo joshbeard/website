@@ -1,37 +1,50 @@
 <!DOCTYPE html>
 <html lang="en">
     <head>
-        {% assign meta_description = page.meta_description | default: page.description | markdownify | strip_html | strip_newlines | escape %}
+        {% assign site_title = site.name | default: site.title | default: "Josh Beard" | strip %}
+        {% assign meta_title = page.meta_title | default: page.title | default: site_title | strip %}
+        {% if page.url == "/" %}
+            {% assign full_title = site_title %}
+        {% else %}
+            {% capture full_title %}{{ meta_title }} - {{ site_title }}{% endcapture %}
+            {% assign full_title = full_title | strip %}
+        {% endif %}
+        {% assign raw_description = page.meta_description | default: page.description | default: site.description %}
+        {% assign meta_description = raw_description | markdownify | strip_html | normalize_whitespace | strip | escape %}
+        {% assign canonical_url = page.url | absolute_url %}
+        {% assign social_image = page.image | default: "/assets/img/joshbeard-opengraph.png" | absolute_url %}
         <meta charset="utf-8">
+        <title>{{ full_title }}</title>
+        {% if meta_description != "" %}
         <meta name="description" content="{{ meta_description }}">
-        {% assign keywords = page.keywords | concat: site.common_keywords %}
-        <meta name="keywords" content="{{ keywords | join: ',' }}">
+        {% endif %}
+        {% if page.keywords %}
+        {% assign keywords = page.keywords | join: "," | strip %}
+        {% if keywords != "" %}
+        <meta name="keywords" content="{{ keywords | escape }}">
+        {% endif %}
+        {% endif %}
         <meta name="viewport" content="width=device-width,initial-scale=1" />
         <meta name="HandheldFriendly" content="True">
         <meta name="MobileOptimized" content="320">
         <!-- Open Graph -->
         <meta property="og:locale" content="en_US">
         <meta property="og:type" content="website">
-        <meta property="og:title" content="{{ page.meta_title | default: page.title }}">
+        <meta property="og:title" content="{{ full_title }}">
+        {% if meta_description != "" %}
         <meta property="og:description" content="{{ meta_description }}">
-        <meta property="og:url" content="{{ site.url }}{{ page.url }}">
+        {% endif %}
+        <meta property="og:url" content="{{ canonical_url }}">
         <meta property="og:site_name" content="{{ site.name }}">
-        <meta property="og:image" content="https://joshbeard.com/assets/img/joshbeard-opengraph.png"/>
+        <meta property="og:image" content="{{ social_image }}"/>
         <meta property="og:image:width" content="1200"/>
         <meta property="og:image:height" content="630"/>
-
-        <title>
-            {{ site.name }}
-            {% if page.url != "/" %}
-              -
-              {{ page.meta_title | default: page.title }}
-              {% if page.layout == "post" %}
-                  {% if page.title %}
-                  - {{ page.title }}
-                  {% endif %}
-              {% endif %}
-            {% endif %}
-        </title>
+        <meta name="twitter:card" content="summary_large_image">
+        <meta name="twitter:title" content="{{ full_title }}">
+        {% if meta_description != "" %}
+        <meta name="twitter:description" content="{{ meta_description }}">
+        {% endif %}
+        <meta name="twitter:image" content="{{ social_image }}">
 
         {% assign color_scheme = site.color_scheme | default: "retro" %}
         <link href="{{ '/assets/css/color-schemes/' | append: color_scheme | append: '.css' | relative_url | bust_cache }}" rel="stylesheet" />
@@ -42,7 +55,7 @@
         <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
         <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
         <link rel="manifest" href="/site.webmanifest">
-        <link rel="canonical" href="{{ site.url }}{{ page.url }}">
+        <link rel="canonical" href="{{ canonical_url }}">
     </head>
 
     <body>

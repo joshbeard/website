@@ -1,7 +1,7 @@
 ---
 title: Health
 meta_title: Health
-description: A personal note on health and self-improvement
+description: A personal health and fitness record covering cycling, walking, diet changes, habit tracking, and what I'm learning along the way.
 keywords: ['health', 'self-improvement', 'cycling']
 layout: page
 permalink: /health/

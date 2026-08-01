@@ -4,38 +4,6 @@ name: Josh Beard
 source: ./src
 url: https://joshbeard.com
 color_scheme: retro
-common_keywords:
-  - joshua beard
-  - josh
-  - joshbeard
-  - jashbeard
-  - josh beard colorado springs
-  - josh beard colorado
-  - josh beard devops
-  - josh beard denver
-  - joshua beard colorado springs
-  - joshua beard devops
-  - josh beard resume
-  - joshua beard resume
-  - josh beard sysadmin
-  - josh beard systems administrator
-  - josh beard apogee engineering
-  - joshua beard apogee engineering
-  - josh beard usgs
-  - josh beard puppet
-  - josh beard dsdk12
-  - colorado springs devops
-  - colorado springs devops engineer
-  - colorado devops engineer
-  - denver devops engineer
-  - devops resume
-  - devops engineer resume
-  - sysadmin resume
-  - systems administrator resume
-  - devops
-  - devops engineer
-  - sysadmin
-  - colorado springs
 destination: ./_site
 permalink: /posts/:year/:month/:day/:title:output_ext
 exclude:

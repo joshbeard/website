@@ -1,7 +1,7 @@
 ---
 title: My Home Lab
 meta_title: My Home Lab
-description: Information about my Home Lab servers
+description: Josh Beard's homelab notes, covering Proxmox servers, containers, Pi-hole, Plex, GitLab, Docker, Terraform, Ansible, and small internet services.
 layout: page
 permalink: /homelab/
 class: ascii-art

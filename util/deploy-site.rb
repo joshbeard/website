@@ -4,12 +4,14 @@
 require 'digest'
 require 'fileutils'
 require 'json'
+require 'net/http'
 require 'open3'
 require 'optparse'
 require 'set'
 require 'thread'
 require 'time'
 require 'tmpdir'
+require 'uri'
 
 COLOR_RESET = "\033[0m"
 COLOR_CYAN = "\033[36m"
@@ -27,6 +29,9 @@ DEFAULT_INVALIDATION_WILDCARD_THRESHOLD = Integer(
   ENV.fetch('CF_INVALIDATION_WILDCARD_THRESHOLD', '50')
 )
 DEFAULT_UPLOAD_CONCURRENCY = Integer(ENV.fetch('DEPLOY_UPLOAD_CONCURRENCY', '16'))
+DEFAULT_SITE_URL = 'https://joshbeard.com'
+INDEXNOW_ENDPOINT = 'https://api.indexnow.org/indexnow'
+INDEXNOW_URL_CAP = 100
 DEPLOY_EXCLUDED_KEYS = Set[
   'workouts/index.html'
 ].freeze
@@ -351,6 +356,105 @@ def cloudfront_invalidation_paths(keys, wildcard_threshold:)
   [INVALIDATION_WILDCARD_PATH]
 end
 
+def site_origin
+  ENV.fetch('SITE_URL', DEFAULT_SITE_URL).chomp('/')
+end
+
+def indexnow_key_from_site(site_dir)
+  env_key = ENV['INDEXNOW_KEY'].to_s.strip
+  return env_key unless env_key.empty?
+
+  Dir.glob(File.join(site_dir, '*.txt')).each do |path|
+    name = File.basename(path, '.txt')
+    next unless name.match?(/\A[a-zA-Z0-9-]{16,128}\z/)
+
+    body = File.read(path).strip
+    return name if body == name
+  end
+
+  nil
+end
+
+def indexnow_url_for_key(key, origin)
+  return if key.start_with?('photos/all/')
+  return if key.start_with?('assets/')
+  return if key == 'error.html'
+
+  if key == 'sitemap.xml'
+    "#{origin}/sitemap.xml"
+  elsif key == 'index.html'
+    "#{origin}/"
+  elsif key.end_with?('/index.html')
+    "#{origin}/#{key.sub(%r{/index\.html\z}, '')}/"
+  elsif key.end_with?('.html')
+    "#{origin}/#{key}"
+  end
+end
+
+def indexnow_urls(changed_keys, origin)
+  urls = changed_keys.filter_map { |key| indexnow_url_for_key(key, origin) }.uniq
+  return urls if urls.empty? || urls.length <= INDEXNOW_URL_CAP
+
+  compact = ["#{origin}/", "#{origin}/sitemap.xml"]
+  compact.concat(urls.first(20))
+  compact.uniq
+end
+
+def submit_indexnow(site_dir, changed_keys, dry_run)
+  if ENV['INDEXNOW_DISABLED'].to_s == '1'
+    puts "#{COLOR_YELLOW}INDEXNOW_DISABLED=1; skipping IndexNow submission.#{COLOR_RESET}"
+    return
+  end
+
+  key = indexnow_key_from_site(site_dir)
+  unless key
+    puts "#{COLOR_YELLOW}No IndexNow key file found; skipping submission.#{COLOR_RESET}"
+    return
+  end
+
+  origin = site_origin
+  host = URI.parse(origin).host
+  urls = indexnow_urls(changed_keys, origin)
+  if urls.empty?
+    puts "#{COLOR_YELLOW}No indexable URLs changed; skipping IndexNow submission.#{COLOR_RESET}"
+    return
+  end
+
+  payload = {
+    'host' => host,
+    'key' => key,
+    'keyLocation' => "#{origin}/#{key}.txt",
+    'urlList' => urls
+  }
+
+  print_section(dry_run ? 'Planned IndexNow submission' : 'Submitting IndexNow')
+  puts "  #{urls.length} URL#{urls.length == 1 ? '' : 's'}"
+  urls.first(10).each { |url| puts "  #{url}" }
+  puts "  ..." if urls.length > 10
+
+  return if dry_run
+
+  uri = URI.parse(INDEXNOW_ENDPOINT)
+  http = Net::HTTP.new(uri.host, uri.port)
+  http.use_ssl = uri.scheme == 'https'
+  http.open_timeout = 10
+  http.read_timeout = 10
+
+  request = Net::HTTP::Post.new(uri.request_uri)
+  request['Content-Type'] = 'application/json; charset=utf-8'
+  request.body = JSON.generate(payload)
+
+  response = http.request(request)
+  if response.is_a?(Net::HTTPSuccess) || response.code == '202'
+    puts "#{COLOR_GREEN}IndexNow accepted (#{response.code})#{COLOR_RESET}"
+  else
+    $stderr.puts "#{COLOR_YELLOW}IndexNow submission failed (#{response.code}); continuing deploy.#{COLOR_RESET}"
+    $stderr.puts response.body unless response.body.to_s.empty?
+  end
+rescue StandardError => e
+  $stderr.puts "#{COLOR_YELLOW}IndexNow submission failed: #{e.message}; continuing deploy.#{COLOR_RESET}"
+end
+
 def invalidate_cloudfront(paths, distribution, region, dry_run)
   if paths.empty?
     puts "#{COLOR_YELLOW}No CloudFront paths to invalidate.#{COLOR_RESET}"
@@ -496,6 +600,7 @@ def main
     options[:cf_region],
     options[:dry_run]
   )
+  submit_indexnow(site_dir, diff[:uploads] + diff[:metadata_updates], options[:dry_run])
 end
 
 main if $PROGRAM_NAME == __FILE__

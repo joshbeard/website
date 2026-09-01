@@ -67,9 +67,24 @@
 # SOFTWARE.
 #
 module Jekyll
+  module GallerySeo
+    module_function
+
+    def plain_caption(description, album_name)
+      fallback = "#{album_name} photo"
+      return fallback if description.nil?
+
+      text = description.to_s
+      text = text.gsub(/\[([^\]]*)\]\([^)]*\)/, '\1')
+      text = text.gsub(/[*_`#]+/, '')
+      text = text.gsub(/\s+/, ' ').strip
+      text.empty? ? fallback : text
+    end
+  end
+
   class ImagePage < Page
     # An image page
-    def initialize(site, base, outdir, img_source, thumb, album_name, name, prev_name, next_name, album_page, description, source_album = nil)
+    def initialize(site, base, outdir, img_source, thumb, album_name, name, prev_name, next_name, album_page, description, source_album = nil, seo = {})
       @site = site
       @base = base
       @dir = outdir
@@ -77,18 +92,25 @@ module Jekyll
 
       self.process(@name)
       self.read_yaml(File.join(@base, '_layouts'), 'image_page.html')
-      self.data['title'] = File.basename(img_source).to_s()
+      caption = GallerySeo.plain_caption(description, album_name)
+      self.data['title'] = caption
+      self.data['meta_title'] = caption
+      self.data['img_filename'] = File.basename(img_source).to_s
       self.data['img_src'] = img_source
+      self.data['image'] = img_source
       self.data['thumb'] = thumb
       self.data['prev_url'] = prev_name
       self.data['next_url'] = next_name
       self.data['album_url'] = album_page
       self.data['album_name'] = album_name
       self.data['description'] = description
+      self.data['page_type'] = 'image'
       if source_album
         self.data['source_album_name'] = source_album['name']
         self.data['source_album_url'] = source_album['url']
       end
+      self.data['canonical'] = seo['canonical'] if seo['canonical']
+      self.data['sitemap'] = false if seo['sitemap'] == false
     end
   end
 
@@ -167,6 +189,10 @@ module Jekyll
         album_page = "#{@dir}/#{album_name_from_page(page)}"
           do_image(filename, prev_file, next_file, album_page, @album_metadata['images'])
       end
+
+      key_src = (self.data['key_image_data'] && self.data['key_image_data']['src']) ||
+                (self.data['images'][0] && self.data['images'][0]['src'])
+      self.data['image'] = key_src if key_src
     end
 
     def get_album_metadata
@@ -261,6 +287,7 @@ module Jekyll
       self.read_yaml(File.join(@base, '_layouts'), 'all_photos_index.html')
 
       self.data['title'] = 'All Photos'
+      self.data['meta_description'] = 'A single index of every photo from every album.'
       self.data['images'] = images
       self.data['group_by_album'] = all_photos_config['group_by_album']
       self.data['page_type'] = 'all_photos'
@@ -310,7 +337,8 @@ module Jekyll
         }
         site.pages << ImagePage.new(site, site.source, File.dirname(photo['rel_link']), photo['src'], photo['thumb'],
                                     'All Photos', photo['rel_link'], prev_photo && prev_photo['rel_link'],
-                                    next_photo && next_photo['rel_link'], all_page_url, photo['description'], source_album)
+                                    next_photo && next_photo['rel_link'], all_page_url, photo['description'], source_album,
+                                    'canonical' => photo['canonical'], 'sitemap' => false)
       end
 
       site.pages << AllPhotosPage.new(site, site.source, all_path, all_photos, all_photos_config)
@@ -389,14 +417,16 @@ module Jekyll
         description = metadata['images'][filename]
       end
 
+      page_name = image_page_url(filename)
       {
         'src' => File.join(gallery_out_dir, album, filename).to_s(),
-        'rel_link' => File.join(gallery_out_dir, all_path, album, image_page_url(filename)).to_s(),
+        'rel_link' => File.join(gallery_out_dir, all_path, album, page_name).to_s(),
         'thumb' => File.join(gallery_out_dir, album, thumbs_dir, filename).to_s(),
         'description' => description,
         'album' => album,
         'album_title' => metadata['meta_title'] || album,
         'album_url' => File.join(gallery_out_dir, album, 'index.html').to_s(),
+        'canonical' => File.join(gallery_out_dir, album, page_name).to_s(),
       }
     end
 

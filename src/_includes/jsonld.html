@@ -1,0 +1,42 @@
+{% if page.url == "/" %}
+<script type="application/ld+json">
+{
+    "@context": "https://schema.org",
+    "@graph": [
+        {
+            "@type": "WebSite",
+            "name": {{ site_title | jsonify }},
+            "url": {{ "/" | absolute_url | jsonify }},
+            "description": {{ meta_description_plain | jsonify }}
+        },
+        {
+            "@type": "Person",
+            "name": "Josh Beard",
+            "url": {{ "/" | absolute_url | jsonify }},
+            "email": "hello@joshbeard.com",
+            "sameAs": [
+                "https://github.com/joshbeard"
+            ]
+        }
+    ]
+}
+</script>
+{% elsif page.img_src %}
+{% assign gallery_name = page.source_album_name | default: page.album_name %}
+{% assign gallery_url = page.source_album_url | default: page.album_url %}
+{% assign image_caption = page.description | markdownify | strip_html | normalize_whitespace | strip %}
+<script type="application/ld+json">
+{
+    "@context": "https://schema.org",
+    "@type": "ImageObject",
+    "contentUrl": {{ page.img_src | absolute_url | jsonify }},
+    "name": {{ page.title | jsonify }},
+    "caption": {{ image_caption | jsonify }},
+    "isPartOf": {
+        "@type": "ImageGallery",
+        "name": {{ gallery_name | jsonify }},
+        "url": {{ gallery_url | absolute_url | jsonify }}
+    }
+}
+</script>
+{% endif %}

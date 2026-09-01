@@ -15,7 +15,7 @@ class: album-list
             <div class="album-in-list">
                 <a href="{{ page.url }}" class="album-in-list-link">
                     <div class="album-in-list-image">
-                    {% assign album_alt = page.description | markdownify | strip_html | strip_newlines | escape %}
+                    {% assign album_alt = page.description | default: page.meta_description | default: page.title | markdownify | strip_html | strip_newlines | escape %}
                     {% if page.images %}
                         {% if page.key_image_data %}
                             <img src="{{ page.key_image_data.thumb }}" class="img-thumb" alt="{{ album_alt }}" />

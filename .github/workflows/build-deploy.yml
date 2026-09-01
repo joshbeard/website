@@ -100,3 +100,4 @@ jobs:
           CF_DISTRIBUTION: ${{ secrets.CF_DISTRIBUTION }}
           AWS_REGION: 'us-west-2'
           CF_REGION: 'us-east-1'
+          SITE_URL: 'https://joshbeard.com'

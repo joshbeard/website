@@ -15,7 +15,7 @@ This is my personal website. It is part notebook, part archive, part place to
 put things I like keeping around on the web.
 
 I live in Colorado with my family, and spend my time on [computers](#computers),
-[music](/music/), [cycling](/workouts/), [exploring](/photos/), grilling, and the
+[music](#music), [cycling](/workouts/), [exploring](/photos/), grilling, and the
 usual collection of small projects.
 
 Some of the more personal or nostalgic corners are here because I enjoy that
@@ -91,8 +91,7 @@ others. I love atmospheric drum and bass/jungle. When it comes to country, I
 particularly like Waylon Jennings, Merle Haggard, George Jones, and generally
 classic country. I also like a lot of 80's and 90's country.
 
-See my [music page](/music/) for more about the bands and albums that have
-stuck around, or check out my [last.fm](https://www.last.fm/user/joshbeard)
+See my [last.fm](https://www.last.fm/user/joshbeard)
 profile for my music stats (with lots of gaps) dating back to 2005.
 
 ### Work

@@ -30,7 +30,7 @@
 #           a description for an image. If this key exists, the plugin will use
 #           the keys from this hash as the list of images in the album, allowing
 #           the Jekyll build to run without the image files present - they are
-#           not in Git.
+#           not in Git. Key order is the album order (newest first).
 #       key_image : str, optional
 #           An optional filename of an image to use for the album
 #           thumbnail. If none is specified, the first image is used.
@@ -302,6 +302,9 @@ module Jekyll
       'path' => 'all',
       'sort' => 'album desc',
       'group_by_album' => true,
+      # When false, keep album.yml / filesystem image order (newest first).
+      # When true, reverse images within each album (oldest first).
+      'reverse_images' => false,
     }
 
     def generate(site)
@@ -325,7 +328,8 @@ module Jekyll
 
       all_photos = collect_all_photos(site, base_album_path, albums, all_photos_config)
       all_path = all_photos_config['path']
-      all_page_url = File.join(site.config['gallery']['out_dir'] || 'albums', all_path, 'index.html').to_s()
+      gallery_out_dir = site.config['gallery']['out_dir'] || 'albums'
+      primary_url = File.join(gallery_out_dir, all_path, 'index.html').to_s()
 
       all_photos.each_with_index do |photo, idx|
         prev_photo = all_photos[idx - 1] unless idx == 0
@@ -337,7 +341,7 @@ module Jekyll
         }
         site.pages << ImagePage.new(site, site.source, File.dirname(photo['rel_link']), photo['src'], photo['thumb'],
                                     'All Photos', photo['rel_link'], prev_photo && prev_photo['rel_link'],
-                                    next_photo && next_photo['rel_link'], all_page_url, photo['description'], source_album,
+                                    next_photo && next_photo['rel_link'], primary_url, photo['description'], source_album,
                                     'canonical' => photo['canonical'], 'sitemap' => false)
       end
 
@@ -356,7 +360,7 @@ module Jekyll
         next if metadata['hidden']
 
         files = album_files(album_source, metadata, site.config['gallery']['thumbs_dir'] || 'thumbs')
-        files.reverse! if sort_on == 'album' && sort_direction =~ /^desc/
+        files = files.reverse if reverse_images?(all_photos_config)
 
         files.each do |filename|
           photos << all_photo_data(site, album, filename, metadata, all_photos_config['path'])
@@ -438,6 +442,11 @@ module Jekyll
 
     def all_photos_config(site)
       DEFAULT_ALL_PHOTOS_CONFIG.merge((site.config['gallery'] || {})['all_photos'] || {})
+    end
+
+    def reverse_images?(config)
+      value = config['reverse_images']
+      value == true || value.to_s =~ /^(true|yes|1)$/i
     end
   end
 end

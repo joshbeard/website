@@ -3,6 +3,7 @@ layout: page
 class: image-page
 ---
 {% assign image_alt = page.description | markdownify | strip_html | strip_newlines | escape %}
+{% assign image_filename = page.img_filename | default: page.title %}
 <div class="image-wrap">
 <div class='image-page'>
 	<div class='image-nav image-nav-prev'>
@@ -10,9 +11,7 @@ class: image-page
 		<a class="nav prev-button" href="{{ page.prev_url }}"><i class="fas fa-fw fa-circle-left"></i></a>
 		{% endif %}
 	</div>
-	<div class="image-container">
-		<a href="{{ page.img_src }}"><img src="{{page.img_src}}" class="img_full" alt="{{ page.album_name }} - {{ image_alt }}" /></a>
-    </div>
+	<img src="{{ page.img_src }}" class="img_full" alt="{{ page.album_name }} - {{ image_alt }}" />
 	<div class='image-nav image-nav-next'>
 		{% if page.next_url %}
 		<a class="nav next-button" href="{{ page.next_url }}"><i class="fas fa-fw fa-circle-right"></i></a>
@@ -24,5 +23,5 @@ class: image-page
 	{{ page.description | markdownify }}
 </div>
 <div class="image-foot">
-	<a href="/photos">Photos</a>&nbsp;&raquo;&nbsp;<a href="{{ page.album_url }}">{{ page.album_name }}</a>{% if page.source_album_url and page.source_album_name %}&nbsp;&raquo;&nbsp;<a href="{{ page.source_album_url }}">{{ page.source_album_name }}</a>{% endif %}&nbsp;&raquo;&nbsp;<a href="{{ page.img_src }}">{{ page.img_filename | default: page.title }}</a>
+	<a href="/photos">Photos</a>&nbsp;&raquo;&nbsp;<a href="{{ page.album_url }}">{{ page.album_name }}</a>{% if page.source_album_url and page.source_album_name %}&nbsp;&raquo;&nbsp;<a href="{{ page.source_album_url }}">{{ page.source_album_name }}</a>{% endif %}&nbsp;&raquo;&nbsp;<a href="{{ page.img_src }}" title="Open original image">{{ image_filename }}&nbsp;<i class="fas fa-fw fa-arrow-up-right-from-square" aria-hidden="true"></i></a>
 </div>

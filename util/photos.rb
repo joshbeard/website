@@ -296,7 +296,7 @@ class PhotoDeployer
       # Images with empty descriptions will appear in YAML as empty strings.
 
       # Write the updated YAML with proper formatting
-      yaml_content = album_info.to_yaml
+      yaml_content = album_info.to_yaml(line_width: -1)
       File.write(info_file, yaml_content)
       preserved_count = (existing_descriptions.keys - local_images).length
       total_images = existing_descriptions.keys.length

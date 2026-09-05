@@ -50,6 +50,7 @@ gallery:
     path: all
     sort: album desc
     group_by_album: true
+    reverse_images: false
 
 nav_tree:
   excludes:

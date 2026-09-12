@@ -3,7 +3,7 @@ layout: page
 page_type: album
 class: album-index
 ---
-<h2><a href="/photos">Photos</a>&nbsp;&raquo;&nbsp;{{ page.title }}</h2>
+<h2><a href="/photos/">Photos</a>&nbsp;&raquo;&nbsp;{{ page.title }}</h2>
 {% if page.description %}
 <div id="album-description">
 {{ page.description | markdownify }}
@@ -40,6 +40,6 @@ class: album-index
 		{% endif %}
 	</div>
 	<div class="all-photos-link">
-		<a href="/photos">Photos</a>&nbsp;&raquo;&nbsp;{{ page.title }}
+		<a href="/photos/">Photos</a>&nbsp;&raquo;&nbsp;{{ page.title }}
 	</div>
 </div>

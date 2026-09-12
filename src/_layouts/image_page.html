@@ -23,5 +23,5 @@ class: image-page
 	{{ page.description | markdownify }}
 </div>
 <div class="image-foot">
-	<a href="/photos">Photos</a>&nbsp;&raquo;&nbsp;<a href="{{ page.album_url }}">{{ page.album_name }}</a>{% if page.source_album_url and page.source_album_name %}&nbsp;&raquo;&nbsp;<a href="{{ page.source_album_url }}">{{ page.source_album_name }}</a>{% endif %}&nbsp;&raquo;&nbsp;<a href="{{ page.img_src }}" title="Open original image">{{ image_filename }}&nbsp;<i class="fas fa-fw fa-arrow-up-right-from-square" aria-hidden="true"></i></a>
+	<a href="/photos/">Photos</a>&nbsp;&raquo;&nbsp;<a href="{{ page.album_url }}">{{ page.album_name }}</a>{% if page.source_album_url and page.source_album_name %}&nbsp;&raquo;&nbsp;<a href="{{ page.source_album_url }}">{{ page.source_album_name }}</a>{% endif %}&nbsp;&raquo;&nbsp;<a href="{{ page.img_src }}" title="Open original image">{{ image_filename }}&nbsp;<i class="fas fa-fw fa-arrow-up-right-from-square" aria-hidden="true"></i></a>
 </div>

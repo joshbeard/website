@@ -27,13 +27,13 @@ the progress.
 
 This page is a personal record of what I am doing, what has changed, and what I
 am learning along the way. Publishing it gives me a little extra accountability,
-and the [Workouts](/workouts) page keeps the underlying log.
+and the [Workouts](/workouts/) page keeps the underlying log.
 
 ### What I am doing
 
 **Exercise:**
 
-See my [Workouts](/workouts) page for stats and a log of my workouts over the past year.
+See my [Workouts](/workouts/) page for stats and a log of my workouts over the past year.
 
 - **Cycling** - the main thing. Bought a hybrid bike in July 2025 and started
   riding regularly. Mostly lunch rides during the week, longer rides on

@@ -25,7 +25,7 @@ few months.
 
 This is what I'm doing as of September, 2026:
 
-* Improving [my health](/health) and [staying active](/workouts), with a year of cycling (almost) every day, plus lots of walking, hiking, and dumbbells.
+* Improving [my health](/health/) and [staying active](/workouts/), with a year of cycling (almost) every day, plus lots of walking, hiking, and dumbbells.
 * Barbecuing and grilling more this summer. Minimizing and consolidating on my Weber kettles (22" and 26") for both.
 * Working on a small DevOps team at [Live Oak Bank](https://www.liveoak.bank/) and traveling to North Carolina quarterly.
 * Raising a family in Colorado.

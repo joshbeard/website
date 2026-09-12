@@ -87,7 +87,7 @@ I have an [UptimeRobot Status Page](https://stats.uptimerobot.com/V7ZMWilg5P).
 
 ### Photos
 
-I deploy my [photos](/photos) to their own S3 bucket from my workstation
+I deploy my [photos](/photos/) to their own S3 bucket from my workstation
 instead of storing them all in Git. I use a customized Jekyll plugin to
 generate the HTML pages for these photo albums. These photos are also mounted
 and available to my [Gopher](/site/small.html) and [Gemini](/site/small.html)

@@ -1,4 +1,10 @@
 User-agent: *
 Allow: /
+Disallow: /resume/resume.txt
+Disallow: /resume/resume-narrow.txt
+Disallow: /resume/resume.json
+Disallow: /resume/Josh-Beard-Resume.docx
+Disallow: /resume/joshbeard-resume.7
+Disallow: /resume/resume.gmi
 
 Sitemap: https://joshbeard.com/sitemap.xml

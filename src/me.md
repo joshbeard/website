@@ -131,8 +131,8 @@ perspectives described in [Radical Simplicity](https://www.radicalsimpli.city/)
 and [Choose Boring Technology](https://boringtechnology.club/) resonate with
 me.
 
-See [my resume](/resume) for more details about my professional experience, or
-my [now page](/now) for a current snapshot of what I'm up to.
+See [my resume](/resume/) for more details about my professional experience, or
+my [now page](/now/) for a current snapshot of what I'm up to.
 
 ### In Memory
 

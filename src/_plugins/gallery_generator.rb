@@ -140,7 +140,8 @@ module Jekyll
       self.process(@name)
       self.read_yaml(File.join(@base, '_layouts'), 'album_index.html')
 
-      self.data['title'] = @album_metadata['meta_title'] || dir
+      self.data['title'] = @album_metadata['title'] || dir
+      self.data['meta_title'] = @album_metadata['meta_title'] || self.data['title']
       self.data['images'] = []
       self.data['albums'] = []
       self.data['description'] = @album_metadata['description']
@@ -186,8 +187,8 @@ module Jekyll
         prev_file = files[idx-1] unless idx == 0
         next_file = files[idx+1] || nil
 
-        album_page = "#{@dir}/#{album_name_from_page(page)}"
-          do_image(filename, prev_file, next_file, album_page, @album_metadata['images'])
+        album_page = album_canonical_url(page)
+        do_image(filename, prev_file, next_file, album_page, @album_metadata['images'])
       end
 
       key_src = (self.data['key_image_data'] && self.data['key_image_data']['src']) ||
@@ -207,6 +208,10 @@ module Jekyll
 
     def album_name_from_page(page)
       return page == 0 ? 'index.html' : "index#{page + 1}.html"
+    end
+
+    def album_canonical_url(page)
+      return page == 0 ? "#{@dir}/" : "#{@dir}/#{album_name_from_page(page)}"
     end
 
     def list_album_contents
@@ -329,7 +334,7 @@ module Jekyll
       all_photos = collect_all_photos(site, base_album_path, albums, all_photos_config)
       all_path = all_photos_config['path']
       gallery_out_dir = site.config['gallery']['out_dir'] || 'albums'
-      primary_url = File.join(gallery_out_dir, all_path, 'index.html').to_s()
+      primary_url = "#{File.join(gallery_out_dir, all_path)}/"
 
       all_photos.each_with_index do |photo, idx|
         prev_photo = all_photos[idx - 1] unless idx == 0
@@ -429,7 +434,7 @@ module Jekyll
         'description' => description,
         'album' => album,
         'album_title' => metadata['meta_title'] || album,
-        'album_url' => File.join(gallery_out_dir, album, 'index.html').to_s(),
+        'album_url' => "#{File.join(gallery_out_dir, album)}/",
         'canonical' => File.join(gallery_out_dir, album, page_name).to_s(),
       }
     end

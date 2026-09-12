@@ -1,10 +1,10 @@
 - url: /
   title: Home
-# - url: /me
+# - url: /me/
 #   title: About
-- url: /resume
+- url: /resume/
   title: Resume
-- url: /photos
+- url: /photos/
   title: Photos
-- url: /more
+- url: /more/
   title: More

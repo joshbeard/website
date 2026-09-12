@@ -53,7 +53,7 @@ jgs `"""""""""""""`  '-'
 
 * 2008-2013: Several Work-issued [iMacs](https://en.wikipedia.org/wiki/IMac) running macOS and Linux.
 * 2010-2012: [Asus Eee PC 900](https://en.wikipedia.org/wiki/Asus_Eee_PC#Eee_900_series). Ran Linux (Debian).
-* 2012-2013: Asus Netbook. Ran Linux (Ubuntu) _Now out of retirement and [used](/uses)_.
+* 2012-2013: Asus Netbook. Ran Linux (Ubuntu) _Now out of retirement and [used](/uses/)_.
 * 2019: Chromebook 14a for periodic browsing. Runs ChromeOS and [crouton](https://github.com/dnschneid/crouton). Mom's old computer. Not
   used much.
 * Acer Aspire 1410 Netbook (Core 2 solo @ 1.4GHz; 2 GB RAM) with Arch Linux. Occasionally still used.

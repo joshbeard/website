@@ -26,7 +26,7 @@ Some software and tools I use regularly:
 * [Proxmox](https://www.proxmox.com/) for my home servers
 * [Lose It!](https://www.loseit.com/) for counting calories, meal tracking, and intermittent fasting
 
-See my [Homelab](/homelab) page for details about my home servers.
+See my [Homelab](/homelab/) page for details about my home servers.
 
 I've used Linux, FreeBSD, and macOS on my workstations over the years since
 2000, with all sorts of window manager and desktop environment combinations. In

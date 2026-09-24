@@ -13,11 +13,11 @@
   --text-muted: #AFAFAF;           /* Muted text */
   --text-accent: #77CBE9;          /* Accent text */
 
-  /* Accent Colors - Original Retro Palette */
+  /* Accent Colors */
   --accent-blue: #77CBE9;          /* Primary links */
   --accent-purple: #AE93DD;        /* Home links */
   --accent-green: #71EDBE;         /* Success/hover */
-  --accent-cyan: #5AF2F0;          /* Special hovers */
+  --accent-cyan: var(--accent-blue); /* Alias of accent-blue */
   --accent-pink: #f778ba;          /* Highlights */
   --accent-orange: #ffab70;        /* Warnings */
 
@@ -57,6 +57,6 @@
   --spacing-lg: 40px;
 
   /* Heading Colors */
-  --heading-h2: #5AF2F0;           /* Section titles - bright cyan */
+  --heading-h2: var(--accent-pink); /* Section titles */
   --heading-h3: #ffab70;           /* Subsections - warm orange */
 }

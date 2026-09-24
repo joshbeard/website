@@ -53,13 +53,13 @@ h1 a {
   color: inherit;
 }
 
-h1 a:hover { color: var(--accent-cyan); }
+h1 a:hover { color: var(--accent-green); }
 
 .header_page h1 { margin: 0; }
 
 h2 {
   letter-spacing: 4px;
-  color: var(--accent-blue);
+  color: var(--heading-h2);
 }
 
 h4 { color: var(--accent-purple); }
@@ -1227,9 +1227,50 @@ html:has(#page.image-page) body {
 
 /* Responsive Design */
 @media (max-width: 900px) {
-  #page.workouts-page {
+  #page.workouts-page,
+  #page.album-list,
+  #page.album-index,
+  #page:has(.album-list),
+  #page:has(#album-images) {
     width: calc(100% - 2 * var(--spacing-md));
     margin-inline: auto;
+  }
+
+  #page.album-list #page_content,
+  #page.album-index #page_content,
+  #page:has(.album-list) #page_content,
+  #page:has(#album-images) #page_content {
+    max-width: none;
+  }
+
+  .album-list,
+  #album-images {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(230px, 1fr));
+    gap: var(--spacing-md) var(--spacing-xs);
+    justify-content: stretch;
+  }
+
+  .album-in-list,
+  .image-in-album {
+    width: auto;
+    margin: 0;
+  }
+
+  .all-photos-album-heading {
+    grid-column: 1 / -1;
+  }
+
+  .album-list .img-thumb,
+  .album-list .img_thumb,
+  #album-images .img-thumb,
+  #album-images .img_thumb {
+    max-width: none;
+    max-height: none;
+    width: 100%;
+    height: auto;
+    object-fit: contain;
+    object-position: center;
   }
 }
 
@@ -1238,7 +1279,11 @@ html:has(#page.image-page) body {
     gap: var(--spacing-sm) 1.5rem;
   }
 
-  #page.workouts-page {
+  #page.workouts-page,
+  #page.album-list,
+  #page.album-index,
+  #page:has(.album-list),
+  #page:has(#album-images) {
     width: calc(100% - 2 * var(--spacing-sm));
     margin-inline: auto;
   }

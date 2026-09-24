@@ -11,102 +11,73 @@ class: ascii-art
 
 {% include submenu.html %}
 
-I spent too long treating my health and fitness as something I would deal with
-eventually. Sedentary work and complacency caught up with me: my lab work was
-trending in the wrong direction, my weight was up, and I was not as fit as I
-wanted to be.
+I spent years putting off my health. Sedentary work and lifestyle caught up
+with me: my weight was way up and my lab work was getting worse. I'd received
+an Apple Watch as a gift, hoping it would help me get in shape. In mid-2025, it started flagging my
+rising resting heart rate, and that's when, by the grace of God, I turned
+things around and built a lifestyle I can sustain.
 
-I have never been especially athletic. I was fitter as a young adult and had
-healthier stretches over the years, when work, hiking, or life happened to keep
-me active, but I had not been consistently fit in a long time.
+This page is a record of what I'm doing and what's changed. Publishing it keeps
+me a little more accountable. The detailed log lives on the
+[Workouts](/workouts/) page.
 
-By 2025, I knew I needed a routine I could sustain. My Apple Watch made the
-change harder to put off: my resting heart rate was rising, and I received a
-couple of alerts. Once I started exercising, it also gave me a useful record of
-the progress.
+### What's changed so far
 
-This page is a personal record of what I am doing, what has changed, and what I
-am learning along the way. Publishing it gives me a little extra accountability,
-and the [Workouts](/workouts/) page keeps the underlying log.
+It's been over a year, and everything has moved in the right direction:
 
-### What I am doing
+- **Weight:** down almost 60 lbs.
+- **Cholesterol:** total cholesterol is in the normal range for the first time
+  in a while.
+- **Resting heart rate:** from the low 70s when I started tracking closely to
+  the mid-to-upper 40s recently.
+- **Fitness:** VO2 max is up to "above average" and increasing.
+- **Consistency:** 600+ logged workouts since mid-2025, mostly cycling.
+- **Sleep:** better overall, and I usually wake up before the alarm now.
+- **General feel:** better posture, mood, and day-to-day energy.
+- **Focus and productivity:** has significantly improved.
+
+### What I'm doing
 
 **Exercise:**
 
-See my [Workouts](/workouts/) page for stats and a log of my workouts over the past year.
+See my [workouts](/workouts/) page for some stats and a log.
 
-- **Cycling** - the main thing. Bought a hybrid bike in July 2025 and started
-  riding regularly. Mostly lunch rides during the week, longer rides on
-  weekends when weather cooperates. First exercise routine that has really
-  stuck for me.
-- **Walking** - usually evenings, a couple miles when I can
-- **Dumbbells** - short sessions, upper body and core, nothing heroic
-- **Other exercise here and there** - indoor cycling when it is cold, occasional
-  HIIT when I need a backup
+I've been pushing hard to build a solid fitness base and get my health markers,
+like A1C, cholesterol, and blood pressure, into the normal range.
 
-I've been using [Strava](https://www.strava.com/) privately to help track my
-workouts - mainly my rides - and to provide motivating analytics.
-
-I like the free [Timer Plus - Workouts Timer](https://apps.apple.com/us/app/timer-plus-workouts-timer/id1279716547)
-app that's perfect for setting custom interval-based workout timers and HIIT sessions.
+- **Cycling:** the main thing, and the first routine that has really stuck. I
+  bought a hybrid bike in July 2025 and ride most days: lunch rides during the
+  week, longer rides on weekends when the weather cooperates. I track rides
+  privately on [Strava](https://www.strava.com/).
+- **Walking:** usually a couple of miles in the evening.
+- **Dumbbells:** short upper-body and core sessions.
+- **Running:** Now that I've dropped some weight, I've started to mix in some running, especially trail running.
+- **Other:** taking back up hiking - something I used to do [regularly](/photos/), mobility/yoga, and other assorted workouts here and there.
 
 **Diet:**
 
-- **Fasting** - 16:8 as the baseline, usually closer to 18:6 in practice.
-  Started mixing in occasional 24-hour fasts and am planning to incorporate
-  36-hour fasts periodically soon.
-- **Calorie counting** - tracking with LoseIt, paying closer attention to
-  portions and protein, and keeping sugar and refined carbs minimized
-- **Supplements** - a consistent, basic routine for general health and
-  nutrition. Nothing performance-enhancing or especially exotic.
-
-I've used [Lose It!](https://www.loseit.com/) a few times over the past 10 years
-and resumed using it more intentionally and successfully in 2025. I've stayed
-pretty disciplined with logging all of my food throughout the day. I also use
-the fasting timer. Lose It has smarter way of handling a daily calorie budget
-based on activity that's synchronized from devices. When I am consistent with
-Lose It!, I am making the expected progress.
-
-I've also been using the [Intermittent](https://intermittentfast.ing/) app for
-fasting. It's well designed, free, requires no account, and actually provides
-useful insight into the phases of a fast.
-
-I'm trying [Buoy Hydration Drops](https://justaddbuoy.com/) for day-to-day
-hydration supplements, as well as [SALTT Drops](https://saltt.com/) - especially
-for the longer fasts that are more minimal. Too soon to share results, but I
-figured it was worth a try. I much prefer _drops_ over powders and pre-mixed
-drinks. It's just simpler and easier for me, which ensures I'll actually do it
-regularly. Similarly, I've been taking psyllium husk in capsule form instead of
-powder because I'm certain to actually take it regularly, but a powder is very
-unlikely to stay in my routine. I'm willing to spend extra and have some
-tradeoffs for the convenience.
+- **No strict diet:** I haven't cut out any foods (except sugary drinks), just made more deliberate
+  choices. I still have sweets, chips, burgers and fries, pizza, and ice cream, etc - just less of it and less often.
+- **Calorie counting:** logging everything in [Lose It!](https://www.loseit.com/),
+  which adjusts my daily budget based on activity. I pay attention to portions
+  and protein and keep sugar and refined carbs to a minimum. When I'm consistent
+  with it, I see progress.
+- **Fasting:** 16:8 baseline, usually closer to 18:6, with occasional 24-hour
+  fasts and longer ones planned. I use [Intermittent](https://intermittentfast.ing/):
+  free, no account, and genuinely useful insight into fasting phases.
+- **Supplements:** a basic routine for general health, plus
+  [SALTT](https://saltt.com/) drops for
+  hydration and longer fasts.
 
 **Habits:**
 
-- **Nicotine** - quit
-- **Alcohol** - reducing; still in progress
-- **Soda** - eliminated regular soda and sugary drinks a couple of years ago; have
-  mostly cut diet soda too over the past few months
-- **Caffeine** - working on reducing (tea in mornings, cut off in afternoon)
+- **Nicotine:** quit.
+- **Alcohol:** cutting back; still in progress.
+- **Soda:** cut regular soda and sugary drinks a couple of years ago, and most
+  diet soda over the past year.
+- **Caffeine:** cutting back, with tea in the mornings and nothing in the
+  afternoon.
 
-### What has changed so far
-
-It has been about a year. Pretty much everything has significantly moved in the
-right direction:
-
-- **Weight** - down over 40 lbs so far
-- **Cholesterol** - improved; total cholesterol is in normal range for the
-  first time in a while
-- **Resting heart rate** - down significantly; it averaged in the low 70s when
-  I started tracking this more closely, and has recently been around the mid-high
-  40s
-- **Fitness** - VO2 max is up to 'above average', and I ride most days when weather allows
-- **Strength** - more consistent dumbbell work, and the results are showing
-- **Consistency** - 400+ logged workouts since mid-2025, mostly cycling
-- **Sleep** - better overall, and I am usually awake before the alarm now
-- **General feel** - my body feels better; posture, mood, and day-to-day energy
-  have all improved
-
-There is still progress to be made. This is meant to be a lifelong, sustainable
-discipline, not a project with an end date. But the direction is better than
-it was, and I want to keep it that way.
+There's still progress to make. This is meant to be a lifelong habit, not a
+project with an end date, but the direction is better than it was and I want to
+keep it that way.

@@ -53,6 +53,7 @@
 require 'yaml'
 require 'fileutils'
 require 'optparse'
+require 'open3'
 
 # ======================================================================
 # Configuration
@@ -61,8 +62,10 @@ require 'optparse'
 PHOTO_DIR = "photos"
 # Filename for the album info file created by the Jekyll plugin
 ALBUM_INFO_FILENAME = "album.yml"
-# Pixel width of thumbnails to generate
-THUMB_WIDTH = 230
+# Longest edge, in pixels, of generated thumbnails.
+# Sized for a full-width phone column on a 3x display.
+THUMB_WIDTH = 1200
+THUMB_QUALITY = 75
 # Path for thumbs directory relative to the album directory.
 THUMB_DIR = "thumbs"
 S3_BUCKET = "joshbeard.me-photos"
@@ -102,10 +105,42 @@ class PhotoDeployer
     exit 0
   end
 
+  # Longest edge of an image, in pixels.
+  #
+  # @param path [String] The local path to an image
+  # @return [Integer, nil] The longer of width and height, or nil if it cannot be read
+  def self.image_long_edge(path)
+    stdout, status = Open3.capture2('magick', 'identify', '-format', '%w %h', path)
+    return nil unless status.success?
+
+    width, height = stdout.split.map(&:to_i)
+    return nil if width <= 0 || height <= 0
+
+    [width, height].max
+  end
+
+  # A thumbnail needs a rebuild when it is missing or smaller than both the
+  # target long edge and the original. Originals smaller than the target are
+  # left at their own size.
+  #
+  # @param original [String] The local path to the source image
+  # @param thumb [String] The local path to the thumbnail
+  # @return [Boolean]
+  def self.thumbnail_needs_rebuild?(original, thumb)
+    return true unless File.exist?(thumb)
+
+    thumb_edge = image_long_edge(thumb)
+    original_edge = image_long_edge(original)
+    return true if thumb_edge.nil? || original_edge.nil?
+
+    thumb_edge < [THUMB_WIDTH, original_edge].min
+  end
+
   # Create thumbnails for images in an album directory
   #
   # Uses the 'mogrify' tool to generate thumbnails for images in an album
   # directory and places them in the 'THUMBS_DIR' within the album directory.
+  # Existing thumbnails are rewritten when their long edge is below the target.
   #
   # @param path [String] The local path to a specific photo album directory
   def self.create_album_thumbnails(path)
@@ -116,22 +151,30 @@ class PhotoDeployer
 
     image_list = list_album_images(path)
     puts "  ▸ [thumbnails] Generating thumbnails for #{path}"
-    puts "    [DRY RUN] Would generate thumbnails" if dry_run? && image_list.any?
 
     image_list.each do |image|
       photo = File.join(path, image)
       thumb_path = File.join(thumb_dir, image)
+      next unless thumbnail_needs_rebuild?(photo, thumb_path)
 
-      unless File.exist?(thumb_path)
-        if dry_run?
-          puts "    ▹ [DRY RUN] Would generate thumbnail: #{thumb_path}"
-        else
-          begin
-            cmd = ['/usr/bin/env', 'mogrify', '-path', thumb_dir, '-resize', THUMB_WIDTH.to_s, photo]
-            system(*cmd)
-          rescue => e
-            puts "    ▹ [thumbnails] Error generating thumbnail for #{photo}: #{e.message}"
+      if dry_run?
+        puts "    ▹ [DRY RUN] Would generate thumbnail: #{thumb_path}"
+      else
+        begin
+          puts "    ▹ [thumbnails] #{image}"
+          cmd = [
+            '/usr/bin/env', 'mogrify',
+            '-path', thumb_dir,
+            '-resize', "#{THUMB_WIDTH}x#{THUMB_WIDTH}>",
+            '-quality', THUMB_QUALITY.to_s,
+            '-strip',
+            photo
+          ]
+          unless system(*cmd)
+            puts "    ▹ [thumbnails] Error generating thumbnail for #{photo}"
           end
+        rescue => e
+          puts "    ▹ [thumbnails] Error generating thumbnail for #{photo}: #{e.message}"
         end
       end
     end

@@ -25,7 +25,7 @@ me a little more accountable. The detailed log lives on the
 
 It's been over a year, and everything has moved in the right direction:
 
-- **Weight:** down almost 60 lbs.
+- **Weight:** down over 60 lbs (am near goal weight)
 - **Cholesterol:** total cholesterol is in the normal range for the first time
   in a while.
 - **Resting heart rate:** from the low 70s when I started tracking closely to

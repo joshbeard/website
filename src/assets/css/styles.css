@@ -878,6 +878,65 @@ li.home_link a.ext:after { content: ""; margin: 0; }
   color: var(--accent-cyan);
 }
 
+.workout-music {
+  display: inline;
+}
+
+.workout-music > summary {
+  display: inline;
+  cursor: pointer;
+  list-style: none;
+  color: var(--text-muted);
+  font-size: .75em;
+  font-weight: 400;
+  letter-spacing: 0;
+}
+
+.workout-music > summary::-webkit-details-marker {
+  display: none;
+}
+
+.workout-music > summary:hover,
+.workout-music[open] > summary {
+  color: var(--accent-green);
+}
+
+.workout-tracks {
+  margin: .35em 0 .15em;
+  padding: 0;
+  list-style: none;
+  font-size: .8em;
+  line-height: 1.35;
+  text-align: left;
+  white-space: normal;
+  min-width: 16em;
+  max-width: 28em;
+}
+
+.workout-track-time {
+  display: inline-block;
+  min-width: 3.4em;
+  color: var(--text-muted);
+  font-variant-numeric: tabular-nums;
+}
+
+.workout-track-unmatched {
+  color: var(--text-muted);
+}
+
+.workout-month-playlist,
+.workout-last-playlist {
+  color: var(--text-muted);
+  font-size: .75em;
+  font-weight: 400;
+  letter-spacing: 0;
+}
+
+.workout-month-playlist:hover,
+.workout-last-playlist:hover {
+  color: var(--accent-green);
+}
+
 .workouts-page th:nth-child(2),
 .workouts-page td:nth-child(2),
 .workouts-page th:nth-child(n+4),

@@ -725,12 +725,30 @@ li.home_link a.ext:after { content: ""; margin: 0; }
   content: "▾";
 }
 
-.workout-month > summary span {
+.workout-month > summary .workout-month-name {
+  display: inline-flex;
+  align-items: baseline;
+  gap: .55em;
+  min-width: 0;
+  white-space: nowrap;
+}
+
+/* Stats sit in the last column. The plain span is the markup from before
+   playlist links; .workout-month-stats is the current markup. */
+.workout-month > summary > span:not(.workout-month-name) {
+  justify-self: end;
   color: var(--text-muted);
   font-family: var(--font-primary);
   font-size: .8rem;
+  font-weight: 400;
   letter-spacing: 0;
   text-align: right;
+}
+
+#page.workouts-page .workout-month > summary > a,
+#page.workouts-page .workout-month > summary .workout-month-name > a:not(.workout-month-playlist) {
+  color: inherit;
+  text-decoration: none;
 }
 
 #page.workouts-page h2.workout-year-title {
@@ -890,6 +908,8 @@ li.home_link a.ext:after { content: ""; margin: 0; }
   font-size: .75em;
   font-weight: 400;
   letter-spacing: 0;
+  text-decoration: underline;
+  text-underline-offset: .15em;
 }
 
 .workout-music > summary::-webkit-details-marker {
@@ -898,7 +918,7 @@ li.home_link a.ext:after { content: ""; margin: 0; }
 
 .workout-music > summary:hover,
 .workout-music[open] > summary {
-  color: var(--accent-green);
+  color: var(--accent-cyan);
 }
 
 .workout-tracks {
@@ -924,16 +944,35 @@ li.home_link a.ext:after { content: ""; margin: 0; }
   color: var(--text-muted);
 }
 
-.workout-month-playlist,
-.workout-last-playlist {
-  color: var(--text-muted);
-  font-size: .75em;
+#page.workouts-page a.workout-month-playlist,
+#page.workouts-page a.workout-last-playlist,
+#page.workouts-page h3.workout-month-title a.workout-month-playlist {
+  color: var(--accent-blue);
+  font-family: var(--font-primary);
   font-weight: 400;
   letter-spacing: 0;
+  text-decoration: underline;
+  text-underline-offset: .15em;
 }
 
-.workout-month-playlist:hover,
-.workout-last-playlist:hover {
+#page.workouts-page a.workout-last-playlist {
+  font-size: inherit;
+}
+
+#page.workouts-page a.workout-month-playlist,
+#page.workouts-page h3.workout-month-title a.workout-month-playlist {
+  font-size: .8rem;
+}
+
+#page.workouts-page a.workout-month-playlist:visited,
+#page.workouts-page a.workout-last-playlist:visited,
+#page.workouts-page h3.workout-month-title a.workout-month-playlist:visited {
+  color: var(--accent-purple);
+}
+
+#page.workouts-page a.workout-month-playlist:hover,
+#page.workouts-page a.workout-last-playlist:hover,
+#page.workouts-page h3.workout-month-title a.workout-month-playlist:hover {
   color: var(--accent-green);
 }
 

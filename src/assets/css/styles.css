@@ -896,6 +896,65 @@ li.home_link a.ext:after { content: ""; margin: 0; }
   color: var(--accent-cyan);
 }
 
+.workout-expand {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+  padding: 0;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  border: 0;
+}
+
+.workout-expand-label,
+.workout-flag {
+  cursor: pointer;
+  font-size: .75em;
+  font-weight: 400;
+  letter-spacing: 0;
+  text-decoration: underline;
+  text-underline-offset: .15em;
+}
+
+.workout-expand-label {
+  color: var(--text-muted);
+}
+
+.workout-flag {
+  color: var(--accent-cyan);
+}
+
+.workouts-page tr:has(.workout-expand:checked) .workout-expand-label,
+.workouts-page tr:has(.workout-expand:checked) .workout-flag {
+  color: var(--accent-green);
+}
+
+#page.workouts-page td.workout-detail {
+  display: none;
+  grid-column: 1 / -1;
+  padding: .5em var(--spacing-md) .85em 136px;
+  color: var(--text-secondary);
+  font-family: var(--font-primary);
+  font-size: .9em;
+  letter-spacing: 0;
+  line-height: 1.4;
+  text-align: left;
+  white-space: normal;
+}
+
+#page.workouts-page tr:has(.workout-expand:checked) td.workout-detail {
+  display: block;
+}
+
+.workout-detail .workout-note p {
+  margin: 0 0 .45em;
+}
+
+.workout-detail .workout-tracks {
+  max-width: none;
+}
+
 .workout-music {
   display: inline;
 }
@@ -979,7 +1038,7 @@ li.home_link a.ext:after { content: ""; margin: 0; }
 .workouts-page th:nth-child(2),
 .workouts-page td:nth-child(2),
 .workouts-page th:nth-child(n+4),
-.workouts-page td:nth-child(n+4) {
+.workouts-page td:nth-child(n+4):not(.workout-detail) {
   text-align: right;
 }
 
@@ -1673,12 +1732,22 @@ html:has(#page.image-page) body {
     grid-row: 4;
   }
 
-  #page.workouts-page td:nth-child(n+4) {
+  #page.workouts-page td.workout-detail {
+    grid-row: 5;
+    padding-left: var(--spacing-sm);
+    padding-right: var(--spacing-sm);
+  }
+
+  #page.workouts-page td.workout-detail::before {
+    content: none;
+  }
+
+  #page.workouts-page td:nth-child(n+4):not(.workout-detail) {
     color: var(--text-muted);
     font-family: var(--font-mono);
   }
 
-  #page.workouts-page td:nth-child(n+4)::before {
+  #page.workouts-page td:nth-child(n+4):not(.workout-detail)::before {
     color: var(--text-secondary);
     font-family: var(--font-primary);
     margin-right: 4px;

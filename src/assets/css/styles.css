@@ -909,10 +909,14 @@ li.home_link a.ext:after { content: ""; margin: 0; }
 
 .workout-expand-label,
 .workout-flag {
-  cursor: pointer;
   font-size: .75em;
   font-weight: 400;
   letter-spacing: 0;
+}
+
+.workout-expand-label,
+label.workout-flag {
+  cursor: pointer;
   text-decoration: underline;
   text-underline-offset: .15em;
 }
@@ -925,8 +929,8 @@ li.home_link a.ext:after { content: ""; margin: 0; }
   color: var(--accent-cyan);
 }
 
-.workouts-page tr:has(.workout-expand:checked) .workout-expand-label,
-.workouts-page tr:has(.workout-expand:checked) .workout-flag {
+.workouts-page tr:has(.workout-expand:checked) label.workout-flag,
+.workouts-page tr:has(.workout-expand:checked) label.workout-expand-label {
   color: var(--accent-green);
 }
 

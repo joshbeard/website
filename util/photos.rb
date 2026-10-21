@@ -6,11 +6,11 @@
 # It does the following:
 #   - Creates a file list (file_list.txt) for each album for Jekyll to use to
 #     generate the pages.
-#   - Removes exif data from images (using exiv2)
+#   - Removes exif data from images that still have it (using exiv2)
 #   - Creates image thumbnails (using mogrify)
-#   - Syncs albums to S3
-#   - Sets the cache-control headers on the S3 objects
+#   - Syncs albums to S3, setting cache-control on uploaded images
 #   - Generates Gemini pages and uploads them to S3
+
 #
 # Requirements:
 #   - AWS credentials should be set in the environment prior to running:
@@ -26,15 +26,17 @@
 #
 # Options:
 #   --dry-run          Show what would be done without making changes
-#   --sync             Upload to S3 and set cache headers (default: local processing only)
+#   --sync             Upload to S3. Cache-control is set on uploaded images.
+#   --refresh-cache    Update S3 cache-control only on objects where it differs
 #
 # By default, the script performs only local operations:
 #   - Updates album.yml with images (preserves existing entries)
-#   - Removes EXIF data
+#   - Removes EXIF data from images that still have it
 #   - Generates thumbnails
 #   - Creates Gemini pages
 #
-# Use --sync to also upload to S3 and set cache headers.
+# Use --sync to also upload new or modified files to S3. Unchanged objects are
+# left alone. Use --refresh-cache to repair cache-control on existing objects.
 #
 # Specify a path or multiple space-delimited paths to directories containing
 # photos. For example:
@@ -69,11 +71,14 @@ THUMB_QUALITY = 75
 # Path for thumbs directory relative to the album directory.
 THUMB_DIR = "thumbs"
 S3_BUCKET = "joshbeard.me-photos"
+# Cache-Control max-age applied to image uploads, in seconds (180 days).
+CACHE_MAX_AGE = 15552000
 # ======================================================================
 
 class PhotoDeployer
   @@dry_run = false
   @@sync = false
+  @@refresh_cache = false
 
   # ANSI color codes
   COLOR_RESET = "\033[0m"
@@ -100,6 +105,14 @@ class PhotoDeployer
     @@sync = value
   end
 
+  def self.refresh_cache?
+    @@refresh_cache
+  end
+
+  def self.set_refresh_cache(value)
+    @@refresh_cache = value
+  end
+
   def self.handler(signal)
     puts "#{COLOR_RED}SIGINT or CTRL-C received. Exiting.#{COLOR_RESET}"
     exit 0
@@ -119,15 +132,16 @@ class PhotoDeployer
     [width, height].max
   end
 
-  # A thumbnail needs a rebuild when it is missing or smaller than both the
-  # target long edge and the original. Originals smaller than the target are
-  # left at their own size.
+  # A thumbnail needs a rebuild when it is missing, the source file is newer,
+  # or its long edge is below both the target and the original. Originals
+  # smaller than the target are left at their own size.
   #
   # @param original [String] The local path to the source image
   # @param thumb [String] The local path to the thumbnail
   # @return [Boolean]
   def self.thumbnail_needs_rebuild?(original, thumb)
     return true unless File.exist?(thumb)
+    return true if source_replaced?(original, thumb)
 
     thumb_edge = image_long_edge(thumb)
     original_edge = image_long_edge(original)
@@ -140,7 +154,7 @@ class PhotoDeployer
   #
   # Uses the 'mogrify' tool to generate thumbnails for images in an album
   # directory and places them in the 'THUMBS_DIR' within the album directory.
-  # Existing thumbnails are rewritten when their long edge is below the target.
+  # Existing thumbnails are rewritten when the source is newer or the long edge is below the target.
   #
   # @param path [String] The local path to a specific photo album directory
   def self.create_album_thumbnails(path)
@@ -182,7 +196,9 @@ class PhotoDeployer
 
   # Check for EXIF data in an image
   #
-  # Uses the 'exiv2' to check if an image has EXIF data.
+  # Uses the 'exiv2' to check if an image has EXIF data. JPEG files are
+  # inspected in-process first; this is the fallback when that walk fails,
+  # and the check used for other formats.
   #
   # @param photo [String] The local path to a specific photo
   # @return [Boolean] Boolean specifying whether an image has EXIF data or not
@@ -191,36 +207,151 @@ class PhotoDeployer
     system(*cmd, out: File::NULL, err: File::NULL)
   end
 
+  # Whether a JPEG marker segment is metadata exiv2 would remove.
+  #
+  # APP1 carries Exif or XMP, APP13 carries IPTC, and COM is a comment.
+  #
+  # @param marker_code [Integer]
+  # @param payload [String]
+  # @return [Boolean]
+  def self.jpeg_metadata_segment?(marker_code, payload)
+    case marker_code
+    when 0xFE
+      true
+    when 0xE1
+      payload.start_with?("Exif\x00\x00".b) ||
+        payload.start_with?("http://ns.adobe.com/xap/1.0/\x00".b)
+    when 0xED
+      payload.start_with?("Photoshop 3.0\x00".b)
+    else
+      false
+    end
+  end
+
+  # Walk JPEG markers until the start of scan.
+  #
+  # @param path [String]
+  # @return [Boolean, nil] true when metadata is present, false when the
+  #   image was scanned and has none, nil when the file could not be parsed
+  def self.jpeg_has_metadata?(path)
+    File.open(path, 'rb') do |file|
+      return nil unless file.read(2) == "\xFF\xD8".b
+
+      loop do
+        byte = file.read(1)
+        return nil if byte.nil?
+        next unless byte == "\xFF".b
+
+        marker = file.read(1)
+        return nil if marker.nil?
+        while marker == "\xFF".b
+          marker = file.read(1)
+          return nil if marker.nil?
+        end
+
+        marker_code = marker.ord
+        # SOS begins the compressed image. EOI ends the file. Neither carries a
+        # length, and metadata segments come before them.
+        return false if marker_code == 0xDA || marker_code == 0xD9
+        # TEM, restart markers, and SOI have no length field.
+        next if marker_code == 0x01 || (marker_code >= 0xD0 && marker_code <= 0xD8)
+
+        length_bytes = file.read(2)
+        return nil if length_bytes.nil? || length_bytes.bytesize < 2
+
+        segment_length = length_bytes.unpack1('n')
+        return nil if segment_length < 2
+
+        payload_length = segment_length - 2
+        if [0xE1, 0xED, 0xFE].include?(marker_code)
+          peek_length = [payload_length, 64].min
+          payload = file.read(peek_length)
+          return nil if payload.nil? || payload.bytesize < peek_length
+
+          remaining = payload_length - peek_length
+          file.seek(remaining, IO::SEEK_CUR) if remaining.positive?
+          return true if jpeg_metadata_segment?(marker_code, payload)
+        elsif payload_length.positive?
+          file.seek(payload_length, IO::SEEK_CUR)
+        end
+      end
+    end
+  end
+
+  # Whether an image still has metadata that should be stripped.
+  #
+  # JPEGs are scanned in-process. A failed scan, or any other format, falls
+  # back to exiv2.
+  #
+  # @param photo [String]
+  # @return [Boolean]
+  def self.image_has_metadata?(photo)
+    if File.extname(photo).downcase.match?(/\.jpe?g\z/)
+      detected = jpeg_has_metadata?(photo)
+      return detected unless detected.nil?
+    end
+
+    check_image_exif(photo)
+  rescue StandardError
+    check_image_exif(photo)
+  end
+
+  # A source image is new or replaced when it has no thumbnail yet, or the
+  # thumbnail was generated from an older copy of the file.
+  #
+  # @param original [String]
+  # @param thumb [String]
+  # @return [Boolean]
+  def self.source_replaced?(original, thumb)
+    return true unless File.exist?(thumb)
+
+    File.mtime(original) > File.mtime(thumb)
+  end
+
   # Remove EXIF data from images in an album
   #
-  # Uses the 'exiv2' tool to remove all EXIF data from all images found in an
-  # album directory.
-  # It uses the 'check_image_exif()' function to check if an image has EXIF data
-  # and will skip it if it doesn't.
+  # Uses the 'exiv2' tool to remove metadata from images that still have an
+  # Exif, XMP, IPTC, or comment segment. Images that already have a current
+  # thumbnail are left untouched: rewriting them would change the JPEG and
+  # upload the whole album. New and replaced images are stripped.
   #
   # @param path [String] The local path to an album directory
   def self.remove_image_exif(path)
     puts "  ▸ [exif] Removing exif from images in #{path}"
     image_list = list_album_images(path)
+    clean = 0
+    unchanged = 0
 
     image_list.each do |image|
       photo = File.join(path, image)
+      thumb_path = File.join(path, THUMB_DIR, image)
 
       begin
-        if check_image_exif(photo)
-          if dry_run?
-            puts "    ▹ [DRY RUN] Would remove EXIF data from #{photo}"
-          else
-            cmd = ['/usr/bin/env', 'exiv2', 'rm', photo]
-            system(*cmd)
-          end
+        unless image_has_metadata?(photo)
+          clean += 1
+          next
+        end
+
+        unless source_replaced?(photo, thumb_path)
+          unchanged += 1
+          next
+        end
+
+        if dry_run?
+          puts "    ▹ [DRY RUN] Would remove EXIF data from #{photo}"
         else
-          puts "    ▹ [exif] Skipping #{photo} - no exif data found"
+          puts "    ▹ [exif] #{image}"
+          cmd = ['/usr/bin/env', 'exiv2', 'rm', photo]
+          unless system(*cmd)
+            puts "    ▹ [exif] Error removing EXIF data from #{photo}"
+          end
         end
       rescue => e
         puts "Error removing exif data for #{photo}: #{e.message}"
       end
     end
+
+    puts "    ▹ [exif] #{clean} without metadata, #{unchanged} unchanged" if (clean + unchanged).positive?
   end
 
   # Create a Gemini index page for each album
@@ -268,14 +399,18 @@ class PhotoDeployer
     end
 
     gemini_path = File.join(album, 'index.gmi')
-    if dry_run?
+    gemini_content = album_index.join("\n")
+    unchanged = File.exist?(gemini_path) && File.read(gemini_path) == gemini_content
+    if unchanged
+      puts "  ▸ [gemini] Gemini index unchanged (#{image_list.length} images)"
+    elsif dry_run?
       puts "  ▸ [DRY RUN] Would write Gemini index to #{gemini_path} (#{image_list.length} images)"
     else
-      File.write(gemini_path, album_index.join("\n"))
+      File.write(gemini_path, gemini_content)
       puts "  #{COLOR_GREEN}▸ [gemini] Wrote Gemini index to #{gemini_path} (#{image_list.length} images)#{COLOR_RESET}"
     end
 
-    album_index.join("\n")
+    gemini_content
   end
 
   # Update album.yml with images
@@ -324,7 +459,15 @@ class PhotoDeployer
       return
     end
 
-    if dry_run?
+    # For images without descriptions, we need to include them in the hash
+    # but YAML will write them as empty strings. We'll keep them all so
+    # images.keys serves as the complete list of images.
+    yaml_content = album_info.to_yaml(line_width: -1)
+    unchanged = File.exist?(info_file) && File.read(info_file) == yaml_content
+
+    if unchanged
+      puts "  ▸ [album_info] album.yml unchanged"
+    elsif dry_run?
       puts "  ▸ [DRY RUN] Would update album.yml"
       puts "    ▹ Local images: #{local_images.length}"
       puts "    ▹ Total in images: #{existing_descriptions.length}"
@@ -333,13 +476,6 @@ class PhotoDeployer
       end
       puts "    ▹ Would preserve existing images: #{(existing_descriptions.keys - local_images).length}"
     else
-      # For images without descriptions, we need to include them in the hash
-      # but YAML will write them as empty strings. We'll keep them all so
-      # images.keys serves as the complete list of images.
-      # Images with empty descriptions will appear in YAML as empty strings.
-
-      # Write the updated YAML with proper formatting
-      yaml_content = album_info.to_yaml(line_width: -1)
       File.write(info_file, yaml_content)
       preserved_count = (existing_descriptions.keys - local_images).length
       total_images = existing_descriptions.keys.length
@@ -432,32 +568,64 @@ class PhotoDeployer
   # @param path [String] The local path to an album directory
   def self.copy_to_s3(path)
     s3_path = normalize_s3_path(path)
-    puts " ▸ [s3-sync] Syncing #{path} to S3 (s3://#{S3_BUCKET}/#{s3_path})"
+    destination = "s3://#{S3_BUCKET}/#{s3_path}"
+    puts " ▸ [s3-sync] Syncing #{path} to S3 (#{destination})"
     puts "    [SAFETY] Only uploading new/modified files. Remote files will NOT be deleted."
 
-    cmd = [
-      '/usr/bin/env', 'aws', 's3', 'sync', path,
-      "s3://#{S3_BUCKET}/#{s3_path}",
+    image_cmd = [
+      '/usr/bin/env', 'aws', 's3', 'sync', path, destination,
       '--acl', 'public-read',
+      '--cache-control', "max-age=#{CACHE_MAX_AGE}",
       '--exclude', '*.html',
       '--exclude', '*.yml',
       '--exclude', '*.txt',
+      '--exclude', '*.gmi',
       '--exclude', '.*'
+    ]
+    # The Gemini index changes with the album, so it is not given the long
+    # image cache lifetime.
+    gmi_cmd = [
+      '/usr/bin/env', 'aws', 's3', 'sync', path, destination,
+      '--acl', 'public-read',
+      '--exclude', '*',
+      '--include', 'index.gmi'
     ]
 
     if dry_run?
-      cmd << '--dryrun'
+      image_cmd << '--dryrun'
+      gmi_cmd << '--dryrun'
       puts "    [DRY RUN] Would sync files to S3"
     end
 
-    system(*cmd)
+    system(*image_cmd)
+    system(*gmi_cmd)
   end
 
-  # Set the 'cache-control' on image objects in S3
+  # Current Cache-Control value for an S3 object, or nil when it is unset.
+  #
+  # @param s3_key [String]
+  # @return [String, nil]
+  def self.s3_cache_control(s3_key)
+    stdout, status = Open3.capture2(
+      '/usr/bin/env', 'aws', 's3api', 'head-object',
+      '--bucket', S3_BUCKET,
+      '--key', s3_key,
+      '--query', 'CacheControl',
+      '--output', 'text'
+    )
+    return nil unless status.success?
+
+    value = stdout.strip
+    return nil if value.empty? || value == 'None'
+
+    value
+  end
+
+  # Set the 'cache-control' on image objects in S3 whose header differs.
   #
   # @param path [String] The local path to an album directory
   # @param maxage [Integer] The duration in seconds for the cache max age
-  def self.set_s3_object_cache(path, maxage = 15552000)
+  def self.set_s3_object_cache(path, maxage = CACHE_MAX_AGE)
     image_list = list_album_images(path)
 
     if image_list.empty?
@@ -465,26 +633,38 @@ class PhotoDeployer
       return
     end
 
+    desired = "max-age=#{maxage}"
+    unchanged = 0
+    updated = 0
+
     image_list.each do |image|
       image_file = File.join(path, image)
       s3_image_file = normalize_s3_path(image_file)
+      current = s3_cache_control(s3_image_file)
 
-      if dry_run?
-        puts "  ▸ [DRY RUN] Would set S3 object cache control for #{image_file} (s3://#{S3_BUCKET}/#{s3_image_file})"
-      else
-        puts "  ▸ [s3-cache] Setting S3 object cache control for #{image_file} (s3://#{S3_BUCKET}/#{s3_image_file})"
-
-        cmd = [
-          '/usr/bin/env', 'aws', 's3', 'cp',
-          "s3://#{S3_BUCKET}/#{s3_image_file}",
-          "s3://#{S3_BUCKET}/#{s3_image_file}",
-          '--acl', 'public-read',
-          '--cache-control', "max-age=#{maxage}"
-        ]
-
-        system(*cmd)
+      if current == desired
+        unchanged += 1
+        next
       end
+
+      updated += 1
+      if dry_run?
+        puts "  ▸ [DRY RUN] Would set S3 object cache control for #{image_file} (#{current.inspect} -> #{desired})"
+        next
+      end
+
+      puts "  ▸ [s3-cache] Setting S3 object cache control for #{image_file} (#{current.inspect} -> #{desired})"
+      cmd = [
+        '/usr/bin/env', 'aws', 's3', 'cp',
+        "s3://#{S3_BUCKET}/#{s3_image_file}",
+        "s3://#{S3_BUCKET}/#{s3_image_file}",
+        '--acl', 'public-read',
+        '--cache-control', desired
+      ]
+      system(*cmd)
     end
+
+    puts "    ▹ [s3-cache] #{updated} updated, #{unchanged} already set"
   end
 
   # Parse each album
@@ -519,13 +699,14 @@ class PhotoDeployer
       create_album_thumbnails(path)
       create_gemini_photo_pages(path, album_info)
 
-      # S3 operations (only if --sync is specified)
+      # S3 operations (only if --sync is specified). Cache-control is set on
+      # the objects sync uploads. --refresh-cache repairs headers in place.
       if sync?
         copy_to_s3(path)
-        set_s3_object_cache(path)
-      else
+      elsif !refresh_cache?
         puts "  #{COLOR_BLUE}▸ [s3-sync] Skipping S3 operations (use --sync to enable)#{COLOR_RESET}"
       end
+      set_s3_object_cache(path) if refresh_cache?
 
       puts
       puts "--------------------------------------------------------------------------------"
@@ -549,8 +730,11 @@ if __FILE__ == $0
     opts.on("--dry-run", "Show what would be done without making changes") do
       options[:dry_run] = true
     end
-    opts.on("--sync", "Upload to S3 and set cache headers (default: local processing only)") do
+    opts.on("--sync", "Upload to S3. Cache-control is set on uploaded images") do
       options[:sync] = true
+    end
+    opts.on("--refresh-cache", "Update S3 cache-control only where it differs") do
+      options[:refresh_cache] = true
     end
     opts.on("-h", "--help", "Prints this help") do
       puts opts
@@ -561,6 +745,7 @@ if __FILE__ == $0
   # Set options
   PhotoDeployer.set_dry_run(options[:dry_run] || false)
   PhotoDeployer.set_sync(options[:sync] || false)
+  PhotoDeployer.set_refresh_cache(options[:refresh_cache] || false)
 
   puts "#{PhotoDeployer::COLOR_CYAN}╔══════════════════════════════════════════════════════════════════════════════╗#{PhotoDeployer::COLOR_RESET}"
   puts "#{PhotoDeployer::COLOR_CYAN}                                 joshbeard.com#{PhotoDeployer::COLOR_RESET}"
@@ -570,9 +755,12 @@ if __FILE__ == $0
     puts "#{PhotoDeployer::COLOR_YELLOW}⚠️  DRY RUN MODE - No changes will be made#{PhotoDeployer::COLOR_RESET}"
   end
   if PhotoDeployer.sync?
-    puts "#{PhotoDeployer::COLOR_GREEN}S3 SYNC ENABLED - Will upload to S3 and set cache headers#{PhotoDeployer::COLOR_RESET}"
+    puts "#{PhotoDeployer::COLOR_GREEN}S3 SYNC ENABLED - Will upload new or modified files to S3#{PhotoDeployer::COLOR_RESET}"
   else
     puts "#{PhotoDeployer::COLOR_BLUE}LOCAL MODE - Processing locally only (use --sync to enable S3 upload)#{PhotoDeployer::COLOR_RESET}"
+  end
+  if PhotoDeployer.refresh_cache?
+    puts "#{PhotoDeployer::COLOR_GREEN}S3 CACHE REFRESH - Will update cache-control only where it differs#{PhotoDeployer::COLOR_RESET}"
   end
   puts
   puts "Arguments: #{ARGV.inspect}"

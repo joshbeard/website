@@ -61,7 +61,7 @@
         {% include jsonld.html %}
     </head>
 
-    <body>
+    <body{% if body_class %} class="{{ body_class }}"{% endif %}>
         <div id="container">
             <div id="header" class="{{ header_class | default: header_default }}">
                 <h1><a href="/">Josh Beard</a></h1>

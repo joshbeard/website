@@ -1777,6 +1777,66 @@ html:has(#page.image-page) body {
   #menu_bar ul li { padding: 4px var(--spacing-sm); }
 }
 
+/* Intentionally empty slash page */
+body.blank #header,
+body.blank #menu_bar {
+  display: none;
+}
+
+body.blank #content {
+  display: flex;
+  flex: 1;
+  align-items: center;
+  justify-content: center;
+}
+
+body.blank #page {
+  margin: 0;
+  width: 100%;
+}
+
+body.blank #page_content {
+  margin: 0 auto;
+  max-width: 40rem;
+  padding: 0 var(--spacing-md);
+}
+
+body.blank #page p {
+  margin: 0;
+  text-align: center;
+  font-family: var(--font-display);
+  font-size: 1.05rem;
+  font-weight: 400;
+  letter-spacing: 0.14em;
+  line-height: 1.7;
+  color: var(--text-muted);
+}
+
+body.blank .blank-return {
+  position: fixed;
+  left: 0;
+  right: 0;
+  bottom: 1.75rem;
+  margin: 0;
+  text-align: center;
+}
+
+body.blank .blank-return a {
+  color: var(--text-muted);
+  font-family: var(--font-display);
+  font-size: 0.75rem;
+  letter-spacing: 0.16em;
+  text-decoration: none;
+  opacity: 0.45;
+}
+
+body.blank .blank-return a:hover,
+body.blank .blank-return a:focus-visible {
+  color: var(--accent-green);
+  opacity: 1;
+  outline: none;
+}
+
 @media print {
   html, body, #header { background: none; }
   #menu_bar { display: none; }

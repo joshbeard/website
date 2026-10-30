@@ -1,0 +1,25 @@
+{% assign header_class = "header_page" %}
+{% include head.html %}
+{% include menu.html %}
+<div id="content">
+    <div id="page" class="photo-page">
+        <div id="page_content">
+            <p class="photo-note">This is a /photo page: one photo, swapped now and then. Inspired by <a href="https://robertbirming.com/photo/">Robert Birming</a>.</p>
+            {% assign photo = site.data.latest_photo %}
+            {% if photo %}
+            <div class="image-wrap">
+                <img src="{{ photo.src }}" class="img_full" alt="{{ photo.alt | escape }}" />
+            </div>
+            {% if photo.description %}
+            <div class="image-description">
+                {{ photo.description | markdownify }}
+            </div>
+            {% endif %}
+            <p class="photo-links">
+                <a href="/photos/">Photos</a>&nbsp;&raquo;&nbsp;<a href="{{ photo.album_url }}">{{ photo.album }}</a>
+            </p>
+            {% endif %}
+        </div>
+    </div>
+</div>
+{% include foot.html %}

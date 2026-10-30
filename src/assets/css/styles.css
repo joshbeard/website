@@ -1231,6 +1231,10 @@ nav {
   transition: color 0.3s ease;
 }
 
+#page .photos-all-link a + a {
+  margin-left: var(--spacing-md);
+}
+
 #page .photos-all-link a:hover {
   color: var(--accent-green);
 }
@@ -1371,27 +1375,32 @@ img.responsive {
 
 /* Image Pages: fill leftover viewport; keep header/menu and caption in view */
 html:has(#page.image-page),
-html:has(#page.image-page) body {
+html:has(#page.image-page) body,
+html:has(#page.photo-page),
+html:has(#page.photo-page) body {
   height: 100%;
   height: 100dvh;
   overflow: hidden;
   scrollbar-gutter: auto;
 }
 
-#container:has(#page.image-page) {
+#container:has(#page.image-page),
+#container:has(#page.photo-page) {
   height: 100%;
   max-height: 100%;
   margin-bottom: 0;
 }
 
-#content:has(#page.image-page) {
+#content:has(#page.image-page),
+#content:has(#page.photo-page) {
   flex: 1 1 auto;
   min-height: 0;
   display: flex;
   flex-direction: column;
 }
 
-#page.image-page {
+#page.image-page,
+#page.photo-page {
   display: flex;
   flex-direction: column;
   flex: 1 1 auto;
@@ -1404,7 +1413,8 @@ html:has(#page.image-page) body {
   box-sizing: border-box;
 }
 
-#page.image-page #page_content {
+#page.image-page #page_content,
+#page.photo-page #page_content {
   display: flex;
   flex-direction: column;
   flex: 1 1 auto;
@@ -1499,6 +1509,23 @@ html:has(#page.image-page) body {
   flex: 0 0 auto;
   text-align: center;
   margin-top: var(--spacing-xs);
+  font-size: .9em;
+  color: var(--text-muted);
+}
+
+#page.photo-page .photo-note {
+  flex: 0 0 auto;
+  margin: 0 0 var(--spacing-xs);
+  text-align: center;
+  font-size: .9em;
+  color: var(--text-muted);
+}
+
+#page.photo-page .photo-links {
+  flex: 0 0 auto;
+  text-align: center;
+  margin-top: var(--spacing-xs);
+  margin-bottom: 0;
   font-size: .9em;
   color: var(--text-muted);
 }

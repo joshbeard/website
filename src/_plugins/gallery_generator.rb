@@ -323,7 +323,49 @@ module Jekyll
         end
 
         generate_all_photos(site, base_album_path, albums)
+        record_latest_photo(site, base_album_path, albums)
       end
+    end
+
+    # Newest photo is the first image in the latest year-named album.
+    # album.yml key order is newest first. Other album names are ignored.
+    def record_latest_photo(site, base_album_path, albums)
+      thumbs_dir = site.config['gallery']['thumbs_dir'] || 'thumbs'
+      gallery_out_dir = site.config['gallery']['out_dir'] || 'albums'
+      year_albums = albums.select { |name| name.match?(/\A\d{4}\z/) }.sort.reverse
+
+      year_albums.each do |year|
+        album_source = File.join(base_album_path, year)
+        metadata = album_metadata(site, album_source)
+        next if metadata['hidden']
+
+        filename = album_files(album_source, metadata, thumbs_dir).first
+        next if filename.nil?
+
+        description = nil
+        if metadata['images'].is_a?(Hash) && metadata['images'].key?(filename)
+          description = metadata['images'][filename]
+        end
+        album_title = metadata['meta_title'] || year
+
+        site.data['latest_photo'] = {
+          'src' => File.join(gallery_out_dir, year, filename).to_s,
+          'filename' => filename,
+          'description' => description,
+          'alt' => GallerySeo.plain_caption(description, album_title),
+          'album' => year,
+          'album_title' => album_title,
+          'album_url' => "#{File.join(gallery_out_dir, year)}/"
+        }
+        break
+      end
+
+      return unless site.data['latest_photo']
+
+      photo_page = site.pages.find { |page| page.data['layout'] == 'photo' }
+      return unless photo_page
+
+      photo_page.data['image'] = site.data['latest_photo']['src']
     end
 
     def generate_all_photos(site, base_album_path, albums)

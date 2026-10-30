@@ -11,24 +11,18 @@ class: ascii-art
 
 {% include submenu.html %}
 
+**If you want to reach me, [email](mailto:hello@joshbeard.com) is preferred.**
+
 I don't use social media to connect with people.
 
-I mostly stepped away in 2016. More and more of what I saw was vitriolic and
-bizarre, and I had already been thinking about whether I wanted any part of it.
-I decided I didn't.
+Around 2016, I mostly stopped putting myself on social media. I still use it,
+usually anonymously, to read about hobbies and other interests. I understand
+sharing photos and updates with friends and family, but there's too much noise
+around it, and I don't want to give those platforms a running record of my
+life. I'd rather keep that here, on a website I own.
 
-I'm pretty introverted, and posting about my life isn't appealing. I've
-regretted posting opinions too many times. They change, or they get more
-nuanced, and I don't want an old take sitting there as if it were still mine. I
-think people share *too much* these days and think they need an opinion on
-everything. I want to be private and sometimes ignorant.
+I'm pretty introverted, and posting about my life isn't appealing. I don't need
+to publish every opinion I have. When I do want to say something publicly, I'd
+rather say it here. I want to be private and sometimes ignorant.
 
-The public emotion on those platforms is more than I want. I'd rather know
-someone from how we actually interact than from what they post. That goes both
-ways. I don't want a post to stand in for who someone is, or for who I am.
-
-I still look at Instagram, X, and Reddit for a few topics. I don't post,
-comment, share, friend, or otherwise take part. It's for reading, not
-interaction.
-
-If you want to reach me, [email](mailto:hello@joshbeard.com) is preferred.
+This all may change someday. If it does, I'll mention it here.

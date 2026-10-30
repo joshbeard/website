@@ -1530,6 +1530,21 @@ html:has(#page.photo-page) body {
   color: var(--text-muted);
 }
 
+/* Phone and tablet: keep the note, photo, and caption together at the top.
+   The shared image layout grows a box and centers the picture in it. */
+@media (max-width: 900px) {
+  #page.photo-page .image-wrap {
+    flex: 0 1 auto;
+    align-items: flex-start;
+    container-type: normal;
+  }
+
+  #page.photo-page .img_full {
+    max-width: 100%;
+    max-height: calc(100dvh - 18rem);
+  }
+}
+
 /* Enhanced Syntax Highlighting */
 .highlight { color: var(--text-primary); background: var(--bg-code); }
 .highlight table td { padding: 5px; }

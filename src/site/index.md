@@ -81,6 +81,12 @@ ejm97         `
 See my [Small Internet Stack](/site/small.html) page for information about this
 and more.
 
+### Joshternet
+
+This site participates in the [Joshternet](https://joshternet.org/), a concept
+by [Joshua Morris](https://joshuamorris.info/). My affirmed Josh identity is at
+[/.well-known/josh](/.well-known/josh).
+
 ### Status
 
 I have an [UptimeRobot Status Page](https://stats.uptimerobot.com/V7ZMWilg5P).

@@ -133,6 +133,10 @@ def relative_site_files(site_dir)
   end
 end
 
+def content_type_for(key)
+  'application/json' if key == '.well-known/josh'
+end
+
 def cache_control_for(key)
   case key
   when %r{\Aassets/}
@@ -153,11 +157,14 @@ def build_manifest(site_dir)
 
   relative_site_files(site_dir).each do |key|
     file_path = File.join(site_dir, key)
-    files[key] = {
+    entry = {
       'sha256' => Digest::SHA256.file(file_path).hexdigest,
       'size' => File.size(file_path),
       'cache_control' => cache_control_for(key)
     }
+    content_type = content_type_for(key)
+    entry['content_type'] = content_type if content_type
+    files[key] = entry
   end
 
   {
@@ -235,7 +242,8 @@ def diff_manifests(previous_manifest, current_manifest)
       uploads << key
     elsif previous['sha256'] != current['sha256'] || previous['size'] != current['size']
       uploads << key
-    elsif previous['cache_control'] != current['cache_control']
+    elsif previous['cache_control'] != current['cache_control'] ||
+          previous['content_type'] != current['content_type']
       metadata_updates << key
     end
   end
@@ -258,9 +266,10 @@ def print_diff(diff)
   puts "  Deletes: #{diff[:deletes].length}"
 end
 
-def aws_s3_cp_args(source, destination, region, cache_control: nil)
+def aws_s3_cp_args(source, destination, region, cache_control: nil, content_type: nil)
   args = ['aws', 's3', 'cp', source, destination, '--acl', 'public-read', '--region', region]
   args += ['--cache-control', cache_control] if cache_control
+  args += ['--content-type', content_type] if content_type
   args
 end
 
@@ -268,11 +277,15 @@ def upload_file(site_dir, bucket, key, file_manifest, region, dry_run, log_mutex
   source = File.join(site_dir, key)
   destination = "s3://#{bucket}/#{key}"
   cache_control = file_manifest['cache_control']
+  content_type = file_manifest['content_type']
 
   log_line("  upload #{key}", log_mutex: log_mutex)
   return if dry_run
 
-  run_command(*aws_s3_cp_args(source, destination, region, cache_control: cache_control), exit_on_failure: false)
+  run_command(
+    *aws_s3_cp_args(source, destination, region, cache_control: cache_control, content_type: content_type),
+    exit_on_failure: false
+  )
 end
 
 def delete_file(bucket, key, region, dry_run, log_mutex: nil)

@@ -23,6 +23,7 @@ jobs:
         with:
           name: src
           path: _site/
+          include-hidden-files: true
 
   minify:
     name: Minify
@@ -51,6 +52,7 @@ jobs:
         with:
           name: minify
           path: .
+          include-hidden-files: true
 
   validate:
     name: HTML Validation

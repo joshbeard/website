@@ -6,6 +6,8 @@ url: https://joshbeard.com
 color_scheme: gel
 destination: ./_site
 permalink: /posts/:year/:month/:day/:title:output_ext
+include:
+    - .well-known
 exclude:
   - "Gemfile"
   - "Gemfile.lock"

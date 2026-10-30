@@ -1,5 +1,7 @@
 - url: /me
   title: Me
+- url: /social
+  title: Social
 - url: /now
   title: Now
 - url: /uses

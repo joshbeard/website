@@ -28,7 +28,8 @@ older style of web publishing.
 ```
 
 If you are looking at this and dig personal websites and that sort of thing, say
-[hello](mailto:hello@joshbeard.com)!
+[hello](mailto:hello@joshbeard.com)! I don't use social media to connect with
+people; that's on the [social](/social/) page.
 
 ### Computers
 

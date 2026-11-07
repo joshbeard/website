@@ -25,7 +25,7 @@ me a little more accountable. The detailed log lives on the
 
 It's been over a year, and everything has moved in the right direction:
 
-- **Weight:** down over 60 lbs (am near goal weight)
+- **Weight:** 70lbs lost - now healthy and around where I want to be
 - **Cholesterol:** total cholesterol is in the normal range for the first time
   in a while.
 - **Resting heart rate:** from the low 70s when I started tracking closely to
@@ -49,9 +49,9 @@ like A1C, cholesterol, and blood pressure, into the normal range.
   bought a hybrid bike in July 2025 and ride most days: lunch rides during the
   week, longer rides on weekends when the weather cooperates. I track rides
   privately on [Strava](https://www.strava.com/).
-- **Walking:** usually a couple of miles in the evening.
-- **Dumbbells:** short upper-body and core sessions.
 - **Running:** Now that I've dropped some weight, I've started to mix in some running, especially trail running.
+- **Dumbbells:** short upper-body and core sessions.
+- **Walking:** usually a couple of miles in the evening.
 - **Other:** taking back up hiking - something I used to do [regularly](/photos/), mobility/yoga, and other assorted workouts here and there.
 
 **Diet:**

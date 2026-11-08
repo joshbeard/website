@@ -58,6 +58,9 @@
         <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
         <link rel="manifest" href="/site.webmanifest">
         <link rel="canonical" href="{{ canonical_url }}">
+        {% assign feed_path = site.feed.path | default: "/feed.xml" %}
+        {% assign feed_title = site.feed.title | default: site.name | default: "Feed" %}
+        <link rel="alternate" type="application/atom+xml" title="{{ feed_title | escape }}" href="{{ feed_path | absolute_url }}">
         {% include jsonld.html %}
     </head>
 

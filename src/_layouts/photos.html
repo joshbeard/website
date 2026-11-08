@@ -6,6 +6,7 @@ class: album-list
 {% assign all_photos_page = site.pages | where: 'page_type', 'all_photos' | first %}
 <p class="photos-all-link">
     <a href="/photo/">Latest photo</a>
+    <a href="/feed.xml" type="application/atom+xml">Feed</a>
     {% if all_photos_page %}
     <a href="{{ all_photos_page.url }}">View All Photos</a>
     {% endif %}

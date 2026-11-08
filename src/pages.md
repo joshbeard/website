@@ -27,4 +27,5 @@ class: ascii-art pages-index
 
 - [About This Site](/site/)
 - [Small Internet Stack](/site/small.html)
+- [Feed](/feed.xml)
 - [Blank](/blank/)

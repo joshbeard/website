@@ -4,6 +4,11 @@ name: Josh Beard
 source: ./src
 url: https://joshbeard.com
 color_scheme: gel
+
+feed:
+  path: /feed.xml
+  limit: 20
+  title: Josh Beard
 destination: ./_site
 permalink: /posts/:year/:month/:day/:title:output_ext
 include:
@@ -69,4 +74,5 @@ nav_tree:
     - /assets*
     - /error.html
     - /sitemap.xml
+    - /feed.xml
     - /pgp*

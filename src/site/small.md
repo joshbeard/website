@@ -68,9 +68,6 @@ My resume is also available via finger - `resume@jbeard.co`
 
 ### Deployment
 
-I'm using Ansible to deploy these services to a [Rocky Linux](https://rockylinux.org/)
-[LXC]() on my Homelab.
-
-See <https://github.com/joshbeard/homelab-service-smolstack> for my Ansible
-playbook for the whole stack.
-
+I was hosting Gopher, Finger, and Gemini on my [homelab](/homelab/) server, but
+moved them to a tiny ec2 after switching to a new ISP that uses CGNAT. I use
+Terraform to deploy and provision the instance.

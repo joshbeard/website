@@ -27,5 +27,5 @@ and some other odds and ends.
 I manage it all with code, mostly Ansible and Terraform, with automated image
 templates and GitLab CI/CD.
 
-I host my Gemini, Gopher, and Finger services on it in containers. See my
-[Small Internet](/site/small.html) page for more information.
+See my [Small Internet](/site/small.html) page for information about running
+Gopher, Finger, and Gemini.

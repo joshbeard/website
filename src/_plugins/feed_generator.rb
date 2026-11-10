@@ -185,7 +185,7 @@ module Jekyll
               source: SOURCE,
               id: url,
               url: url,
-              title: title,
+              title: "Photo: #{title}",
               date: date,
               html: entry_html(site, markdown, description, image, title),
               image: image

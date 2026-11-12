@@ -4,7 +4,6 @@
 <div id="content">
     <div id="page" class="photo-page">
         <div id="page_content">
-            <p class="photo-note">This is a /photo page: one photo, swapped now and then. Inspired by <a href="https://robertbirming.com/photo/">Robert Birming</a>.</p>
             {% assign photo = site.data.latest_photo %}
             {% if photo %}
             <div class="image-wrap">
@@ -18,6 +17,7 @@
             <p class="photo-links">
                 <a href="/photos/">Photos</a>&nbsp;&raquo;&nbsp;<a href="{{ photo.album_url }}">{{ photo.album }}</a>&nbsp;&raquo;&nbsp;<a href="/feed.xml" type="application/atom+xml">Feed</a>
             </p>
+            <p class="photo-note">This is a /photo page: one photo, swapped now and then. Inspired by <a href="https://robertbirming.com/photo/">Robert Birming</a>.</p>
             {% endif %}
         </div>
     </div>

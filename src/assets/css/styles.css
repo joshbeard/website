@@ -1555,7 +1555,7 @@ html:has(#page.photo-page) body {
   flex: 0 0 auto;
   margin: 0 0 var(--spacing-xs);
   text-align: center;
-  font-size: .9em;
+  font-size: .8em;
   color: var(--text-muted);
 }
 

@@ -878,25 +878,6 @@ li.home_link a.ext:after { content: ""; margin: 0; }
   width: 100%;
 }
 
-.workout-photo-links {
-  white-space: nowrap;
-}
-
-.workout-photo-link {
-  color: var(--text-muted);
-  font-size: .75em;
-  font-weight: 400;
-  letter-spacing: 0;
-}
-
-.workout-photo-link + .workout-photo-link {
-  margin-left: .15em;
-}
-
-.workout-photo-link:hover {
-  color: var(--accent-cyan);
-}
-
 .workout-expand {
   position: absolute;
   width: 1px;
@@ -954,6 +935,35 @@ label.workout-flag {
 
 .workout-detail .workout-note p {
   margin: 0 0 .45em;
+}
+
+.workout-detail .workout-photos {
+  display: flex;
+  gap: 4px;
+  margin: .35em 0 .6em;
+  overflow-x: auto;
+  scrollbar-width: thin;
+}
+
+.workout-photos a {
+  flex: none;
+  border-radius: 3px;
+}
+
+.workout-photos img {
+  display: block;
+  width: auto;
+  max-width: none;
+  height: 56px;
+  border-radius: 3px;
+  opacity: .9;
+}
+
+.workout-photos a:hover img,
+.workout-photos a:focus-visible img {
+  opacity: 1;
+  outline: 1px solid var(--accent-cyan);
+  outline-offset: -1px;
 }
 
 .workout-detail .workout-tracks {

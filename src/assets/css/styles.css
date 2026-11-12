@@ -919,6 +919,7 @@ label.workout-flag {
 #page.workouts-page td.workout-detail {
   display: none;
   grid-column: 1 / -1;
+  flex-direction: column;
   padding: .5em var(--spacing-md) .85em 136px;
   color: var(--text-secondary);
   font-family: var(--font-primary);
@@ -929,8 +930,29 @@ label.workout-flag {
   white-space: normal;
 }
 
+#page.workouts-page td.workout-detail:has(.workout-note),
+#page.workouts-page td.workout-detail:has(.workout-photos) {
+  display: flex;
+}
+
+#page.workouts-page td.workout-detail .workout-tracks {
+  display: none;
+}
+
 #page.workouts-page tr:has(.workout-expand:checked) td.workout-detail {
+  display: flex;
+}
+
+#page.workouts-page tr:has(.workout-expand:checked) td.workout-detail .workout-tracks {
   display: block;
+}
+
+#page.workouts-page label.workout-expand-label:not([title]) {
+  display: none;
+}
+
+.workout-detail .workout-note {
+  max-width: 68ch;
 }
 
 .workout-detail .workout-note p {
@@ -939,8 +961,9 @@ label.workout-flag {
 
 .workout-detail .workout-photos {
   display: flex;
+  order: -1;
   gap: 4px;
-  margin: .35em 0 .6em;
+  margin: .15em 0 .5em;
   overflow-x: auto;
   scrollbar-width: thin;
 }
@@ -964,6 +987,11 @@ label.workout-flag {
   opacity: 1;
   outline: 1px solid var(--accent-cyan);
   outline-offset: -1px;
+}
+
+.workout-detail .workout-detail-music {
+  align-self: flex-start;
+  margin: .15em 0 .35em;
 }
 
 .workout-detail .workout-tracks {
@@ -1709,12 +1737,13 @@ html:has(#page.photo-page) body {
 
   #page.workouts-page tr {
     box-sizing: border-box;
-    display: grid;
-    grid-template-columns: minmax(4.8rem, auto) minmax(0, 1fr) auto;
-    gap: 3px var(--spacing-sm);
+    display: flex;
+    flex-wrap: wrap;
     align-items: baseline;
+    column-gap: .75rem;
+    row-gap: 4px;
     width: 100%;
-    padding: 8px 0;
+    padding: 10px 0 12px;
     border-bottom: 1px solid var(--border-subtle);
   }
 
@@ -1731,72 +1760,37 @@ html:has(#page.photo-page) body {
   }
 
   #page.workouts-page td:nth-child(1) {
-    grid-column: 1;
-    grid-row: 1;
+    order: 1;
     color: var(--text-secondary);
     font-weight: 700;
   }
 
   #page.workouts-page td:nth-child(2) {
-    grid-column: 3;
-    grid-row: 1;
+    order: 2;
+    margin-left: auto;
     color: var(--text-muted);
     font-family: var(--font-mono);
     text-align: right;
   }
 
   #page.workouts-page td:nth-child(3) {
-    grid-column: 2;
-    grid-row: 1;
-    min-width: 0;
-    overflow-wrap: anywhere;
+    order: 3;
+    flex: 1 0 100%;
+    overflow-wrap: break-word;
   }
 
-  #page.workouts-page td:nth-child(4) {
-    grid-column: 1;
-    grid-row: 2;
-  }
-
-  #page.workouts-page td:nth-child(5) {
-    grid-column: 2;
-    grid-row: 2;
-  }
-
+  #page.workouts-page td:nth-child(4),
+  #page.workouts-page td:nth-child(5),
   #page.workouts-page td:nth-child(7) {
-    grid-column: 3;
-    grid-row: 2;
-    text-align: right;
+    order: 4;
   }
 
-  #page.workouts-page td:nth-child(6) {
-    grid-column: 1;
-    grid-row: 3;
-  }
-
-  #page.workouts-page td:nth-child(8) {
-    grid-column: 2;
-    grid-row: 3;
-  }
-
-  #page.workouts-page td:nth-child(9) {
-    grid-column: 3;
-    grid-row: 3;
-    text-align: right;
-  }
-
-  #page.workouts-page td:nth-child(10) {
-    grid-column: 1 / -1;
-    grid-row: 4;
-  }
-
-  #page.workouts-page td.workout-detail {
-    grid-row: 5;
-    padding-left: var(--spacing-sm);
-    padding-right: var(--spacing-sm);
-  }
-
-  #page.workouts-page td.workout-detail::before {
-    content: none;
+  #page.workouts-page td:nth-child(6),
+  #page.workouts-page td:nth-child(8),
+  #page.workouts-page td:nth-child(9),
+  #page.workouts-page td:nth-child(10),
+  #page.workouts-page td.is-empty {
+    display: none;
   }
 
   #page.workouts-page td:nth-child(n+4):not(.workout-detail) {
@@ -1804,19 +1798,43 @@ html:has(#page.photo-page) body {
     font-family: var(--font-mono);
   }
 
-  #page.workouts-page td:nth-child(n+4):not(.workout-detail)::before {
-    color: var(--text-secondary);
-    font-family: var(--font-primary);
-    margin-right: 4px;
+  #page.workouts-page td.workout-detail {
+    order: 5;
+    flex: 1 0 100%;
+    flex-direction: column;
+    padding: .35em 0 0;
   }
 
-  #page.workouts-page td:nth-child(4)::before { content: "Dur"; }
-  #page.workouts-page td:nth-child(5)::before { content: "Dist"; }
-  #page.workouts-page td:nth-child(6)::before { content: "Elev"; }
-  #page.workouts-page td:nth-child(7)::before { content: "Avg"; }
-  #page.workouts-page td:nth-child(8)::before { content: "Cal"; }
-  #page.workouts-page td:nth-child(9)::before { content: "HR"; }
-  #page.workouts-page td:nth-child(10)::before { content: "Temp"; }
+  #page.workouts-page td.workout-detail::before {
+    content: none;
+  }
+
+  #page.workouts-page td.workout-detail:has(.workout-note),
+  #page.workouts-page td.workout-detail:has(.workout-photos) {
+    display: flex;
+  }
+
+  #page.workouts-page td.workout-detail .workout-tracks {
+    display: none;
+  }
+
+  #page.workouts-page tr:has(.workout-expand:checked) td.workout-detail {
+    display: flex;
+  }
+
+  #page.workouts-page tr:has(.workout-expand:checked) td.workout-detail .workout-tracks {
+    display: block;
+  }
+
+  #page.workouts-page .workout-photos {
+    order: -1;
+    max-width: 100%;
+    margin: .15em 0 .45em;
+  }
+
+  #page.workouts-page .workout-photos img {
+    height: 72px;
+  }
 }
 
 @media (max-width: 480px) {

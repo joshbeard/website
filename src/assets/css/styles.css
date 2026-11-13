@@ -1759,6 +1759,40 @@ html:has(#page.photo-page) body {
   }
 }
 
+/* Phone landscape: Safari and the site chrome leave almost no height.
+   Drop the header, menu, caption, and links so the photo can fill the screen.
+   Portrait and taller screens keep them. */
+@media (orientation: landscape) and (max-height: 500px) {
+  html:has(#page.image-page) #header,
+  html:has(#page.image-page) #menu_bar,
+  html:has(#page.photo-page) #header,
+  html:has(#page.photo-page) #menu_bar,
+  #page.image-page .image-description,
+  #page.photo-page .image-description,
+  #page.image-page .image-foot,
+  #page.photo-page .image-foot,
+  #page.photo-page .photo-links,
+  #page.photo-page .photo-note {
+    display: none;
+  }
+
+  #page.image-page #page_content,
+  #page.photo-page #page_content {
+    padding: 0;
+  }
+
+  #page.photo-page .image-wrap {
+    flex: 1 1 auto;
+    align-items: center;
+    container-type: size;
+  }
+
+  #page.photo-page .img_full {
+    max-width: 100cqw;
+    max-height: 100cqh;
+  }
+}
+
 /* Enhanced Syntax Highlighting */
 .highlight { color: var(--text-primary); background: var(--bg-code); }
 .highlight table td { padding: 5px; }

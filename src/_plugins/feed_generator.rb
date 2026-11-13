@@ -2,6 +2,7 @@
 
 require 'cgi'
 require 'fileutils'
+require 'set'
 require 'time'
 require 'yaml'
 
@@ -133,14 +134,16 @@ module Jekyll
         MONTHS = %w[january february march april may june july august september october november december].freeze
         SOURCE = 'photos'
 
-        def entries(site)
+        # skip holds site paths such as /photos/2026/IMG_1964.jpeg for photos
+        # that already appear in another feed entry.
+        def entries(site, skip = Set.new)
           root = site.config.dig('gallery', 'src_dir') || 'albums'
           thumbs = site.config.dig('gallery', 'thumbs_dir') || 'thumbs'
           out_dir = site.config.dig('gallery', 'out_dir') || '/photos'
           markdown = site.find_converter_instance(Jekyll::Converters::Markdown)
 
           album_directories(root, thumbs).flat_map do |dir|
-            entries_for_album(site, dir, out_dir, markdown)
+            entries_for_album(site, dir, out_dir, markdown, skip)
           end
         end
 
@@ -162,7 +165,7 @@ module Jekyll
           end
         end
 
-        def entries_for_album(site, dir, out_dir, markdown)
+        def entries_for_album(site, dir, out_dir, markdown, skip)
           metadata = YAML.load_file(File.join(dir, 'album.yml')) || {}
           return [] unless metadata.is_a?(Hash)
           return [] if metadata['hidden']
@@ -175,8 +178,10 @@ module Jekyll
             date = parse_date(description)
             next if date.nil?
 
-            page_path = File.join(out_dir, album, image_page_name(filename))
             image_path = File.join(out_dir, album, filename.to_s)
+            next if skip.include?(image_path)
+
+            page_path = File.join(out_dir, album, image_page_name(filename))
             url = Paths.absolute(site, page_path)
             title = GallerySeo.plain_caption(description, album)
             image = Paths.absolute(site, image_path)
@@ -229,13 +234,32 @@ module Jekyll
 
       class Pages
         SKIP_TYPES = %w[image album all_photos].freeze
+        PHOTO_TAG = /\{%-?\s*photos?\s+(.*?)\s*-?%\}/m
+
+        # Site paths of the album photos shown in these entries, filled by
+        # entries.
+        attr_reader :embedded_photos
 
         def entries(site)
+          @embedded_photos = Set.new
           markdown = site.find_converter_instance(Jekyll::Converters::Markdown)
           documents(site).filter_map { |doc| entry_for(site, doc, markdown) }
         end
 
         private
+
+        def record_photos(site, doc)
+          image = doc.data['image'].to_s.strip
+          @embedded_photos << image if image.start_with?('/')
+
+          doc.content.to_s.scan(PHOTO_TAG).each do |(refs)|
+            refs.split.each do |ref|
+              @embedded_photos << AlbumPhotos.lookup(site, ref).src
+            rescue ArgumentError
+              next
+            end
+          end
+        end
 
         def documents(site)
           docs = site.pages.dup
@@ -253,6 +277,7 @@ module Jekyll
           date = coerce_time(data['date'])
           return nil if date.nil?
 
+          record_photos(site, doc)
           url = Paths.absolute(site, doc.url)
           title = (data['title'] || data['meta_title'] || 'Untitled').to_s
           image = data['image']
@@ -318,8 +343,9 @@ module Jekyll
     priority :low
 
     def generate(site)
-      entries = Feed::Sources::Photos.new.entries(site)
-      entries.concat(Feed::Sources::Pages.new.entries(site))
+      pages = Feed::Sources::Pages.new
+      entries = pages.entries(site)
+      entries.concat(Feed::Sources::Photos.new.entries(site, pages.embedded_photos))
       Feed::Writer.new(site).write(entries)
     end
   end

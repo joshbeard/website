@@ -9,8 +9,9 @@ class: ascii-art pages-index
 ### About
 
 - [Me](/me/)
-- [Social](/social/)
+- [Notes](/notes/)
 - [Now](/now/)
+- [Social](/social/)
 - [Uses](/uses/)
 
 ### Health

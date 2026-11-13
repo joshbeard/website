@@ -11,6 +11,10 @@ feed:
   title: Josh Beard
 destination: ./_site
 permalink: /posts/:year/:month/:day/:title:output_ext
+collections:
+  notes:
+    output: true
+    permalink: /notes/:year/:title/
 include:
     - .well-known
 exclude:
@@ -47,6 +51,13 @@ defaults:
       path: "site/assets/**/*"
     values:
       sitemap: false
+  - scope:
+      path: ""
+      type: notes
+    values:
+      layout: note
+      feed: notes
+      class: notes-page
 
 gallery:
   src_dir: src/photos

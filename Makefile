@@ -1,4 +1,4 @@
-.PHONY: build shell serve nginx upload-shots security.txt
+.PHONY: build shell serve nginx upload-shots security.txt note
 
 .DEFAULT_GOAL := help
 
@@ -18,6 +18,9 @@ serve: ## Serve the site
 
 nginx: ## Run nginx to serve the site
 	docker run --rm -it -v $(PWD)/_site:/usr/share/nginx/html:ro -p 8080:80 nginx
+
+note: ## New note: make note WORKOUT=2026-11-11-0919, or make note TITLE="Title" (optional DATE, SLUG)
+	@ruby util/new-note.rb $(if $(WORKOUT),--workout "$(WORKOUT)") $(if $(TITLE),--title "$(TITLE)") $(if $(DATE),--date "$(DATE)") $(if $(SLUG),--slug "$(SLUG)")
 
 upload-shots: ## Upload screenshots to the server
 	./util/upload-shots.sh

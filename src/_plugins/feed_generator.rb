@@ -264,9 +264,21 @@ module Jekyll
             url: url,
             title: title,
             date: date,
-            html: Paths.absolutize_html(site, markdown.convert(doc.content.to_s)),
+            html: Paths.absolutize_html(site, markdown.convert(render_liquid(site, doc))),
             image: image
           )
+        end
+
+        # Generators run before rendering, so content still holds Liquid tags
+        # such as {% photo %}.
+        def render_liquid(site, doc)
+          content = doc.content.to_s
+          return content unless content.include?('{%') || content.include?('{{')
+
+          payload = site.site_payload
+          payload['page'] = doc.to_liquid
+          Liquid::Template.parse(content)
+                          .render!(payload, registers: { site: site, page: payload['page'] })
         end
 
         def source_name(feed)

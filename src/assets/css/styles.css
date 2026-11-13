@@ -911,6 +911,22 @@ label.workout-flag {
   color: var(--accent-cyan);
 }
 
+#page a.workout-flag-note,
+#page a.workout-flag-note:visited {
+  color: var(--accent-cyan);
+  text-decoration: underline;
+  text-underline-offset: .15em;
+}
+
+#page a.workout-flag-note:hover { color: var(--accent-green); }
+
+a.workout-flag-note::after {
+  content: " \2192";
+  text-decoration: none;
+  display: inline-block;
+  margin-left: .15em;
+}
+
 .workouts-page tr:has(.workout-expand:checked) label.workout-flag,
 .workouts-page tr:has(.workout-expand:checked) label.workout-expand-label {
   color: var(--accent-green);
@@ -1209,6 +1225,166 @@ code.language-ascii-art-left { float: left; margin: var(--spacing-sm) var(--spac
 }
 
 .post-nav a:hover { text-decoration: underline; }
+
+/* Notes */
+.note-head { margin-bottom: var(--spacing-md); }
+
+#page .note-head h2 { margin-bottom: 0; }
+
+#page .note-date {
+  margin: .2em 0 0;
+  color: var(--text-muted);
+  font-size: .85em;
+  text-align: center;
+}
+
+.note-photo {
+  margin: var(--spacing-md) 0;
+}
+
+.note-photo img {
+  display: block;
+  width: auto;
+  max-width: 100%;
+  height: auto;
+  max-height: 80vh;
+  margin: 0 auto;
+  border-radius: 4px;
+}
+
+.note-photo a:hover img,
+.note-photo a:focus-visible img {
+  outline: 1px solid var(--accent-cyan);
+  outline-offset: -1px;
+}
+
+.note-photo figcaption {
+  margin-top: .4em;
+  color: var(--text-secondary);
+  font-size: .85em;
+}
+
+#page .note-photo figcaption p {
+  margin: 0;
+  text-align: left;
+}
+
+.note-photos {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin: var(--spacing-md) 0;
+}
+
+.note-photos a {
+  flex: none;
+  border-radius: 3px;
+}
+
+.note-photos img {
+  display: block;
+  height: 96px;
+  width: auto;
+  border-radius: 3px;
+  opacity: .9;
+}
+
+.note-photos a:hover img,
+.note-photos a:focus-visible img {
+  opacity: 1;
+  outline: 1px solid var(--accent-cyan);
+  outline-offset: -1px;
+}
+
+.note-workout {
+  margin: var(--spacing-lg) 0 var(--spacing-md);
+  padding-top: var(--spacing-sm);
+  border-top: 1px solid var(--border-subtle);
+  color: var(--text-secondary);
+  font-size: .9em;
+}
+
+#page .note-workout p {
+  margin: 0 0 .35em;
+  text-align: left;
+}
+
+.note-music > summary {
+  cursor: pointer;
+  color: var(--text-muted);
+}
+
+.note-music > summary small { margin-left: .3em; }
+
+.note-music[open] > summary { color: var(--accent-cyan); }
+
+.note-music .workout-tracks { max-width: none; }
+
+.note-nav {
+  display: flex;
+  justify-content: space-between;
+  gap: var(--spacing-sm);
+  margin: var(--spacing-lg) 0 var(--spacing-md);
+  font-size: .85em;
+}
+
+.note-nav-prev,
+.note-nav-next { flex: 1; }
+
+.note-nav-prev { text-align: left; }
+
+.note-nav-next { text-align: right; }
+
+.note-nav a { text-decoration: none; }
+
+.note-nav a:hover { text-decoration: underline; }
+
+ul.notes-list {
+  list-style: none;
+}
+
+#page ul.notes-list {
+  margin: var(--spacing-md) 0;
+}
+
+.notes-item {
+  display: flex;
+  gap: var(--spacing-md);
+  align-items: flex-start;
+  padding: var(--spacing-sm) 0;
+  border-bottom: 1px solid var(--border-subtle);
+}
+
+.notes-item-image { flex: none; }
+
+.notes-item-image img {
+  display: block;
+  width: 120px;
+  height: 90px;
+  object-fit: cover;
+  border-radius: 3px;
+}
+
+#page .notes-item h3 {
+  margin: 0;
+  font-size: 1.2em;
+}
+
+#page .notes-item .note-date { text-align: left; }
+
+#page .notes-item-summary {
+  margin: .35em 0 0;
+  color: var(--text-secondary);
+  font-size: .9em;
+  text-align: left;
+}
+
+@media (max-width: 480px) {
+  .notes-item-image img {
+    width: 80px;
+    height: 64px;
+  }
+}
 
 /* Navigation */
 nav {
@@ -1844,7 +2020,8 @@ html:has(#page.photo-page) body {
 
 @media (max-width: 440px) {
   #page { margin: 0 var(--spacing-sm); }
-  #menu_bar ul li { padding: 4px var(--spacing-sm); }
+  #menu_bar { font-size: 1.05em; }
+  #menu_bar ul li { padding: 4px 7px; }
 }
 
 /* Intentionally empty slash page */

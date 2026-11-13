@@ -1,0 +1,45 @@
+---
+layout: page
+---
+{% assign workout = site.data.workout_details[page.workout] %}
+<article class="note">
+<header class="note-head">
+<h2>{{ page.title }}</h2>
+<p class="note-date"><time datetime="{{ page.date | date_to_xmlschema }}">{{ page.date | date: "%B %-d, %Y" }}</time></p>
+</header>
+
+<div class="note-body">
+{{ content }}
+</div>
+
+{% if page.workout or page.playlist %}
+<aside class="note-workout" aria-label="Workout">
+{% if page.workout %}
+{% assign stats = "" | split: "" %}
+{% if workout %}
+{% assign fields = "duration,distance,elevation,average,calories,heart_rate,temperature" | split: "," %}
+{% for field in fields %}{% if workout[field] %}{% assign stats = stats | push: workout[field] %}{% endif %}{% endfor %}
+{% endif %}
+<p class="note-stats"><a href="/workouts/#{{ page.workout }}" title="Open in the workout log">{{ workout.type | default: "Workout" }}</a>{% if stats.size > 0 %} · {{ stats | join: " · " }}{% endif %}</p>
+{% if workout.tracks and workout.tracks.size > 0 %}
+<details class="note-music">
+<summary>Music <small>{{ workout.tracks.size }} {% if workout.tracks.size == 1 %}track{% else %}tracks{% endif %}</small></summary>
+<ol class="workout-tracks">
+{% for track in workout.tracks %}<li><span class="workout-track-time">{{ track.time }}</span> {% if track.url %}<a href="{{ track.url }}">{{ track.label }}</a>{% else %}<span class="workout-track-unmatched" title="Not on Spotify">{{ track.label }}</span>{% endif %}</li>
+{% endfor %}
+</ol>
+</details>
+{% endif %}
+{% endif %}
+{% if page.playlist %}
+<p class="note-playlist"><a href="{{ page.playlist }}">Playlist on Spotify</a></p>
+{% endif %}
+</aside>
+{% endif %}
+
+<nav class="note-nav" aria-label="More notes">
+<span class="note-nav-prev">{% if page.previous %}<a href="{{ page.previous.url }}" title="Older note">&laquo; {{ page.previous.title }}</a>{% endif %}</span>
+<a class="note-nav-index" href="/notes/">Notes</a>
+<span class="note-nav-next">{% if page.next %}<a href="{{ page.next.url }}" title="Newer note">{{ page.next.title }} &raquo;</a>{% endif %}</span>
+</nav>
+</article>

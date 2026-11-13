@@ -4,6 +4,8 @@
 #   title: About
 - url: /resume/
   title: Resume
+- url: /notes/
+  title: Notes
 - url: /photos/
   title: Photos
 - url: /more/

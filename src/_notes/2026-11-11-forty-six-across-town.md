@@ -1,5 +1,5 @@
 ---
-title: 🇺🇸 🪖 Veteran's Day 46 Mile Ride
+title: Veteran's Day 46 Mile Ride
 date: 2026-11-11 09:19
 workout: 2026-11-11-0919
 image: 2026/IMG_1964.jpeg

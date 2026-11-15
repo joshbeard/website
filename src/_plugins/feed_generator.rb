@@ -232,9 +232,70 @@ module Jekyll
         end
       end
 
+      # Album photos used by a page, as site paths such as
+      # /photos/2026/IMG_1964.jpeg.
+      module PhotoRefs
+        PHOTO_TAG = /\{%-?\s*photos?\s+(.*?)\s*-?%\}/m
+
+        module_function
+
+        def collect(site, content, image)
+          paths = Set.new
+          refs = content.to_s.scan(PHOTO_TAG).flat_map { |(list)| list.split }
+          image = image.to_s.strip
+          if image.start_with?('/')
+            paths << image
+          elsif !image.empty? && !image.match?(%r{\Ahttps?://})
+            refs << image
+          end
+          refs.each do |ref|
+            paths << AlbumPhotos.lookup(site, ref).src
+          rescue ArgumentError
+            next
+          end
+          paths
+        end
+      end
+
+      # Reads note files from disk, so drafts (published: false), which
+      # Jekyll leaves out of the collection, still claim their photos.
+      module NoteFiles
+        STALE_DAYS = 7
+        FRONT_MATTER = /\A---\s*\n(.*?)\n---\s*(?:\n|\z)(.*)\z/m
+
+        module_function
+
+        def claimed_photos(site, now = Time.now)
+          claimed = Set.new
+          dir = site.in_source_dir(site.config['collections_dir'].to_s, '_notes')
+          Dir.glob(File.join(dir, '*.md')).sort.each do |path|
+            match = FRONT_MATTER.match(File.read(path))
+            next unless match
+
+            data = SafeYAML.load(match[1]) || {}
+            next unless data.is_a?(Hash)
+
+            photos = PhotoRefs.collect(site, match[2], data['image'])
+            claimed.merge(photos)
+            warn_if_stale(path, data, photos.size, now) if data['published'] == false
+          end
+          claimed
+        end
+
+        def warn_if_stale(path, data, count, now)
+          date = Time.parse(data['date'].to_s)
+          days = ((now - date) / 86_400).floor
+          return if days <= STALE_DAYS
+
+          Jekyll.logger.warn 'Notes:', "draft #{File.basename(path)} is #{days} days old and is holding " \
+                                       "#{count} photo#{'s' unless count == 1} out of the feed"
+        rescue ArgumentError, TypeError
+          nil
+        end
+      end
+
       class Pages
         SKIP_TYPES = %w[image album all_photos].freeze
-        PHOTO_TAG = /\{%-?\s*photos?\s+(.*?)\s*-?%\}/m
 
         # Site paths of the album photos shown in these entries, filled by
         # entries.
@@ -249,16 +310,7 @@ module Jekyll
         private
 
         def record_photos(site, doc)
-          image = doc.data['image'].to_s.strip
-          @embedded_photos << image if image.start_with?('/')
-
-          doc.content.to_s.scan(PHOTO_TAG).each do |(refs)|
-            refs.split.each do |ref|
-              @embedded_photos << AlbumPhotos.lookup(site, ref).src
-            rescue ArgumentError
-              next
-            end
-          end
+          @embedded_photos.merge(PhotoRefs.collect(site, doc.content, doc.data['image']))
         end
 
         def documents(site)
@@ -345,7 +397,8 @@ module Jekyll
     def generate(site)
       pages = Feed::Sources::Pages.new
       entries = pages.entries(site)
-      entries.concat(Feed::Sources::Photos.new.entries(site, pages.embedded_photos))
+      claimed = pages.embedded_photos | Feed::Sources::NoteFiles.claimed_photos(site)
+      entries.concat(Feed::Sources::Photos.new.entries(site, claimed))
       Feed::Writer.new(site).write(entries)
     end
   end

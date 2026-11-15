@@ -3,11 +3,14 @@
 
 # Creates a note in src/_notes.
 #
-#   util/new-note.rb --workout 2026-11-11-0919 [--title "Title"] [--slug slug]
-#   util/new-note.rb --title "Title" [--date 2026-11-12] [--slug slug]
+#   util/new-note.rb --workout 2026-11-11-0919 [--title "Title"] [--slug slug] [--publish]
+#   util/new-note.rb --title "Title" [--date 2026-11-12] [--slug slug] [--publish]
 #
 # With a workout, the date comes from the workout id, the title from its flag in
 # workouts-notes.yml, and the photos from album captions that link to it.
+#
+# Notes start as drafts (published: false): not built, and their photos stay
+# out of the feed until the draft is published or deleted.
 
 require 'date'
 require 'optparse'
@@ -50,7 +53,8 @@ end
 
 options = {}
 OptionParser.new do |opts|
-  opts.banner = 'Usage: new-note.rb [--workout ID] [--title TITLE] [--date YYYY-MM-DD] [--slug SLUG]'
+  opts.banner = 'Usage: new-note.rb [--workout ID] [--title TITLE] [--date YYYY-MM-DD] [--slug SLUG] [--publish]'
+  opts.on('--publish', 'Skip the draft stage') { options[:publish] = true }
   opts.on('--workout ID') { |v| options[:workout] = v.strip }
   opts.on('--title TITLE') { |v| options[:title] = v.strip }
   opts.on('--date DATE') { |v| options[:date] = v.strip }
@@ -95,6 +99,7 @@ fail!("#{path} already exists") if File.exist?(path)
 front = ["title: #{title.include?(':') ? title.inspect : title}", "date: #{date}"]
 front << "workout: #{workout}" if workout
 front << "image: #{photos.first}" if photos.any?
+front << 'published: false' unless options[:publish]
 
 body = [short_note || 'Write something here.']
 body << "{% photo #{photos.first} %}" if photos.any?
@@ -105,7 +110,11 @@ File.write(path, "---\n#{front.join("\n")}\n---\n#{body.join("\n\n")}\n")
 
 puts "Created #{path.delete_prefix(ROOT + '/')}"
 puts "  #{photos.length} photo#{'s' unless photos.length == 1} from the albums" if workout
+puts "  Draft - its photos stay out of the feed. Remove `published: false` when it's ready." unless options[:publish]
 if short_note
   puts "  Started from the note in workouts-notes.yml - remove it there so the text lives in one place."
 end
-puts '  Run healthexport to link the workout row and fill in stats and music.' if workout
+if workout
+  when_to = options[:publish] ? 'Run' : 'Once it is published, run'
+  puts "  #{when_to} healthexport to link the workout row and fill in stats and music."
+end

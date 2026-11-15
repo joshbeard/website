@@ -19,7 +19,7 @@
         {% assign social_image = social_image_path | absolute_url %}
         {% assign social_image_alt = meta_title | default: site_title %}
         <meta charset="utf-8">
-        <title>{{ full_title }}</title>
+        <title>{{ full_title | escape }}</title>
         {% if meta_description != "" %}
         <meta name="description" content="{{ meta_description }}">
         {% endif %}
@@ -35,7 +35,7 @@
         <!-- Open Graph -->
         <meta property="og:locale" content="en_US">
         <meta property="og:type" content="website">
-        <meta property="og:title" content="{{ full_title }}">
+        <meta property="og:title" content="{{ full_title | escape }}">
         {% if meta_description != "" %}
         <meta property="og:description" content="{{ meta_description }}">
         {% endif %}

@@ -6,7 +6,7 @@ description: A curated index of site pages
 permalink: /more/
 class: ascii-art pages-index
 ---
-### About
+## About
 
 - [Me](/me/)
 - [Notes](/notes/)
@@ -14,17 +14,17 @@ class: ascii-art pages-index
 - [Social](/social/)
 - [Uses](/uses/)
 
-### Health
+## Health
 
 - [Health](/health/)
 - [Workouts](/workouts/)
 
-### Interests
+## Interests
 
 - [Homelab](/homelab/)
 - [Old Computers](/old-computers.html)
 
-### Site
+## Site
 
 - [About This Site](/site/)
 - [Small Internet Stack](/site/small.html)

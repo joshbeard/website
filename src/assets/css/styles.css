@@ -234,11 +234,13 @@ li.home_link a.ext:after { content: ""; margin: 0; }
   line-height: 1.5;
 }
 
-#page.pages-index #page_content > h3 {
+#page.pages-index #page_content > h2 {
   max-width: 520px;
   margin: var(--spacing-md) auto var(--spacing-xs);
   font-size: 1.15em;
+  letter-spacing: 2px;
   text-align: center;
+  color: var(--heading-h3, var(--accent-purple));
 }
 
 #page.pages-index #page_content > ul {

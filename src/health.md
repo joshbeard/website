@@ -11,73 +11,70 @@ class: ascii-art
 
 {% include submenu.html %}
 
-I spent years putting off my health. Sedentary work and lifestyle caught up
-with me: my weight was way up and my lab work was getting worse. I'd received
-an Apple Watch as a gift, hoping it would help me get in shape. In mid-2025, it started flagging my
-rising resting heart rate, and that's when, by the grace of God, I turned
-things around and built a lifestyle I can sustain.
+For years, sedentary work and habits were taking a toll. My weight and lab
+results were heading in the wrong direction, and in mid-2025 my Apple Watch
+began warning me about a rising resting heart rate. By the grace of God, that
+was the push I needed to make some lasting changes.
 
-This page is a record of what I'm doing and what's changed. Publishing it keeps
-me a little more accountable. The detailed log lives on the
-[Workouts](/workouts/) page.
+This page is a record of those changes and what I'm doing now. Keeping it
+public gives me some accountability, and I hope it might encourage someone
+else. The detailed activity log is on the [Workouts](/workouts/) page.
 
 ### What's changed so far
 
 It's been over a year, and everything has moved in the right direction:
 
-- **Weight:** 70lbs lost - now healthy and around where I want to be
+- **Weight:** Down 70 lbs and close to my target.
 - **Cholesterol:** total cholesterol is in the normal range for the first time
   in a while.
 - **Resting heart rate:** from the low 70s when I started tracking closely to
   the mid-to-upper 40s recently.
 - **Fitness:** VO2 max is up to "above average" and increasing.
-- **Consistency:** 600+ logged workouts since mid-2025, mostly cycling.
-- **Sleep:** better overall, and I usually wake up before the alarm now.
+- **Consistency:** 700+ logged workouts since mid-2025, mostly cycling.
+- **Sleep:** better overall, though the new puppy has temporarily disrupted it.
 - **General feel:** better posture, mood, and day-to-day energy.
-- **Focus and productivity:** has significantly improved.
+- **Focus and productivity:** have significantly improved.
 
 ### What I'm doing
 
 **Exercise:**
 
-See my [workouts](/workouts/) page for some stats and a log.
-
-I've been pushing hard to build a solid fitness base and get my health markers,
-like A1C, cholesterol, and blood pressure, into the normal range.
+I'm building a solid fitness base and working to keep markers like A1C,
+cholesterol, and blood pressure in the normal range.
 
 - **Cycling:** the main thing, and the first routine that has really stuck. I
-  bought a hybrid bike in July 2025 and ride most days: lunch rides during the
-  week, longer rides on weekends when the weather cooperates. I track rides
-  privately on [Strava](https://www.strava.com/).
+  bought a new bike in July 2025 and ride most days: lunch rides during the
+  week, longer rides on weekends and days off. I track rides
+  privately on [Strava](https://www.strava.com/) and on [my workouts page](/workouts/).
 - **Running:** Now that I've dropped some weight, I've started to mix in some running, especially trail running.
-- **Dumbbells:** short upper-body and core sessions.
+- **Calisthenics, core, and dumbbells:** variety several times a week.
 - **Walking:** usually a couple of miles in the evening.
-- **Other:** taking back up hiking - something I used to do [regularly](/photos/), mobility/yoga, and other assorted workouts here and there.
+- **Other:** getting back into hiking, something I used to do
+  [regularly](/photos/), plus mobility, yoga, and other assorted workouts here
+  and there.
 
 **Diet:**
 
-- **No strict diet:** I haven't cut out any foods (except sugary drinks), just made more deliberate
-  choices. I still have sweets, chips, burgers and fries, pizza, and ice cream, etc - just less of it and less often.
-- **Calorie counting:** logging everything in [Lose It!](https://www.loseit.com/),
-  which adjusts my daily budget based on activity. I pay attention to portions
-  and protein and keep sugar and refined carbs to a minimum. When I'm consistent
-  with it, I see progress.
+- **No strict diet:** I haven't cut out any foods except sugary drinks, just
+  made more deliberate choices. I still eat sweets, chips, burgers, pizza, and
+  ice cream, just less often and in smaller amounts.
+- **Calorie counting:** logging everything in [Lose It!](https://www.loseit.com/). Using a basic food scale at home.
 - **Fasting:** 16:8 baseline, usually closer to 18:6, with occasional 24-hour
-  fasts and longer ones planned. I use [Intermittent](https://intermittentfast.ing/):
-  free, no account, and genuinely useful insight into fasting phases.
+  fasts and longer ones planned. I track fasts with Lose It. I do IF most days
+  of the week.
 - **Supplements:** a basic routine for general health, plus
   [SALTT](https://saltt.com/) drops for
   hydration and longer fasts.
 
 **Habits:**
 
-- **Nicotine:** quit.
+- **Nicotine:** quit. My tracked resting heart rate was about 15 bpm higher
+  while I was using it.
 - **Alcohol:** cutting back; still in progress.
-- **Soda:** cut regular soda and sugary drinks a couple of years ago, and most
+- **Soda:** cut regular soda and sugary drinks a few years ago, and most
   diet soda over the past year.
 - **Caffeine:** cutting back, with tea in the mornings and nothing in the
   afternoon.
 
-There's still progress to make. This is meant to be a lifelong habit, not a
-project with an end date, but the direction is better than it was and I want to
-keep it that way.
+There's still progress to make, but these changes are meant to last. Things are
+heading in the right direction, and I want to keep them there.

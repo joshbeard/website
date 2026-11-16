@@ -11,17 +11,20 @@ class: ascii-art
 
 {% include submenu.html %}
 
-This is my personal website. It is part notebook, part archive, part place to
-put things I like keeping around on the web.
-
 I live in Colorado with my family, and spend my time on [computers](#computers),
 [music](#music), [cycling](/workouts/), [exploring](/photos/), grilling, and the
 usual collection of small projects. Some of those outings are written up in
-the [notes](/notes/). I grew up mostly around [Rapid City, South Dakota](https://en.wikipedia.org/wiki/Rapid_City,_South_Dakota); lived
-several years and my roots are in [Missouri](https://en.wikipedia.org/wiki/Missouri_Bootheel) and [North East Arkansas](https://en.wikipedia.org/wiki/Arkansas_Delta); lived ages
-6-9 in Kansas. Have lived in Colorado for most of my adult life now, mostly in
-[Colorado Springs](https://en.wikipedia.org/wiki/Colorado_Springs,_Colorado)
-with several years in the [Denver metro](https://en.wikipedia.org/wiki/Denver_metropolitan_area).
+the [notes](/notes/). I grew up mostly around
+[Rapid City, South Dakota](https://en.wikipedia.org/wiki/Rapid_City,_South_Dakota),
+with family roots in the
+[Missouri Bootheel](https://en.wikipedia.org/wiki/Missouri_Bootheel) and
+[northeast Arkansas](https://en.wikipedia.org/wiki/Arkansas_Delta). I also
+lived in Kansas during elementary school and Western Missouri for a couple of
+years in high school. I've spent most of my adult life in
+Colorado, mostly in
+[Colorado Springs](https://en.wikipedia.org/wiki/Colorado_Springs,_Colorado),
+with several years in the
+[Denver metro](https://en.wikipedia.org/wiki/Denver_metropolitan_area).
 
 Some of the more personal or nostalgic corners are here because I enjoy that
 older style of web publishing.
@@ -127,7 +130,7 @@ realities of keeping services maintainable.
 
 Most of my work happens in a code editor and shell, bouncing between systems,
 software, and process. Increasingly, that also means working alongside AI agents
-and LLMs to explore code, automate routine changes, and think through problems.
+and LLMs to produce code, automate routine changes, and think through problems.
 The surrounding toolkit still includes a lot of Terraform, AWS, Go, GitLab CI,
 Python, Docker, shell, and whatever glue is needed at the time.
 

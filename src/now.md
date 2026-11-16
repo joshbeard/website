@@ -23,9 +23,13 @@ few months.
 ░░░   ░░  ░░░░░░  ░░░    ░░░
 ```
 
-This is what I'm doing as of October, 2026:
+This is what I'm doing as of November 2026:
 
-* Improving [my health](/health/) and [staying active](/workouts/), with over a year of heavy exercise, calorie counting, and more.
+* Continuing to improve [my health](/health/) and [stay active](/workouts/),
+  mostly through cycling, with some running, walking, and strength work mixed
+  in.
+* Riding into the colder months and writing about some outings in the
+  [notes](/notes/).
 * Working on a small DevOps team at [Live Oak Bank](https://www.liveoak.bank/) and traveling to North Carolina quarterly.
-* Got a new puppy named Winnie, a Terrier mix and very cute.
 * Raising a family in Colorado.
+* Adjusting to life with Winnie, our new terrier mix.

@@ -12,6 +12,10 @@ class: ascii-art
 
 Notable changes to my website.
 
+### November 15, 2026: Changelog
+
+Add a changelog page.
+
 ### November 14, 2026: Notes Section
 
 I added a [Notes](/notes/) section. I've avoided a blog, but I've wanted a

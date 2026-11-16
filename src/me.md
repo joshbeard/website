@@ -16,7 +16,8 @@ put things I like keeping around on the web.
 
 I live in Colorado with my family, and spend my time on [computers](#computers),
 [music](#music), [cycling](/workouts/), [exploring](/photos/), grilling, and the
-usual collection of small projects.
+usual collection of small projects. Some of those outings are written up in
+the [notes](/notes/).
 
 Some of the more personal or nostalgic corners are here because I enjoy that
 older style of web publishing.

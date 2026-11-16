@@ -17,7 +17,11 @@ put things I like keeping around on the web.
 I live in Colorado with my family, and spend my time on [computers](#computers),
 [music](#music), [cycling](/workouts/), [exploring](/photos/), grilling, and the
 usual collection of small projects. Some of those outings are written up in
-the [notes](/notes/).
+the [notes](/notes/). I grew up mostly around [Rapid City, South Dakota](https://en.wikipedia.org/wiki/Rapid_City,_South_Dakota); lived
+several years and my roots are in [Missouri](https://en.wikipedia.org/wiki/Missouri_Bootheel) and [North East Arkansas](https://en.wikipedia.org/wiki/Arkansas_Delta); lived ages
+6-9 in Kansas. Have lived in Colorado for most of my adult life now, mostly in
+[Colorado Springs](https://en.wikipedia.org/wiki/Colorado_Springs,_Colorado)
+with several years in the [Denver metro](https://en.wikipedia.org/wiki/Denver_metropolitan_area).
 
 Some of the more personal or nostalgic corners are here because I enjoy that
 older style of web publishing.

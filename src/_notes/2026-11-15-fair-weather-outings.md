@@ -3,6 +3,15 @@ title: Fair Weather Outings
 date: 2026-11-15 07:59
 workout: 2026-11-15-0759
 image: 2026/IMG_2028.jpeg
+keep_photos_in_feed:
+  - 2026/IMG_0785.jpeg
+  - 2018/2018-crater-lakes-1.jpg
+  - 2018/2018-crater-lakes-2.jpg
+  - 2018/2018-crater-lakes-3.jpg
+  - 2018/2018-crater-lakes-4.jpg
+  - 2018/2018-crater-lakes-5.jpg
+  - 2017/20170513-finch-lake-1.jpg
+  - 2017/20170513-finch-lake-3.jpg
 published: true
 ---
 As soon as I woke up this morning, I looked out the bedroom window and saw dense
@@ -53,6 +62,28 @@ Later, I took our dog for a walk in the neighborhood park. The fog had mostly
 lifted, but there were still great views throughout.
 
 {% photo 2026/IMG_2044.jpeg %}
+
+These aren't the first outings where the weather has been part of the
+experience. In January, I rode [9.6 miles to Wolf
+Lake](/workouts/#2026-01-19-1030) on a 25°F day. Five days later, I rode
+[another 9.5 miles](/workouts/#2026-01-24-1030) when it was 10°F.
+
+{% photo 2026/IMG_0785.jpeg %}
+
+Some older hikes stand out, too. In January 2018, I hiked just under six miles
+to Crater Lakes in the James Peak Wilderness. I wore crampons throughout and
+used snowshoes for the last stretch to the lakes. At 11,138 feet, a blizzard
+moved over the frozen lakes and visibility was very low. It was a beautiful,
+unique, and slightly magical experience.
+
+{% photos 2018/2018-crater-lakes-1.jpg 2018/2018-crater-lakes-2.jpg 2018/2018-crater-lakes-3.jpg 2018/2018-crater-lakes-4.jpg 2018/2018-crater-lakes-5.jpg %}
+
+An early spring hike to Finch Lake in 2017 was another one I could reasonably
+have skipped or turned around on because of the cold and snowy trail. The
+frozen lake and quiet solitude made it worth continuing - another unique view
+I would have missed.
+
+{% photos 2017/20170513-finch-lake-1.jpg 2017/20170513-finch-lake-3.jpg %}
 
 Fall and winter have often been pretty heavy and melancholy for me. Not every
 year, but I'm definitely prone to seasonal depression. In the past, I wasn't

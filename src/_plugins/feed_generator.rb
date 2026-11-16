@@ -239,21 +239,27 @@ module Jekyll
 
         module_function
 
-        def collect(site, content, image)
-          paths = Set.new
+        def collect(site, content, image, keep_in_feed = nil)
           refs = content.to_s.scan(PHOTO_TAG).flat_map { |(list)| list.split }
+          paths = resolve(site, refs)
+          paths.subtract(resolve(site, Array(keep_in_feed)))
+
           image = image.to_s.strip
           if image.start_with?('/')
             paths << image
           elsif !image.empty? && !image.match?(%r{\Ahttps?://})
-            refs << image
+            paths.merge(resolve(site, [image]))
           end
-          refs.each do |ref|
+
+          paths
+        end
+
+        def resolve(site, refs)
+          refs.each_with_object(Set.new) do |ref, paths|
             paths << AlbumPhotos.lookup(site, ref).src
           rescue ArgumentError
             next
           end
-          paths
         end
       end
 
@@ -275,7 +281,7 @@ module Jekyll
             data = SafeYAML.load(match[1]) || {}
             next unless data.is_a?(Hash)
 
-            photos = PhotoRefs.collect(site, match[2], data['image'])
+            photos = PhotoRefs.collect(site, match[2], data['image'], data['keep_photos_in_feed'])
             claimed.merge(photos)
             warn_if_stale(path, data, photos.size, now) if data['published'] == false
           end
@@ -310,7 +316,9 @@ module Jekyll
         private
 
         def record_photos(site, doc)
-          @embedded_photos.merge(PhotoRefs.collect(site, doc.content, doc.data['image']))
+          @embedded_photos.merge(
+            PhotoRefs.collect(site, doc.content, doc.data['image'], doc.data['keep_photos_in_feed'])
+          )
         end
 
         def documents(site)

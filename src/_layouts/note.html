@@ -1,7 +1,6 @@
 ---
 layout: page
 ---
-{% assign workout = site.data.workout_details[page.workout] %}
 <article class="note">
 <header class="note-head">
 <h2>{{ page.title }}</h2>
@@ -12,24 +11,16 @@ layout: page
 {{ content }}
 </div>
 
-{% if page.workout or page.playlist %}
-<aside class="note-workout" aria-label="Workout">
-{% if page.workout %}
-{% assign stats = "" | split: "" %}
-{% if workout %}
-{% assign fields = "duration,distance,elevation,average,calories,heart_rate,temperature" | split: "," %}
-{% for field in fields %}{% if workout[field] %}{% assign stats = stats | push: workout[field] %}{% endif %}{% endfor %}
-{% endif %}
-<p class="note-stats"><a href="/workouts/#{{ page.workout }}" title="Open in the workout log">{{ workout.type | default: "Workout" }}</a>{% if stats.size > 0 %} · {{ stats | join: " · " }}{% endif %}</p>
-{% if workout.tracks and workout.tracks.size > 0 %}
-<details class="note-music">
-<summary>Music <small>{{ workout.tracks.size }} {% if workout.tracks.size == 1 %}track{% else %}tracks{% endif %}</small></summary>
-<ol class="workout-tracks">
-{% for track in workout.tracks %}<li><span class="workout-track-time">{{ track.time }}</span> {% if track.url %}<a href="{{ track.url }}">{{ track.label }}</a>{% else %}<span class="workout-track-unmatched" title="Not on Spotify">{{ track.label }}</span>{% endif %}</li>
+{% if page.workout_ids.size > 0 or page.playlist %}
+<aside class="note-workout" aria-label="{% if page.workout_ids.size > 1 %}Workouts{% else %}Workout{% endif %}">
+{% if page.workout_ids.size == 1 %}
+{% include note_workout.html id=page.workout_ids.first %}
+{% elsif page.workout_ids.size > 1 %}
+<ul class="note-workouts">
+{% for id in page.workout_ids %}
+<li>{% include note_workout.html id=id show_when=true %}</li>
 {% endfor %}
-</ol>
-</details>
-{% endif %}
+</ul>
 {% endif %}
 {% if page.playlist %}
 <p class="note-playlist"><a href="{{ page.playlist }}">Playlist on Spotify</a></p>

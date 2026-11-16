@@ -1,0 +1,20 @@
+{% assign workout = site.data.workout_details[include.id] %}
+{% assign stats = "" | split: "" %}
+{% if include.show_when and workout %}
+{% if workout.date %}{% assign stats = stats | push: workout.date %}{% endif %}
+{% if workout.time %}{% assign stats = stats | push: workout.time %}{% endif %}
+{% endif %}
+{% if workout %}
+{% assign fields = "duration,distance,elevation,average,calories,heart_rate,temperature" | split: "," %}
+{% for field in fields %}{% if workout[field] %}{% assign stats = stats | push: workout[field] %}{% endif %}{% endfor %}
+{% endif %}
+<p class="note-stats"><a href="/workouts/#{{ include.id }}" title="Open in the workout log">{{ workout.type | default: "Workout" }}</a>{% if stats.size > 0 %} · {{ stats | join: " · " }}{% endif %}</p>
+{% if workout.tracks and workout.tracks.size > 0 %}
+<details class="note-music">
+<summary>Music <small>{{ workout.tracks.size }} {% if workout.tracks.size == 1 %}track{% else %}tracks{% endif %}</small></summary>
+<ol class="workout-tracks">
+{% for track in workout.tracks %}<li><span class="workout-track-time">{{ track.time }}</span> {% if track.url %}<a href="{{ track.url }}">{{ track.label }}</a>{% else %}<span class="workout-track-unmatched" title="Not on Spotify">{{ track.label }}</span>{% endif %}</li>
+{% endfor %}
+</ol>
+</details>
+{% endif %}

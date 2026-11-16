@@ -1306,6 +1306,20 @@ code.language-ascii-art-left { float: left; margin: var(--spacing-sm) var(--spac
   font-size: .9em;
 }
 
+#page ul.note-workouts {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+#page ul.note-workouts > li {
+  margin: 0 0 .9em;
+}
+
+#page ul.note-workouts > li:last-child {
+  margin-bottom: 0;
+}
+
 #page .note-workout p {
   margin: 0 0 .35em;
   text-align: left;

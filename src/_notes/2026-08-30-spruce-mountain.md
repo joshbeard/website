@@ -3,6 +3,7 @@ title: Spruce Mountain
 date: 2026-08-30 06:42
 workout: 2026-08-30-0642
 image: 2026/IMG_1548.jpeg
+description: An easy six-mile walk around Spruce Mountain just after sunrise, with quiet trails and wide views toward Palmer Lake and Greenland Open Space.
 ---
 A walk around [Spruce Mountain](https://www.douglasco.gov/open-space-natural-resources/properties/spruce-mountain-open-space-and-trail/) near Palmer Lake, Colorado.
 

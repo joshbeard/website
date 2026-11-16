@@ -3,6 +3,7 @@ title: Fair Weather Outings
 date: 2026-11-15 07:59
 workout: 2026-11-15-0759
 image: 2026/IMG_2028.jpeg
+description: Dense fog and a soft morning glow got me out for a short ride and thinking about how much I'd miss if I waited for ideal conditions.
 keep_photos_in_feed:
   - 2026/IMG_0785.jpeg
   - 2018/2018-crater-lakes-1.jpg

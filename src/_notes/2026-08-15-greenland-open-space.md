@@ -3,6 +3,7 @@ title: Greenland Open Space
 date: 2026-08-15 07:15
 workout: 2026-08-15-0715
 image: 2026/IMG_1411.jpeg
+description: A 32-mile ride from Monument to Larkspur through Palmer Lake and Greenland Open Space, on rougher and more remote trails than I was used to.
 published: true
 ---
 I'd been wanting to ride around the

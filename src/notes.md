@@ -10,8 +10,7 @@ class: ascii-art notes-index
 
 {% include submenu.html %}
 
-Short notes and a few photos, mostly from rides and other outings. Not every
-note has a route.
+Short notes and a few photos, mostly from rides and other outings.
 
 <ul class="notes-list">
 {% assign notes = site.notes | sort: "date" | reverse %}

@@ -3,6 +3,7 @@ title: Veteran's Day 46 Mile Ride
 date: 2026-11-11 09:19
 workout: 2026-11-11-0919
 image: 2026/IMG_1964.jpeg
+description: With Veterans Day off and unusually nice weather, I put together a 46-mile loop across town, my second-longest ride yet.
 ---
 It's been a few weeks since I did a "longer" ride - something over 30 miles - and I've been itching to do it. I was sick a couple of weeks ago and have had family commitments the past few weeks, along with some bad weather conditions. Since I had Veteran's Day off, I took advantage of it and the beautiful weather to do a long ride.
 

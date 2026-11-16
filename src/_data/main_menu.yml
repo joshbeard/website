@@ -2,8 +2,8 @@
   title: Home
 # - url: /me/
 #   title: About
-- url: /resume/
-  title: Resume
+# - url: /resume/
+#   title: Resume
 - url: /notes/
   title: Notes
 - url: /photos/

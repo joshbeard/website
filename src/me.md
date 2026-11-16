@@ -61,9 +61,9 @@ days, I still love it and have a lot of respect for it and its community.
 I owe my career to Free and Open Source Software and the ecosystem built around
 Linux and UNIX.
 
-See the [My Old Computers page](/old-computers.html) for the longer archive.
+▻ See the [My Old Computers page](/old-computers.html) for the longer archive.
 
-At home, I maintain a homelab on Proxmox that's mostly managed with Terraform
+At home, I maintain a [homelab](/homelab/) on Proxmox that's mostly managed with Terraform
 and Ansible, and I continue to write small tools and experiments in Go.
 
 ### Music
@@ -92,7 +92,7 @@ others. I love atmospheric drum and bass/jungle. When it comes to country, I
 particularly like Waylon Jennings, Merle Haggard, George Jones, and generally
 classic country. I also like a lot of 80's and 90's country.
 
-See my [last.fm](https://www.last.fm/user/joshbeard)
+▻ See my [last.fm](https://www.last.fm/user/joshbeard)
 profile for my music stats (with lots of gaps) dating back to 2005.
 
 ### Work
@@ -132,8 +132,7 @@ perspectives described in [Radical Simplicity](https://www.radicalsimpli.city/)
 and [Choose Boring Technology](https://boringtechnology.club/) resonate with
 me.
 
-See [my resume](/resume/) for more details about my professional experience, or
-my [now page](/now/) for a current snapshot of what I'm up to.
+▻ See [my resume](/resume/) for more details about my professional experience.
 
 ### In Memory
 

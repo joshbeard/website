@@ -40,7 +40,7 @@ That's part of what keeps these rides interesting. I take many of the same paths
 throughout the week, but the weather and seasons keep changing how they look and
 feel. A familiar loop can be a different experience from one day to the next.
 Sometimes there's a little more struggle involved, too, which I don't mind.
-Often made even more moody with the right playlist.
+Often made even more moody with the right playlist. I've been listening to Kruder & Dorfmeister radio on Spotify over the past several rides (see my [November 2026 Workout Playlist](https://open.spotify.com/playlist/2TFgWq50ZOS5Sijceu78b4)).
 
 I've also been taking more dirt paths along the creeks in town. Singletracks and
 social paths that take me just barely off the main trail and into little patches

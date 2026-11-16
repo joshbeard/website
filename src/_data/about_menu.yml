@@ -1,14 +1,16 @@
-- url: /me
+- url: /me/
   title: Me
-- url: /now
+- url: /resume/
+  title: Résumé
+- url: /now/
   title: Now
-- url: /notes
+- url: /notes/
   title: Notes
-- url: /uses
+- url: /uses/
   title: Uses
-- url: /health
+- url: /health/
   title: Health
-- url: /social
+- url: /social/
   title: Social
-- url: /workouts
+- url: /workouts/
   title: Workouts

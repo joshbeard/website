@@ -84,9 +84,10 @@ unique, and slightly magical experience.
 {% photos 2018/2018-crater-lakes-1.jpg 2018/2018-crater-lakes-2.jpg 2018/2018-crater-lakes-3.jpg 2018/2018-crater-lakes-4.jpg 2018/2018-crater-lakes-5.jpg %}
 
 An early spring hike to Finch Lake in 2017 was another one I could reasonably
-have skipped or turned around on because of the cold and snowy trail. The
-frozen lake and quiet solitude made it worth continuing - another unique view
-I would have missed.
+have skipped or turned around on. My feet were soaking wet. I was cold, tired,
+and sick of trudging through snow. There were sights along the way, but once I
+got to the lake I sat and ate a PB&J in solitude, admiring the mountains and
+the frozen lake at that altitude - another unique view I would have missed.
 
 {% photos 2017/20170513-finch-lake-1.jpg 2017/20170513-finch-lake-3.jpg %}
 

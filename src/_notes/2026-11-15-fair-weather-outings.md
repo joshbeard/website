@@ -3,7 +3,7 @@ title: Fair Weather Outings
 date: 2026-11-15 07:59
 workout: 2026-11-15-0759
 image: 2026/IMG_2028.jpeg
-description: Dense fog and a soft morning glow got me out for a short ride and thinking about how much I'd miss if I waited for ideal conditions.
+description: Dense fog and a soft morning glow got me out early, and thinking about how much I'd miss if I waited for ideal conditions.
 keep_photos_in_feed:
   - 2026/IMG_0785.jpeg
   - 2018/2018-crater-lakes-1.jpg
@@ -16,9 +16,10 @@ keep_photos_in_feed:
 published: true
 ---
 As soon as I woke up this morning, I looked out the bedroom window and saw dense
-fog with a soft glow from the sun. I knew immediately that I was heading out on
-my bike. I wanted to keep it short so I could be home with the family this morning,
-so I took a familiar loop nearby.
+fog with a soft glow from the sun. I knew immediately that I was heading out.
+We've had several weeks of proper fall weather in Colorado Springs, and I've
+been getting into it whenever I can. I wanted to keep it short so I could be
+home with the family this morning, so I took a familiar loop nearby on the bike.
 
 {% photo 2026/IMG_2028.jpeg %}
 
@@ -27,37 +28,40 @@ if I waited for conditions to be ideal. The cold and fog were an exciting part
 of why I wanted to go out this morning. Some of my favorite outings have been
 when the weather wasn't what we would consider good.
 
-I've been getting plenty of miles in lately, including Wednesday's
-[46-mile ride through town](/notes/2026/forty-six-across-town/) and a casual
+I've been out a lot lately - Wednesday's [46-mile ride through
+town](/notes/2026/forty-six-across-town/), a casual
 [15 miles yesterday](/workouts/#2026-11-14-1057) along Cottonwood Creek and the
 Pikes Peak Greenway. I'm in no hurry for it to get colder and darker, but I'm
-not planning to stop riding when it does.
+not planning to stay in when it does.
 
 {% photo 2026/IMG_2018.jpeg %}
 
-The fog was thick through most of this morning's ride, clearing enough at times
-to see Pikes Peak before covering it again.
+The fog was thick through most of this morning, clearing enough at times to see
+Pikes Peak before covering it again.
 
 {% photo 2026/IMG_2033.jpeg %}
 
-On the way back, I stopped at a grove of trees I ride past several times a week.
-I appreciate these places on an ordinary day, but I don't always stop. The way
+On the way back, I stopped at a grove of trees I pass several times a week. I
+appreciate these places on an ordinary day, but I don't always stop. The way
 those trees looked in the fog was worth stopping for.
 
 {% photo 2026/IMG_2035.jpeg %}
 
-That's part of what keeps these rides interesting. I take many of the same paths
-throughout the week, but the weather and seasons keep changing how they look and
-feel. A familiar loop can be a different experience from one day to the next.
-Sometimes there's a little more struggle involved, too, which I don't mind.
-Often made even more moody with the right playlist. I've been listening to Kruder & Dorfmeister radio on Spotify over the past several rides (see my [November 2026 Workout Playlist](https://open.spotify.com/playlist/2TFgWq50ZOS5Sijceu78b4)).
+That's part of what keeps these outings interesting. I take many of the same
+paths throughout the week, but the weather and seasons keep changing how they
+look and feel. A familiar loop can be a different experience from one day to
+the next. Sometimes there's a little more struggle involved, too, which I don't
+mind - often made even more moody with the right playlist. I've been listening
+to Kruder & Dorfmeister radio on Spotify over the past several rides (see my
+[November 2026 Workout
+Playlist](https://open.spotify.com/playlist/2TFgWq50ZOS5Sijceu78b4)).
 
 I've also been taking more dirt paths along the creeks in town. Singletracks and
 social paths that take me just barely off the main trail and into little patches
-of woods. These aren't wild trails, but they feel different from the paved
-paths right beside them. More winding turns, rocks, sand, and a little more
-technical effort. It's been fun changing things up, especially with the fall
-colors.
+of woods along the water. These aren't wild trails, but they feel different from
+the paved paths right beside them. More winding turns, rocks, sand, and a little
+more technical effort. It's been a good way to get further into the fall around
+here.
 
 Later, I took our dog for a walk in the neighborhood park. The fog had mostly
 lifted, but there were still great views throughout.

@@ -19,7 +19,8 @@ As soon as I woke up this morning, I looked out the bedroom window and saw dense
 fog with a soft glow from the sun. I knew immediately that I was heading out.
 We've had several weeks of proper fall weather in Colorado Springs, and I've
 been getting into it whenever I can. I wanted to keep it short so I could be
-home with the family this morning, so I took a familiar loop nearby on the bike.
+home with the family this quiet Sunday morning, so I took a familiar loop nearby
+on the bike.
 
 {% photo 2026/IMG_2028.jpeg %}
 

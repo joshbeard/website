@@ -1,0 +1,63 @@
+:root {
+  color-scheme: dark;
+
+  /* Backgrounds — deep night so the lights read */
+  --bg-primary: #101612;
+  --bg-secondary: #172019;
+  --bg-tertiary: #141c16;
+  --bg-code: #15201a;
+
+  /* Text Colors — warm ivory, not blasting white */
+  --text-primary: #ddd8ce;
+  --text-secondary: #b9b4a8;
+  --text-muted: #8f8a80;
+  --text-accent: #e07084;
+
+  /* Accent Colors — cranberry + holly, almost no gold */
+  --accent-blue: #e85a72;          /* Title and links — cranberry */
+  --accent-purple: #c45a72;        /* Home / visited — deeper cranberry */
+  --accent-green: #e8dfd0;         /* Hover — soft cream */
+  --accent-cyan: var(--accent-blue);
+  --accent-pink: #8fbc9a;          /* Section titles — soft mistletoe */
+  --accent-orange: #d47878;        /* Warm rose (was amber) */
+
+  /* Syntax Highlighting Colors */
+  --syntax-keyword: #e8c4c8;       /* Soft rose cream, not yellow */
+  --syntax-string: #e8dfd0;        /* Soft cream */
+  --syntax-function: #c8e0d4;
+  --syntax-comment: #7a9a8c;
+  --syntax-number: #e07084;
+
+  /* Border & UI Colors */
+  --border-subtle: #2a3830;
+  --border-default: #2a3830;
+  --border-accent: #1e6540;        /* Quiet evergreen frame */
+  --border-success: #1e6540;
+
+  /* Interactive States */
+  --hover-bg: #24382c;
+  --active-bg: #142018;
+  --focus-ring: #e8dfd0;
+
+  /* Photo Album Specific */
+  --album-shadow: #0a0e0c;
+  --album-overlay: rgba(0,0,0,0.7);
+  --album-title-overlay: rgba(0, 0, 0, 0.6);
+  --album-title-overlay-hover: rgba(0, 0, 0, 0.75);
+
+  /* Fonts */
+  --font-primary: system-ui, -apple-system, Segoe UI, Helvetica, Arial, sans-serif;
+  --font-mono: ui-monospace, Menlo, Consolas, 'Liberation Mono', monospace;
+  --font-display: "Play", Optima, "Hoefler Text", Baskerville, "Book Antiqua", Palatino, serif;
+
+  /* Spacing */
+  --spacing-xs: 6px;
+  --spacing-sm: 10px;
+  --spacing-md: 20px;
+  --spacing-lg: 40px;
+
+  /* Heading Colors */
+  --heading-h2: var(--accent-pink); /* Soft mistletoe — breaks up cranberry stack */
+  --heading-h3: #e8dfd0;
+}
+

@@ -35,9 +35,10 @@ jgs `"""""""""""""`  '-'
 ```
 
 * ~1996: [Commodore PC Compatible](https://en.wikipedia.org/wiki/Commodore_PC_compatible_systems). Ran MS-DOS. Played basic games, joined BBS.
-* 1996-2000: [Packard Bell Pentium II 133MHz](http://pbplanet.info/wiki/index.php/Multimedia_D136). Hung out on a [BBS](https://en.wikipedia.org/wiki/Bulletin_board_system), played games like [Duke Nukem 3D](https://en.wikipedia.org/wiki/Duke_Nukem_3D) and [Sim City 2000](https://en.wikipedia.org/wiki/SimCity_2000), and ran Windows 95, 98, and 2000. Later installed [Red Hat Linux 5.2](https://www.redhat.com/en/about/press-releases/press-redhatlinux52), bought off a shelf at a Wal-Mart, and tested other Linux distributions.
+* 1996-1999: [Packard Bell Pentium II 133MHz](http://pbplanet.info/wiki/index.php/Multimedia_D136). Hung out on a [BBS](https://en.wikipedia.org/wiki/Bulletin_board_system), played games like [Duke Nukem 3D](https://en.wikipedia.org/wiki/Duke_Nukem_3D) and [Sim City 2000](https://en.wikipedia.org/wiki/SimCity_2000), and ran Windows 95, 98, and 2000. Later installed [Red Hat Linux 5.2](https://www.redhat.com/en/about/press-releases/press-redhatlinux52), bought off a shelf at a Wal-Mart, and tested other Linux distributions.
 * 1997-1999: [Zenith SupersPort 286](https://oldcrap.org/2020/10/30/zenith-supersport-286e/). Mostly used MS-DOS and kept a journal on it. Windows 3.0 installed. Learned some BASIC on this.
 * 1997-2006: Several no-name [386](https://en.wikipedia.org/wiki/I386) and [486s](https://en.wikipedia.org/wiki/I486). Ran DOS, Linux, and FreeBSD. Installed Windows 95 from floppy on a 486.
+* 1999: A generic "white-box" PC. I think it was 450 MHz (Pentium II?) and had 64 MB of RAM, though It's a bit fuzzy.
 * 1999-2006: Several no-name [Pentiums](https://en.wikipedia.org/wiki/Pentium_(original)) and [AMD K5/K6/Athlon](https://en.wikipedia.org/wiki/Advanced_Micro_Devices#CPUs_and_APUs). Ran Linux (RedHat, CentOS, Ubuntu, Debian, Gentoo, countless others) and FreeBSD.
 
 <a href="/screenshots/old/2005-02-04.png"><img class="responsive" src="/screenshots/old/2005-02-04-th.png" alt="Screenshot from 2005-02-04" /></a>
@@ -52,16 +53,19 @@ jgs `"""""""""""""`  '-'
 <a href="/screenshots/old/2008-10-11.png"><img class="responsive" src="/screenshots/old/2008-10-11-th.png" alt="Screenshot from 2008-10-11" /></a>
 
 * 2008-2013: Several Work-issued [iMacs](https://en.wikipedia.org/wiki/IMac) running macOS and Linux.
-* 2010-2012: [Asus Eee PC 900](https://en.wikipedia.org/wiki/Asus_Eee_PC#Eee_900_series). Ran Linux (Debian).
-* 2012-2013: Asus Netbook. Ran Linux (Ubuntu) _Now out of retirement and [used](/uses/)_.
-* 2019: Chromebook 14a for periodic browsing. Runs ChromeOS and [crouton](https://github.com/dnschneid/crouton). Mom's old computer. Not
-  used much.
+* 2010-2012: [Asus Eee PC 900](https://en.wikipedia.org/wiki/Asus_Eee_PC#Eee_900_series). Ran Linux (Debian). More of a novelty, never really practical. It was a gift from a friend.
+* 2011: I acquired an old Gateway tower that I used as a home server until 2020.
+* 2012-2013: Asus Netbook. Ran Linux (Ubuntu). Have fired it up over the years (even in 2025), but it's pretty much retired.
 * Acer Aspire 1410 Netbook (Core 2 solo @ 1.4GHz; 2 GB RAM) with Arch Linux. Occasionally still used.
+* 2021: Mom's old Chromebook 14a. Runs ChromeOS and [crouton](https://github.com/dnschneid/crouton). I never really used it.
 * Since 2013: MacBook Pros at work - macOS and Linux off and on.
+* Since 2020: Using a Dell PowerEdge T410 for a home server. See [homelab](/homelab/).
 * 2022-2025: MacBook Air M1 (work)
 * 2021-2025: MacBook Pro Retina (2015) - Arch Linux
 * 2025: MacBook Pro M4 (work)
 * 2025: MacBook Air M4 (personal)
+
+I'm probably forgetting a few.
 
 Many of these were used as home servers over the years. I ran my own e-mail
 servers at home for several years, along with web servers and an assortment of

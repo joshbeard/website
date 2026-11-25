@@ -36,8 +36,8 @@ older style of web publishing.
 ```
 
 If you are looking at this and dig personal websites and that sort of thing, say
-[hello](mailto:hello@joshbeard.com)! I don't use social media to connect with
-people; that's on the [social](/social/) page.
+[hello](mailto:hello@joshbeard.com)! I [don't use social media](/social/) to
+connect with people.
 
 ### Computers
 
@@ -56,15 +56,12 @@ them.
 \__|_____|_|__|
 ```
 
-I took an interest in Linux and Free and Open Source Software around 1999 and
-became particularly interested in setting up and administering servers and
-websites. I stayed up until dawn many nights learning and experimenting with
-this stuff and hanging out on IRC.
-
-Around 2004, I started using FreeBSD to experience another UNIX-derived system
-and ran it for several years on my desktop and home servers, eventually using
-it for core services at a previous job. Although I don't use it as much these
-days, I still love it and have a lot of respect for it and its community.
+I took an interest in Linux, Free and Open Source Software, and other
+UNIX-derived systems when I was a teenager, and I've been into it
+ever since. I've run countless Linux distributions, FreeBSD, OpenBSD, and more
+esoteric operating systems. I became particularly interested in setting up and
+administering servers and websites, and stayed up until dawn many nights
+learning and experimenting with this stuff and hanging out on IRC.
 
 I owe my career to Free and Open Source Software and the ecosystem built around
 Linux and UNIX.
@@ -98,7 +95,8 @@ enumerate them all. For electronic music, my favorite is probably Kruder &
 Dorfmeister. I also like Orbital, Prodigy, Lords Of Acid, LTJ Bukem, and many
 others. I love atmospheric drum and bass/jungle. When it comes to country, I
 particularly like Waylon Jennings, Merle Haggard, George Jones, and generally
-classic country. I also like a lot of 80's and 90's country.
+classic country. I also like a lot of 80's and 90's country. I dig a lot of the
+country artists that have come out over the last few years, too.
 
 ▻ See my [last.fm](https://www.last.fm/user/joshbeard)
 profile for my music stats (with lots of gaps) dating back to 2005.
@@ -107,11 +105,11 @@ profile for my music stats (with lots of gaps) dating back to 2005.
 
 For work, I focus on many aspects of software delivery: platforms, developer
 workflows, documentation, process, governance, and the tools that help software
-teams build and operate things with less friction. Increasingly, that includes
-AI workflows, integrations, and enablement. My background is in systems
-administration and engineering, and I have spent a lot of time close to Linux,
-Unix-like systems, automation, CI/CD, cloud infrastructure, and the day-to-day
-realities of keeping services maintainable.
+teams build and operate things with less friction, including AI workflows,
+integrations, and enablement. My background is in systems administration and
+engineering, and I have spent a lot of time close to Linux, Unix-like systems,
+automation, CI/CD, cloud infrastructure, and the day-to-day realities of
+keeping services maintainable.
 
 ```ascii-art-right
     ______
@@ -129,10 +127,10 @@ realities of keeping services maintainable.
 ```
 
 Most of my work happens in a code editor and shell, bouncing between systems,
-software, and process. Increasingly, that also means working alongside AI agents
-and LLMs to produce code, automate routine changes, and think through problems.
-The surrounding toolkit still includes a lot of Terraform, AWS, Go, GitLab CI,
-Python, Docker, shell, and whatever glue is needed at the time.
+software, and process. I work alongside AI agents and LLMs to produce code,
+automate routine changes, and think through problems. The surrounding toolkit
+includes a lot of Terraform, AWS, Go, GitLab CI, Python, Docker, shell, and
+whatever glue is needed at the time.
 
 I care about practical engineering: simple systems, boring technology where it
 fits, clear workflows, and tools that make the right thing easier to do. The

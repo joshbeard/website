@@ -12,6 +12,10 @@ class: ascii-art
 
 Notable changes to my website.
 
+### November 23, 2026: Christmas Color Scheme
+
+Applied a Christmas-inspired color scheme to the site.
+
 ### November 15, 2026: Changelog
 
 Add a changelog page.

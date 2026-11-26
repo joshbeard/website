@@ -15,6 +15,16 @@ class: ascii-art
 
 I don't use social media to connect with people.
 
+```ascii-art-right
+      o
+  o   |   o
+   \.---./
+- -(  :::  )- -
+   /`---'\
+  o   |   o
+      o
+```
+
 Around 2016, I mostly stopped putting myself on social media. I still use it,
 usually anonymously, to read about hobbies and other interests. I understand
 sharing photos and updates with friends and family, but there's too much noise

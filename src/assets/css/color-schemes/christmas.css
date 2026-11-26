@@ -58,6 +58,6 @@
 
   /* Heading Colors */
   --heading-h2: var(--accent-pink); /* Soft mistletoe — breaks up cranberry stack */
-  --heading-h3: #e8dfd0;
+  --heading-h3: #c4d4a4;           /* Warm willow — apart from cranberry and mistletoe */
 }
 

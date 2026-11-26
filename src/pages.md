@@ -9,7 +9,6 @@ class: ascii-art pages-index
 ## About
 
 - [Me](/me/)
-- [Notes](/notes/)
 - [Résumé](/resume/)
 - [Now](/now/)
 - [Social](/social/)
